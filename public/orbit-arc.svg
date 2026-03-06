@@ -1,0 +1,17 @@
+<svg width="527" height="138" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0%" x2="100%" y1="0%" x1="0%" id="svg_1">
+   <stop stop-opacity="0" stop-color="#6a7282" offset="0%"/>
+   <stop stop-color="#6a7282" offset="25%"/>
+   <stop stop-color="#6a7282" offset="75%"/>
+   <stop stop-opacity="0" stop-color="#6a7282" offset="100%"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null">
+
+   <path stroke-dasharray="10 18" stroke="url(#svg_1)" stroke-linecap="round" stroke-width="3" fill="none" d="m0,0a263.5,137.66666 0 1 0 527,0"/>
+  </g>
+ </g>
+</svg>

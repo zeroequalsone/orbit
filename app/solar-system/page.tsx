@@ -1,5 +1,4 @@
 "use client"
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react"
 import { useState } from "react"
 
 export default function SolarSystem() {
@@ -192,20 +191,8 @@ export default function SolarSystem() {
                                 <h1 className="text-[11rem] font-extrabold uppercase tracking-widest">{selectedPlanet.name}</h1>
                                 <h2 className="text-2xl max-w-3/4">{selectedPlanet.description}</h2>
                             </div>
-                            <div className="flex gap-12">
-                                {planetId > 1 && (
-                                    <CaretLeftIcon className="text-5xl" onClick={() => {
-                                        selectPlanetId(prev => prev - 1)
-                                    }} />
-                                )}
-                                {planetId < 8 && (
-                                    <CaretRightIcon className="text-5xl" onClick={() => {
-                                        selectPlanetId(prev => prev + 1)
-                                    }} />
-                                )}
-                            </div>
                         </div>
-                        <div className="flex gap-32 bottom-0">
+                        <div className="flex gap-32">
                             <div>
                                 <h3 className="font-bold uppercase">Tageslänge</h3>
                                 <h4 className="text-4xl font-light">{selectedPlanet.lengthOfDay.toLocaleString("de")} Stunden</h4>
@@ -225,6 +212,9 @@ export default function SolarSystem() {
                         </div>
                     </div>
                 )}
+            </section>
+            <section>
+
             </section>
         </div>
     )

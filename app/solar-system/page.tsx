@@ -25,6 +25,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Merkur ist der innerste Planet unseres Sonnensystems und der Sonne am nächsten. Er ist ein kleiner, felsiger Planet mit extremen Temperaturschwankungen - tagsüber glühend heiß und nachts eisig kalt - und besitzt weder eine nennenswerte Atmosphäre noch Monde.",
             planetType: "Gesteinsplanet",
+            astronomicalUnit: 0.39,
         },
         {
             id: 2,
@@ -46,6 +47,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Die Venus ist der zweite Planet von der Sonne aus gesehen und der hellste Planet am Nachthimmel. Sie ist der Erde in Größe und Aufbau ähnlich, besitzt jedoch eine dichte, giftige Atmosphäre, die einen extremen Treibhauseffekt verursacht und sie zum heißesten Planeten im Sonnensystem macht.",
             planetType: "Gesteinsplanet",
+            astronomicalUnit: 0.72,
         },
         {
             id: 3,
@@ -67,6 +69,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Die Erde ist der dritte Planet von der Sonne und der einzige bekannte Planet, auf dem Leben existiert. Sie ist ein felsiger Planet mit einer schützenden Atmosphäre, großen Ozeanen aus flüssigem Wasser und einem Mond, der Gezeiten erzeugt und die Erdachse stabilisiert.",
             planetType: "Gesteinsplanet",
+            astronomicalUnit: 1,
         },
         {
             id: 4,
@@ -89,6 +92,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Mars ist der vierte Planet von der Sonne aus gesehen und wird wegen seiner rötlichen Oberfläche auch der „Rote Planet“ genannt. Er ist kleiner als die Erde, besitzt eine dünne Atmosphäre, gewaltige Vulkane und Schluchten und gilt als einer der vielversprechendsten Kandidaten für vergangenes Leben.",
             planetType: "Gesteinsplanet",
+            astronomicalUnit: 1.5,
         },
         {
             id: 5,
@@ -110,6 +114,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Jupiter ist der fünfte Planet von der Sonne aus gesehen und der größte im Sonnensystem. Er ist ein Riesenplanet mit einer Masse, die ein Tausendstel der Sonnenmasse beträgt, aber zweieinhalb Mal so groß ist wie die aller anderen Planeten im Sonnensystem zusammen.",
             planetType: "Gasriese",
+            astronomicalUnit: 5.2,
         },
         {
             id: 6,
@@ -131,6 +136,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Saturn ist der sechste Planet von der Sonne und bekannt für sein beeindruckendes Ringsystem. Er ist ein Gasriese mit geringer Dichte, sodass er theoretisch auf Wasser schwimmen könnte, und besitzt zahlreiche Monde, darunter einige mit unterirdischen Ozeanen.",
             planetType: "Gasriese",
+            astronomicalUnit: 9.5,
         },
         {
             id: 7,
@@ -153,6 +159,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Uranus ist der siebte Planet von der Sonne aus gesehen und ein Eisriese mit bläulich-grüner Färbung. Seine Besonderheit ist die stark geneigte Rotationsachse, wodurch er gewissermaßen \"auf der Seite\" rotiert und extreme Jahreszeiten erlebt.",
             planetType: "Eisriese",
+            astronomicalUnit: 19.2,
         },
         {
             id: 8,
@@ -175,6 +182,7 @@ export default function SolarSystem() {
             iconUrl: "",
             description: "Der Neptun ist der achte und äußerste bekannte Planet unseres Sonnensystems. Er ist ein tiefblauer Eisriese mit den stärksten Winden im Sonnensystem und benötigt mehr als 160 Jahre für einen einzigen Umlauf um die Sonne.",
             planetType: "Eisriese",
+            astronomicalUnit: 30.1,
         },
     ]
 
@@ -182,8 +190,8 @@ export default function SolarSystem() {
     const selectedPlanet = planets.find(p => p.id === planetId)
 
     return (
-        <div className={`text-white min-h-screen bg-[url("/planets/BG.png")] bg-center bg-cover`}>
-            <section className={`min-h-screen bg-center bg-cover flex flex-col justify-center items-center`} style={{ backgroundImage: `url("${selectedPlanet?.imageUrl}")` }}>
+        <div className={`text-white h-screen overflow-y-scroll snap-y snap-mandatory`}>
+            <section className={`min-h-screen bg-center bg-cover flex flex-col justify-center items-center snap-start`} style={{ backgroundImage: `url("${selectedPlanet?.imageUrl}")` }}>
                 {selectedPlanet && (
                     <div key={selectedPlanet.id} className="flex flex-col gap-40 max-w-4/5 mt-40 p-8">
                         <div className="flex justify-center items-center">
@@ -194,27 +202,34 @@ export default function SolarSystem() {
                         </div>
                         <div className="flex gap-32">
                             <div>
-                                <h3 className="font-bold uppercase">Tageslänge</h3>
-                                <h4 className="text-4xl font-light">{selectedPlanet.lengthOfDay.toLocaleString("de")} Stunden</h4>
+                                <p className="font-bold uppercase">Tageslänge</p>
+                                <p className="text-4xl font-light">{selectedPlanet.lengthOfDay.toLocaleString("de")} Stunden</p>
                             </div>
                             <div>
-                                <h3 className="font-bold uppercase">Durchmesser</h3>
-                                <h4 className="text-4xl font-light">{selectedPlanet.diameter.toLocaleString("de")} km</h4>
+                                <p className="font-bold uppercase">Durchmesser</p>
+                                <p className="text-4xl font-light">{selectedPlanet.diameter.toLocaleString("de")} km</p>
                             </div>
                             <div>
-                                <h3 className="font-bold uppercase">Monde</h3>
-                                <h4 className="text-4xl font-light">{selectedPlanet.numberOfMoons} bestätigte</h4>
+                                <p className="font-bold uppercase">Monde</p>
+                                <p className="text-4xl font-light">{selectedPlanet.numberOfMoons} bestätigte</p>
                             </div>
                             <div>
-                                <h3 className="font-bold uppercase">Planet Typ</h3>
-                                <h4 className="text-4xl font-light">{selectedPlanet.planetType}</h4>
+                                <p className="font-bold uppercase">Planet Typ</p>
+                                <p className="text-4xl font-light">{selectedPlanet.planetType}</p>
                             </div>
                         </div>
                     </div>
                 )}
             </section>
-            <section>
-
+            <section className="min-h-screen flex justify-center items-center gap-24 bg-black snap-start">
+                {planets.map((planet) => (
+                    <div key={planet.id} className={`flex flex-col gap-6 text-center ${planetId === planet.id ? "text-white" : "text-neutral-400"}`}>
+                        <p className="text-sm">{planet.astronomicalUnit} AU</p>
+                        <div onClick={() => selectPlanetId(planet.id)} className={`w-20 h-20 border-2 rounded-full mb-16 mt-16`} />
+                        <p className="font-bold">{planet.name}</p>
+                        <p className="text-sm">{planet.numberOfMoons} Monde</p>
+                    </div>
+                )).reverse()}
             </section>
         </div>
     )

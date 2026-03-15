@@ -7,8 +7,8 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <div className={"fixed w-full z-50 flex justify-center text-white"}>
-            <div className="hidden lg:flex justify-between items-center p-8 lg:max-w-4/5 w-full uppercase">
+        <div className={"fixed w-full z-50 flex justify-center text-white bg-black/50"}>
+            <div className="hidden lg:flex justify-between items-center pt-8 pb-8 lg:max-w-4/5 w-full uppercase">
                 <Link href={"/"} className="text-2xl">
                     <p>Orbit</p>
                 </Link>

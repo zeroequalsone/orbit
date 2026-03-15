@@ -22,7 +22,7 @@ export default function Navbar() {
                 </Link>
                 <div className="flex gap-8 tracking-widest font-extralight">
                     {navLinks.map(navLink => (
-                        <Link href={navLink.href} className="hover:font-normal" onClick={() => setMobileMenuOpen(false)}>{navLink.name}</Link>
+                        <Link key={navLink.href} href={navLink.href} className="hover:font-normal" onClick={() => setMobileMenuOpen(false)}>{navLink.name}</Link>
                     ))}
                 </div>
             </div>

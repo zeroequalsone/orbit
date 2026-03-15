@@ -230,7 +230,7 @@ export default function SolarSystem() {
     const selectedPlanet = planets.find(p => p.id === planetId)
 
     return (
-        <div className={`text-white h-screen overflow-y-scroll no-scrollbar scroll-smooth bg-black`} >
+        <div className={`text-white min-h-screen scroll-smooth`} >
             <section className={`min-h-screen bg-center bg-cover flex flex-col justify-center items-center`} style={{ backgroundImage: `url("${selectedPlanet?.imageUrl}")` }}>
                 <div key={selectedPlanet?.id} className="flex flex-col gap-40 max-w-4/5 mt-40 p-8">
                     <div className="flex justify-center items-center">
@@ -262,14 +262,14 @@ export default function SolarSystem() {
             <section className="min-h-screen flex justify-center items-center flex-col">
                 <div>
                     <div className="flex gap-24">
-                        {planets.map((planet) => (
+                        {[...planets].reverse().map((planet) => (
                             <div key={planet.id} className={`flex flex-col gap-6 text-center ${planetId === planet.id ? "text-white" : "text-neutral-400"}`}>
                                 <p className="text-sm">{planet.astronomicalUnit} AE</p>
                                 <svg onClick={() => selectPlanetId(planet.id)} className={`w-20 h-20 border-2 rounded-full mb-16 mt-16 cursor-pointer`} />
                                 <p className="font-bold">{planet.name}</p>
                                 <p className="text-sm">{planet.numberOfMoons} Monde</p>
                             </div>
-                        )).reverse()}
+                        ))}
                     </div>
                     <p className="text-sm mt-28 text-neutral-400">AE (Astronomische Einheit) — die Distanz der Erde zur Sonne.</p>
                 </div>

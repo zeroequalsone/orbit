@@ -39,13 +39,13 @@ export default function SolarSystem() {
             <div>
               <p className="font-bold uppercase">Tageslänge</p>
               <p className="text-4xl font-light">
-                {selectedPlanet?.lengthOfDay.toLocaleString("de")} Stunden
+                {selectedPlanet?.lengthOfDay} Stunden
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Durchmesser</p>
               <p className="text-4xl font-light">
-                {selectedPlanet?.diameter.toLocaleString("de")} km
+                {selectedPlanet?.diameter} km
               </p>
             </div>
             <div>
@@ -87,7 +87,7 @@ export default function SolarSystem() {
         </div>
       </section>
       <section
-        className="min-h-screen bg-center bg-cover flex justify-center items-center w-full"
+        className="min-h-screen bg-center bg-cover flex justify-center items-center"
         style={{ backgroundImage: `url('${selectedPlanet?.sectionOneUrl}')` }}
       >
         <div className="flex w-4/5 gap-14">
@@ -128,9 +128,7 @@ export default function SolarSystem() {
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Distanz zur Sonne</p>
               <p className="text-5xl">
-                {selectedPlanet &&
-                  selectedPlanet.distanceFromSun.toLocaleString("DE")}{" "}
-                km
+                {selectedPlanet && selectedPlanet.distanceFromSun} km
               </p>
             </div>
             <div className="flex flex-col gap-4">
@@ -140,7 +138,7 @@ export default function SolarSystem() {
               </p>
             </div>
           </div>
-          <div className="flex w-4/5 flex-row-reverse items-center gap-20">
+          <div className="flex w-4/5 flex-row-reverse items-center gap-24">
             <p
               className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-center"
               style={{
@@ -201,6 +199,65 @@ export default function SolarSystem() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="flex flex-col min-h-screen justify-center items-center gap-24">
+        <div className="flex items-center justify-center gap-24 w-4/5">
+          <p
+            className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
+            style={{
+              backgroundImage: `url('${selectedPlanet?.sectionThreeUrl}')`,
+            }}
+          >
+            03
+          </p>
+          <div className="flex flex-col gap-12">
+            <span className="border-t-2 w-32"></span>
+            <p className="text-7xl font-bold uppercase tracking-[0.3em]">
+              In Depth
+            </p>
+            <p className="w-2xl text-neutral-300 font-semibold tracking-wider leading-loose">
+              {selectedPlanet?.inDepthDescription}
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-24">
+          {selectedPlanet?.atmosphere.map((atmosphere) => (
+            <div key={atmosphere.gas}>
+              <div className="relative size-72 border-2 border-gray-700 rounded-full p-6">
+                <svg
+                  className="-rotate-90 drop-shadow-[0_0_12px_rgba(43,127,255,1)]"
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="18"
+                    cy="18"
+                    r="16"
+                    fill="none"
+                    strokeWidth="1.5"
+                  ></circle>
+                  <circle
+                    cx="18"
+                    cy="18"
+                    r="16"
+                    fill="none"
+                    className="stroke-current text-blue-500"
+                    strokeWidth="1.5"
+                    strokeDasharray={100}
+                    strokeDashoffset={100 - atmosphere.percentage}
+                    strokeLinecap="round"
+                  ></circle>
+                </svg>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <p className="text-4xl font-light">
+                    {atmosphere.percentage}%
+                  </p>
+                  <p className="font-extralight">{atmosphere.gas}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>

@@ -9,8 +9,8 @@ export default function Navbar() {
   const navLinks = [
     { name: "Entdecken", href: "/explore" },
     { name: "Sonnensystem", href: "/solar-system" },
-    { name: "Live Tracker", href: "/live" },
     { name: "Tools", href: "/tools" },
+    { name: "Blog", href: "/blog" },
     { name: "GitHub", href: "https://github.com/zeroequalsone/orbit" },
   ];
 

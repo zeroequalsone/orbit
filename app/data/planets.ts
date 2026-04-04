@@ -19,6 +19,7 @@ type Planet = {
     sectionFourUrl: string;
     descriptionLong: string;
     descriptionShort: string;
+    inDepthDescription: string;
     featureDescription: string;
     featureTitle: string;
     featureInfo: string;
@@ -54,6 +55,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/mercury/Section4.webp",
         descriptionLong: "Der Merkur ist der innerste Planet unseres Sonnensystems und der Sonne am nächsten. Er ist ein kleiner, felsiger Planet mit extremen Temperaturschwankungen - tagsüber glühend heiß und nachts eisig kalt - und besitzt weder eine nennenswerte Atmosphäre noch Monde.",
         descriptionShort: "Merkur ist nach dem römischen Götterboten benannt.",
+        inDepthDescription: "Die Umweltbedingungen auf dem Merkur sind für Leben, wie wir es kennen, nicht geeignet. Extreme Temperaturschwankungen, intensive Sonneneinstrahlung und das Fehlen einer stabilen Atmosphäre machen es unwahrscheinlich, dass Organismen dort überleben könnten.",
         featureDescription: "Der Merkur ist der innerste Planet unseres Sonnensystems und der Sonne am nächsten.",
         featureTitle: "EXTREME TEMPERATUREN",
         featureInfo: "Auf dem Merkur herrschen extreme Temperaturschwankungen, da der Planet praktisch keine schützende Atmosphäre besitzt. Tagsüber können über 400 °C erreicht werden, während die Temperaturen nachts auf etwa -180 °C fallen. Diese Unterschiede gehören zu den größten im gesamten Sonnensystem.",
@@ -85,6 +87,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/venus/Section4.webp",
         descriptionLong: "Die Venus ist der zweite Planet von der Sonne aus gesehen und der hellste Planet am Nachthimmel. Sie ist der Erde in Größe und Aufbau ähnlich, besitzt jedoch eine dichte, giftige Atmosphäre, die einen extremen Treibhauseffekt verursacht und sie zum heißesten Planeten im Sonnensystem macht.",
         descriptionShort: "Venus ist nach der römischen Göttin der Liebe benannt.",
+        inDepthDescription: "Die Umweltbedingungen auf der Venus sind wahrscheinlich nicht geeignet für Leben, wie wir es kennen. Die extreme Hitze, der enorme atmosphärische Druck und die ätzenden Wolken schaffen Bedingungen, die für Organismen viel zu rau sind, als dass sie sich daran anpassen könnten.",
         featureDescription: "Die Venus ist der zweite Planet von der Sonne aus gesehen und der hellste Planet am Nachthimmel.",
         featureTitle: "RUNAWAY-TREIBHAUSEFFEKT",
         featureInfo: "Die Venus besitzt eine dichte Atmosphäre aus Kohlendioxid, die einen extremen Treibhauseffekt verursacht. Dadurch wird Wärme nahezu vollständig eingeschlossen, was zu Oberflächentemperaturen von über 460 °C führt. Selbst Merkur, der näher an der Sonne ist, bleibt deutlich kälter.",
@@ -116,6 +119,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/earth/Section4.webp",
         descriptionLong: "Die Erde ist der dritte Planet von der Sonne und der einzige bekannte Planet, auf dem Leben existiert. Sie ist ein felsiger Planet mit einer schützenden Atmosphäre, großen Ozeanen aus flüssigem Wasser und einem Mond, der Gezeiten erzeugt und die Erdachse stabilisiert.",
         descriptionShort: "Erde stammt aus dem Althochdeutschen.",
+        inDepthDescription: "Die Umwelt der Erde ist bestens geeignet, um Leben, wie wir es kennen, zu ermöglichen. Dank ihrer gemäßigten Temperaturen, ihrer schützenden Atmosphäre und des reichlichen Vorkommens von flüssigem Wasser können sich dort vielfältige Organismen entfalten.",
         featureDescription: "Die Erde ist der dritte Planet von der Sonne und der einzige bekannte Planet, auf dem Leben existiert.",
         featureTitle: "FLÜSSIGES WASSER",
         featureInfo: "Die Erde ist der einzige bekannte Planet mit stabilen großen Mengen flüssigen Wassers an der Oberfläche. Dieses Wasser bedeckt etwa 70 % des Planeten und spielt eine entscheidende Rolle für Klima, Wetter und Leben. Es ermöglicht komplexe Ökosysteme und eine außergewöhnliche Vielfalt an Lebensformen.",
@@ -148,6 +152,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/mars/Section4.webp",
         descriptionLong: "Der Mars ist der vierte Planet von der Sonne aus gesehen und wird wegen seiner rötlichen Oberfläche auch der \"Rote Planet\" genannt. Er ist kleiner als die Erde, besitzt eine dünne Atmosphäre, gewaltige Vulkane und Schluchten und gilt als einer der vielversprechendsten Kandidaten für vergangenes Leben.",
         descriptionShort: "Mars ist nach dem römischen Kriegsgott benannt.",
+        inDepthDescription: "Die Umweltbedingungen auf dem Mars sind wahrscheinlich nicht förderlich für Leben, wie wir es kennen. Die kalten Temperaturen, die dünne Atmosphäre und die hohe Strahlenbelastung erschweren den meisten bekannten Organismen das Überleben.",
         featureDescription: "Der Mars ist der vierte Planet von der Sonne aus gesehen und wird wegen seiner rötlichen Oberfläche auch der \"Rote Planet\" genannt.",
         featureTitle: "OLYMPUS MONS",
         featureInfo: "Der Olympus Mons auf dem Mars ist der größte Vulkan im gesamten Sonnensystem. Mit einer Höhe von etwa 22 Kilometern überragt er selbst die höchsten Berge der Erde deutlich. Seine enorme Größe ist auf die geringe Schwerkraft und fehlende Plattentektonik des Mars zurückzuführen.",
@@ -179,6 +184,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/jupiter/Section4.webp",
         descriptionLong: "Der Jupiter ist der fünfte Planet von der Sonne aus gesehen und der größte im Sonnensystem. Er ist ein Riesenplanet mit einer Masse, die ein Tausendstel der Sonnenmasse beträgt, aber zweieinhalb Mal so groß ist wie die aller anderen Planeten im Sonnensystem zusammen.",
         descriptionShort: "Jupiter ist nach dem König der römischen Götter benannt.",
+        inDepthDescription: "Die Umgebungsbedingungen auf dem Jupiter sind wahrscheinlich nicht förderlich für Leben, wie wir es kennen. Die Temperaturen, der Druck und die dort vorkommenden Stoffe sind höchstwahrscheinlich zu extrem und unbeständig, als dass sich Organismen daran anpassen könnten.",
         featureDescription: "Der Jupiter ist der fünfte Planet von der Sonne aus gesehen und der größte im Sonnensystem.",
         featureTitle: "GROßER ROTER FLECK",
         featureInfo: "Der Große Rote Fleck auf Jupiter ist ein gewaltiger Sturm, der seit über 300 Jahren beobachtet wird. Er ist so groß, dass die Erde problemlos hineinpassen würde, und rotiert gegen den Uhrzeigersinn. Trotz seiner langen Existenz verändert er ständig Form, Farbe und Intensität.",
@@ -210,6 +216,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/saturn/Section4.webp",
         descriptionLong: "Der Saturn ist der sechste Planet von der Sonne und bekannt für sein beeindruckendes Ringsystem. Er ist ein Gasriese mit geringer Dichte, sodass er theoretisch auf Wasser schwimmen könnte, und besitzt zahlreiche Monde, darunter einige mit unterirdischen Ozeanen.",
         descriptionShort: "Saturn ist nach dem römischen Gott der Landwirtschaft benannt.",
+        inDepthDescription: "Die Umgebungsbedingungen auf dem Saturn sind für Leben, wie wir es kennen, nicht geeignet. Da es dort keine feste Oberfläche gibt und zudem extremer Druck sowie turbulente atmosphärische Bedingungen herrschen, ist es unwahrscheinlich, dass dort Lebewesen existieren könnten.",
         featureDescription: "Der Saturn ist der sechste Planet von der Sonne und bekannt für sein beeindruckendes Ringsystem.",
         featureTitle: "RINGSTRUKTUR",
         featureInfo: "Das Ringsystem des Saturns besteht aus Milliarden von Eis- und Gesteinspartikeln, die den Planeten in mehreren klar abgegrenzten Bändern umkreisen. Diese Ringe variieren stark in Dichte und Breite und zählen zu den auffälligsten Strukturen im gesamten Sonnensystem.",
@@ -242,6 +249,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/uranus/Section4.webp",
         descriptionLong: "Der Uranus, der siebte Planet von der Sonne, gehört zu den Eisriesen und zeichnet sich durch eine auffällige bläulich-grüne Farbe aus. Besonders bemerkenswert ist seine stark gekippte Rotationsachse, wodurch der Planet fast \"seitwärts\" rotiert und außergewöhnlich extreme, langanhaltende Jahreszeiten durchlebt.",
         descriptionShort: "Uranus ist nach dem griechischen Himmelsgott benannt.",
+        inDepthDescription: "Die Umgebungsbedingungen auf Uranus sind wahrscheinlich nicht förderlich für Leben, wie wir es kennen. Die extrem niedrigen Temperaturen und die unter hohem Druck stehende, eisige Zusammensetzung schaffen Bedingungen, die für Organismen zu rau sind, als dass sie sich daran anpassen könnten.",
         featureDescription: "Der Uranus, der siebte Planet von der Sonne, gehört zu den Eisriesen und zeichnet sich durch eine auffällige bläulich-grüne Farbe aus.",
         featureTitle: "SEITLICHE ROTATION",
         featureInfo: "Uranus rotiert nahezu auf der Seite, da seine Achse um etwa 98 Grad geneigt ist. Dadurch erlebt der Planet extreme Jahreszeiten, bei denen ein Pol über Jahrzehnte hinweg ständig von der Sonne beleuchtet wird, während der andere im Dunkeln liegt.",
@@ -274,6 +282,7 @@ export const planets: Planet[] = [
         sectionFourUrl: "/planets/neptune/Section4.webp",
         descriptionLong: "Der Neptun ist der äußerste Planet unseres Sonnensystems und steht an achter Stelle von der Sonne. Dieser tiefblaue Eisriese beeindruckt mit den stärksten Winden aller Planeten, die enorme Geschwindigkeiten erreichen. Für einen Umlauf um die Sonne benötigt er über 160 Jahre, was seine Bahn besonders lang macht.",
         descriptionShort: "Neptun ist nach dem römischen Meeresgott benannt.",
+        inDepthDescription: "Die Umweltbedingungen auf Neptun sind für Leben, wie wir es kennen, nicht geeignet. Die eisigen Temperaturen, die starken Winde und die extremen atmosphärischen Bedingungen sind wahrscheinlich zu unbeständig, als dass Organismen dort überleben könnten.",
         featureDescription: "Der Neptun ist der äußerste Planet unseres Sonnensystems und steht an achter Stelle von der Sonne.",
         featureTitle: "EXTREME WINDE",
         featureInfo: "Neptun besitzt die schnellsten Winde im Sonnensystem, die Geschwindigkeiten von über 2000 km/h erreichen können. Diese extremen Stürme entstehen trotz der großen Entfernung zur Sonne und führen zu dynamischen, sich ständig verändernden Wolkenstrukturen in seiner Atmosphäre.",

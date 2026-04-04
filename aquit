@@ -1,0 +1,31 @@
+[33m132d868[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msection/three[m[33m, [m[1;31morigin/section/merkmale[m[33m)[m HEAD@{0}: Branch: renamed refs/heads/section/merkmale to refs/heads/section/three
+[33m132d868[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32msection/three[m[33m, [m[1;31morigin/section/merkmale[m[33m)[m HEAD@{2}: commit: Added Merkmale section and added/changed images
+[33mef062ab[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mcheckout[m[33m)[m HEAD@{3}: checkout: moving from main to section/merkmale
+[33mef062ab[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mcheckout[m[33m)[m HEAD@{4}: pull: Fast-forward
+[33m8c933a6[m HEAD@{5}: checkout: moving from fix/layout-body to main
+[33mf03d704[m[33m ([m[1;31morigin/fix/layout-body[m[33m, [m[1;32mfix/layout-body[m[33m)[m HEAD@{6}: commit: fix: navbar keys, layout height and immutable planet sorting
+[33m8c933a6[m HEAD@{7}: checkout: moving from main to fix/layout-body
+[33m8c933a6[m HEAD@{8}: pull: Fast-forward
+[33m9055fcd[m HEAD@{9}: checkout: moving from fix/desktop-navbar-key to main
+[33mee2839a[m[33m ([m[1;31morigin/fix/desktop-navbar-key[m[33m, [m[1;32mfix/desktop-navbar-key[m[33m)[m HEAD@{10}: checkout: moving from main to fix/desktop-navbar-key
+[33m9055fcd[m HEAD@{11}: checkout: moving from fix/desktop-navbar-key to main
+[33mee2839a[m[33m ([m[1;31morigin/fix/desktop-navbar-key[m[33m, [m[1;32mfix/desktop-navbar-key[m[33m)[m HEAD@{12}: checkout: moving from main to fix/desktop-navbar-key
+[33m9055fcd[m HEAD@{13}: checkout: moving from fix/desktop-navbar-key to main
+[33mee2839a[m[33m ([m[1;31morigin/fix/desktop-navbar-key[m[33m, [m[1;32mfix/desktop-navbar-key[m[33m)[m HEAD@{14}: commit: fix: added missing key to desktop navbar link
+[33m9055fcd[m HEAD@{15}: checkout: moving from fix/desktop-navbar-key to fix/desktop-navbar-key
+[33m9055fcd[m HEAD@{16}: checkout: moving from fix/desktop-navbar-key to fix/desktop-navbar-key
+[33m9055fcd[m HEAD@{17}: checkout: moving from main to fix/desktop-navbar-key
+[33m9055fcd[m HEAD@{18}: pull origin main: Fast-forward
+[33m6a41ef9[m HEAD@{19}: checkout: moving from refactor/navbar-cleanup to main
+[33m608af62[m[33m ([m[1;31morigin/refactor/navbar-cleanup[m[33m, [m[1;32mrefactor/navbar-cleanup[m[33m)[m HEAD@{20}: reset: moving to HEAD
+[33m608af62[m[33m ([m[1;31morigin/refactor/navbar-cleanup[m[33m, [m[1;32mrefactor/navbar-cleanup[m[33m)[m HEAD@{21}: checkout: moving from refactor/navbar-cleanup to refactor/navbar-cleanup
+[33m608af62[m[33m ([m[1;31morigin/refactor/navbar-cleanup[m[33m, [m[1;32mrefactor/navbar-cleanup[m[33m)[m HEAD@{22}: commit: Refactored navbar, switched links to array and rendered with map
+[33m6a41ef9[m HEAD@{23}: checkout: moving from main to refactor/navbar-cleanup
+[33m6a41ef9[m HEAD@{24}: commit: Added Übersicht section, set main planet to Earth and uploaded and fixed planet images
+[33m1ca2d19[m HEAD@{25}: commit: Added clickable planet section and snap scrolling to all sections
+[33m4fbf824[m HEAD@{26}: commit: Adjusted desktop and mobile navbar menu and added hamburger menu for mobile
+[33mcdafc36[m HEAD@{27}: commit: Added solar-system page and added Not Found page. Changed homepage.
+[33m7487c6b[m HEAD@{28}: commit: added apod from nasa
+[33m06ea45c[m HEAD@{29}: Branch: renamed refs/heads/master to refs/heads/main
+[33m06ea45c[m HEAD@{31}: commit: first commit
+[33m8b67c0d[m HEAD@{32}: commit (initial): Initial commit from Create Next App

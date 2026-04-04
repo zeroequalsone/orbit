@@ -19,8 +19,8 @@ export default function Navbar() {
       className={"fixed w-full z-50 flex justify-center text-white bg-black/50"}
     >
       <div className="hidden lg:flex justify-between items-center pt-8 pb-8 lg:max-w-4/5 w-full uppercase">
-        <Link href={"/"} className="text-2xl">
-          <p>Orbit</p>
+        <Link href={"/"} className="text-2xl drop-shadow-sm drop-shadow-white">
+          Orbit
         </Link>
         <div className="flex gap-8 tracking-widest font-extralight">
           {navLinks.map((navLink) => (
@@ -37,8 +37,11 @@ export default function Navbar() {
       </div>
       <div className={`flex lg:hidden p-8 w-full uppercase`}>
         <div className="flex justify-between w-full z-50">
-          <Link href={"/"} className="text-2xl">
-            <p>Orbit</p>
+          <Link
+            href={"/"}
+            className="text-2xl drop-shadow-sm drop-shadow-white"
+          >
+            Orbit
           </Link>
           {mobileMenuOpen ? (
             <XIcon

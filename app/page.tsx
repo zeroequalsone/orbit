@@ -21,7 +21,7 @@ export default function Home() {
         {data ? (
           <>
             <div className="flex flex-col">
-              <p className="text-center text-3xl uppercase font-semibold mb-12">
+              <p className="text-5xl mb-12 font-extrabold uppercase tracking-widest text-center">
                 Astronomical Picture of the Day
               </p>
               <div className="flex flex-row gap-16 items-center justify-center">

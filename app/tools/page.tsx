@@ -7,19 +7,19 @@ export default function Tools() {
         <h1 className="text-4xl font-bold uppercase tracking-[0.3em]">Tools</h1>
         <div className="flex gap-10">
           <Link
-            href="/tools/weight-calculator"
+            href="/tools/distance-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
             Distance calculator
           </Link>
           <Link
-            href="/tools/size-calculator"
+            href="/tools/weight-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
             Weight calculator
           </Link>
           <Link
-            href="/tools/distance-calculator"
+            href="/tools/size-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
             Size calculator

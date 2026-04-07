@@ -10,7 +10,8 @@ export default function Home() {
   useEffect(() => {
     fetch("/api/nasa")
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
@@ -32,6 +33,7 @@ export default function Home() {
                     width={500}
                     height={500}
                     className="w-full h-full object-cover"
+                    loading="eager"
                   />
                   <p className="text-xl font-semibold italic mt-4">
                     ”{data?.title}”

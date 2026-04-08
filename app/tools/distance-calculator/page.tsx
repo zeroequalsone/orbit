@@ -59,6 +59,43 @@ export default function DistanceCalculator() {
           </div>
           {distance > 1 && (
             <p className="text-xl mt-4">Distanz: {distance} Millionen km</p>
+        <div className="flex items-center gap-10">
+          <label htmlFor="distanceFrom">From:</label>
+          <select
+            name="distanceFrom"
+            id="distanceFrom"
+            onChange={(e) => setDistanceFrom(Number(e.target.value))}
+            value={distanceFrom}
+          >
+            {planets.map((planet) => (
+              <option key={planet.id} value={planet.id} className="bg-black">
+                {planet.name}
+              </option>
+            ))}
+          </select>
+
+          <label htmlFor="distanceTo">To:</label>
+          <select
+            name="distanceTo"
+            id="distanceTo"
+            onChange={(e) => setDistanceTo(Number(e.target.value))}
+            value={distanceTo}
+          >
+            {planets.map((planet) => (
+              <option key={planet.id} value={planet.id} className="bg-black">
+                {planet.name}
+              </option>
+            ))}
+          </select>
+
+          <button className="bg-white text-black px-4 py-2 rounded-md">
+            Calculate
+          </button>
+
+          {distance && (
+            <p className="text-xl mt-4">
+              Distanz: {(distance / 1e6).toFixed(2)} Mio km
+            </p>
           )}
         </div>
       </div>

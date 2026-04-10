@@ -4,12 +4,30 @@ import { useState } from "react";
 
 export default function DistanceCalculator() {
   const [distance, setDistance] = useState<number>(0);
-  const [distanceFrom, setDistanceFrom] = useState(1);
-  const [distanceTo, setDistanceTo] = useState(2);
+  const [distanceFrom, setDistanceFrom] = useState(3);
+  const [distanceTo, setDistanceTo] = useState(1);
 
   const calculateDistance = () => {
-    const planetFrom = planets.find((planet) => planet.id === distanceFrom);
-    const planetTo = planets.find((planet) => planet.id === distanceTo);
+    {
+      const planetA = planets.find((planet) => planet.id === distanceFrom);
+      const planetB = planets.find((planet) => planet.id === distanceTo);
+
+      const smallerAE =
+        planetA &&
+        planetB &&
+        (planetA?.distanceFromSun > planetB?.distanceFromSun
+          ? planetB?.distanceFromSun
+          : planetA?.distanceFromSun);
+
+      const biggerAE =
+        planetA &&
+        planetB &&
+        (planetA?.distanceFromSun > planetB?.distanceFromSun
+          ? planetA?.distanceFromSun
+          : planetB?.distanceFromSun);
+
+      setDistance(Number(biggerAE && smallerAE && biggerAE - smallerAE));
+    }
   };
 
   return (
@@ -55,9 +73,9 @@ export default function DistanceCalculator() {
               Calculate
             </button>
           </div>
-          {distance > 1 && (
-            <p className="text-xl mt-4">Distanz: {distance} Millionen km</p>
-          )}
+          <p className="text-xl mt-4">
+            Distanz: {(distance / 1e6).toLocaleString("de")} Millionen km
+          </p>
         </div>
       </div>
     </div>

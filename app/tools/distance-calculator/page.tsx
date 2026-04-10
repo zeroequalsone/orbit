@@ -30,6 +30,11 @@ export default function DistanceCalculator() {
     }
   };
 
+  const calculateDistance = () => {
+    const planetFrom = planets.find((planet) => planet.id === distanceFrom);
+    const planetTo = planets.find((planet) => planet.id === distanceTo);
+  };
+
   return (
     <div className='flex justify-center items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
       <div className="flex justify-center items-center flex-col gap-10 w-4/5">
@@ -73,9 +78,15 @@ export default function DistanceCalculator() {
               Calculate
             </button>
           </div>
+<<<<<<< tools/distance-calculator
           <p className="text-xl mt-4">
             Distanz: {(distance / 1e6).toLocaleString("de")} Millionen km
           </p>
+=======
+          {distance > 1 && (
+            <p className="text-xl mt-4">Distanz: {distance} Millionen km</p>
+          )}
+>>>>>>> main
         </div>
       </div>
     </div>

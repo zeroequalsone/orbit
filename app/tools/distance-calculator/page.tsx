@@ -12,21 +12,11 @@ export default function DistanceCalculator() {
       const planetA = planets.find((planet) => planet.id === distanceFrom);
       const planetB = planets.find((planet) => planet.id === distanceTo);
 
-      const smallerAE =
-        planetA &&
-        planetB &&
-        (planetA?.distanceFromSun > planetB?.distanceFromSun
-          ? planetB?.distanceFromSun
-          : planetA?.distanceFromSun);
+      if (!planetA || !planetB) return;
 
-      const biggerAE =
-        planetA &&
-        planetB &&
-        (planetA?.distanceFromSun > planetB?.distanceFromSun
-          ? planetA?.distanceFromSun
-          : planetB?.distanceFromSun);
-
-      setDistance(Number(biggerAE && smallerAE && biggerAE - smallerAE));
+      setDistance(
+        Math.abs(Number(planetA?.distanceFromSun - planetB?.distanceFromSun)),
+      );
     }
   };
 
@@ -38,7 +28,7 @@ export default function DistanceCalculator() {
         </h1>
         <div className="flex flex-col items-center gap-10">
           <div className="flex items-center gap-10">
-            <label htmlFor="distanceFrom">From:</label>
+            <label htmlFor="distanceFrom">Von:</label>
             <select
               name="distanceFrom"
               id="distanceFrom"
@@ -46,13 +36,18 @@ export default function DistanceCalculator() {
               value={distanceFrom}
             >
               {planets.map((planet) => (
-                <option key={planet.id} value={planet.id} className="bg-black">
+                <option
+                  key={planet.id}
+                  value={planet.id}
+                  className="bg-black"
+                  disabled={distanceTo === planet.id && true}
+                >
                   {planet.name}
                 </option>
               ))}
             </select>
 
-            <label htmlFor="distanceTo">To:</label>
+            <label htmlFor="distanceTo">Nach:</label>
             <select
               name="distanceTo"
               id="distanceTo"
@@ -60,7 +55,12 @@ export default function DistanceCalculator() {
               value={distanceTo}
             >
               {planets.map((planet) => (
-                <option key={planet.id} value={planet.id} className="bg-black">
+                <option
+                  key={planet.id}
+                  value={planet.id}
+                  className="bg-black"
+                  disabled={distanceFrom === planet.id && true}
+                >
                   {planet.name}
                 </option>
               ))}
@@ -68,9 +68,9 @@ export default function DistanceCalculator() {
 
             <button
               className="bg-white text-black px-4 py-2 rounded-md"
-              onClick={() => calculateDistance()}
+              onClick={calculateDistance}
             >
-              Calculate
+              Distanz berechnen
             </button>
           </div>
           <p className="text-xl mt-4">

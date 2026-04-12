@@ -10,19 +10,19 @@ export default function Tools() {
             href="/tools/distance-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
-            Distance calculator
+            Distanz Rechner
           </Link>
           <Link
             href="/tools/weight-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
-            Weight calculator
+            Gewicht Rechner
           </Link>
           <Link
             href="/tools/size-calculator"
             className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
           >
-            Size calculator
+            Größen Rechner
           </Link>
         </div>
       </div>

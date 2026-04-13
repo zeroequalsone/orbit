@@ -39,10 +39,7 @@ export default function DistanceCalculator() {
             <select
               name="distanceFrom"
               id="distanceFrom"
-              onChange={(e) => {
-                setDistanceFrom(Number(e.target.value));
-                calculateDistance();
-              }}
+              onChange={(e) => setDistanceFrom(Number(e.target.value))}
               value={distanceFrom}
             >
               {planets.map((planet) => (
@@ -61,10 +58,7 @@ export default function DistanceCalculator() {
             <select
               name="distanceTo"
               id="distanceTo"
-              onChange={(e) => {
-                setDistanceTo(Number(e.target.value));
-                calculateDistance();
-              }}
+              onChange={(e) => setDistanceTo(Number(e.target.value))}
               value={distanceTo}
             >
               {planets.map((planet) => (

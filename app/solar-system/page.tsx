@@ -12,26 +12,27 @@ export default function SolarSystem() {
   const selectedPlanet = planets.find((p) => p.id === planetId);
   const speedOfLight = 3e5;
 
-  const calculateDistance =
-    selectedPlanet && selectedPlanet.distanceFromSun / speedOfLight / 60;
+  if (!selectedPlanet) return;
+
+  const calculateDistance = selectedPlanet.distanceFromSun / speedOfLight / 60;
 
   return (
     <div className={`text-white min-h-screen scroll-smooth`}>
       <section
         className={`min-h-screen bg-center bg-cover flex flex-col justify-center items-center`}
-        style={{ backgroundImage: `url("${selectedPlanet?.imageUrl}")` }}
+        style={{ backgroundImage: `url("${selectedPlanet.imageUrl}")` }}
       >
         <div
-          key={selectedPlanet?.id}
+          key={selectedPlanet.id}
           className="flex flex-col gap-40 w-4/5 mt-40 p-8"
         >
           <div className="flex justify-center items-center">
             <div className="w-3/4">
               <h1 className="text-[11rem] font-extrabold uppercase tracking-widest text-center">
-                {selectedPlanet?.name}
+                {selectedPlanet.name}
               </h1>
               <h2 className="text-2xl text-center w-full">
-                {selectedPlanet?.descriptionLong}
+                {selectedPlanet.descriptionLong}
               </h2>
             </div>
           </div>
@@ -39,26 +40,24 @@ export default function SolarSystem() {
             <div>
               <p className="font-bold uppercase">Tageslänge</p>
               <p className="text-4xl font-light">
-                {selectedPlanet?.lengthOfDay} Stunden
+                {selectedPlanet.lengthOfDay} Stunden
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Durchmesser</p>
               <p className="text-4xl font-light">
-                {selectedPlanet?.diameter} km
+                {selectedPlanet.diameter} km
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Monde</p>
               <p className="text-4xl font-light">
-                {selectedPlanet?.numberOfMoons} bestätigte
+                {selectedPlanet.numberOfMoons} bestätigte
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Planet Typ</p>
-              <p className="text-4xl font-light">
-                {selectedPlanet?.planetType}
-              </p>
+              <p className="text-4xl font-light">{selectedPlanet.planetType}</p>
             </div>
           </div>
         </div>
@@ -88,13 +87,13 @@ export default function SolarSystem() {
       </section>
       <section
         className="min-h-screen bg-center bg-cover flex justify-center items-center"
-        style={{ backgroundImage: `url('${selectedPlanet?.sectionOneUrl}')` }}
+        style={{ backgroundImage: `url('${selectedPlanet.sectionOneUrl}')` }}
       >
         <div className="flex w-4/5 gap-14">
           <p
             className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
             style={{
-              backgroundImage: `url('${selectedPlanet?.sectionOneUrl}')`,
+              backgroundImage: `url('${selectedPlanet.sectionOneUrl}')`,
             }}
           >
             01
@@ -104,10 +103,10 @@ export default function SolarSystem() {
               Übersicht
             </p>
             <p className="w-2/5 text-neutral-300 tracking-wider">
-              {selectedPlanet?.descriptionLong}
+              {selectedPlanet.descriptionLong}
             </p>
             <p className="w-2/5 text-neutral-300 tracking-wider">
-              {selectedPlanet?.descriptionShort}
+              {selectedPlanet.descriptionShort}
             </p>
           </div>
         </div>
@@ -142,7 +141,7 @@ export default function SolarSystem() {
             <p
               className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-center"
               style={{
-                backgroundImage: `url('${selectedPlanet?.sectionTwoUrl}')`,
+                backgroundImage: `url('${selectedPlanet.sectionTwoUrl}')`,
               }}
             >
               02
@@ -153,7 +152,7 @@ export default function SolarSystem() {
                 <span className="absolute top-0 right-6 w-28 border-t-2"></span>
               </p>
               <p className="w-2/5 text-neutral-300 tracking-wider">
-                {selectedPlanet?.featureDescription}
+                {selectedPlanet.featureDescription}
               </p>
             </div>
           </div>
@@ -161,17 +160,17 @@ export default function SolarSystem() {
         <div
           className="min-h-screen bg-center bg-cover flex justify-center items-center w-full flex-col gap-40"
           style={{
-            backgroundImage: `url('${selectedPlanet?.sectionTwoUrl}')`,
+            backgroundImage: `url('${selectedPlanet.sectionTwoUrl}')`,
           }}
         >
           <div className="flex max-w-4/5 justify-end">
             <div className="w-2/5 flex flex-col gap-14 items-center">
               <div className="flex flex-col gap-6">
                 <p className="text-2xl font-bold uppercase">
-                  {selectedPlanet?.featureTitle}
+                  {selectedPlanet.featureTitle}
                 </p>
                 <p className="text-neutral-300 tracking-wider">
-                  {selectedPlanet?.featureInfo}
+                  {selectedPlanet.featureInfo}
                 </p>
               </div>
               <div className="flex flex-col gap-10 text-neutral-300 w-3/5">
@@ -206,7 +205,7 @@ export default function SolarSystem() {
           <p
             className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
             style={{
-              backgroundImage: `url('${selectedPlanet?.sectionThreeUrl}')`,
+              backgroundImage: `url('${selectedPlanet.sectionThreeUrl}')`,
             }}
           >
             03
@@ -217,12 +216,12 @@ export default function SolarSystem() {
               In Depth
             </p>
             <p className="w-2xl text-neutral-300 font-semibold tracking-wider leading-loose">
-              {selectedPlanet?.inDepthDescription}
+              {selectedPlanet.inDepthDescription}
             </p>
           </div>
         </div>
         <div className="flex gap-24">
-          {selectedPlanet?.atmosphere.map((atmosphere) => (
+          {selectedPlanet.atmosphere.map((atmosphere) => (
             <div key={atmosphere.gas}>
               <div className="relative size-72 border-2 border-gray-700 rounded-full p-6">
                 <svg

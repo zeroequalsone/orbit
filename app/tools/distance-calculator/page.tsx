@@ -1,11 +1,13 @@
 "use client";
 import { planets } from "@/data/planets";
-import { useState } from "react";
+import { DivideIcon } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 
 export default function DistanceCalculator() {
-  const [distance, setDistance] = useState<number>(0);
-  const [distanceFrom, setDistanceFrom] = useState(3);
-  const [distanceTo, setDistanceTo] = useState(1);
+  const [minDistance, setMinDistance] = useState<number>(0);
+  const [maxDistance, setMaxDistance] = useState<number>(0);
+  const [distanceFrom, setDistanceFrom] = useState(1);
+  const [distanceTo, setDistanceTo] = useState(3);
 
   const calculateDistance = () => {
     {
@@ -14,11 +16,17 @@ export default function DistanceCalculator() {
 
       if (!planetA || !planetB) return;
 
-      setDistance(
-        Math.abs(Number(planetA?.distanceFromSun - planetB?.distanceFromSun)),
+      setMinDistance(
+        Math.abs(planetA.distanceFromSun - planetB.distanceFromSun),
       );
+
+      setMaxDistance(planetA.distanceFromSun + planetB.distanceFromSun);
     }
   };
+
+  useEffect(() => {
+    calculateDistance();
+  }, [distanceFrom, distanceTo]);
 
   return (
     <div className='flex justify-center items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
@@ -32,7 +40,10 @@ export default function DistanceCalculator() {
             <select
               name="distanceFrom"
               id="distanceFrom"
-              onChange={(e) => setDistanceFrom(Number(e.target.value))}
+              onChange={(e) => {
+                setDistanceFrom(Number(e.target.value));
+                calculateDistance();
+              }}
               value={distanceFrom}
             >
               {planets.map((planet) => (
@@ -51,7 +62,10 @@ export default function DistanceCalculator() {
             <select
               name="distanceTo"
               id="distanceTo"
-              onChange={(e) => setDistanceTo(Number(e.target.value))}
+              onChange={(e) => {
+                setDistanceTo(Number(e.target.value));
+                calculateDistance();
+              }}
               value={distanceTo}
             >
               {planets.map((planet) => (
@@ -65,17 +79,23 @@ export default function DistanceCalculator() {
                 </option>
               ))}
             </select>
-
-            <button
-              className="bg-white text-black px-4 py-2 rounded-md"
-              onClick={calculateDistance}
-            >
-              Distanz berechnen
-            </button>
           </div>
-          <p className="text-xl mt-4">
-            Distanz: {(distance / 1e6).toLocaleString("de")} Millionen km
-          </p>
+          {minDistance && maxDistance ? (
+            <div className="flex flex-col gap-4">
+              <p className="text-xl">
+                Minimale Distanz: {minDistance / 1e6} Millionen km{" "}
+                <sup>(Vereinfacht)</sup>
+              </p>
+              <p className="text-xl">
+                Maximale Distanz: {maxDistance / 1e6} Millionen km{" "}
+                <sup>(Vereinfacht)</sup>
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              <p className="text-xl">Berechnen von Distanzen...</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

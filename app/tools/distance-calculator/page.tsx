@@ -1,6 +1,5 @@
 "use client";
 import { planets } from "@/data/planets";
-import { DivideIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
 export default function DistanceCalculator() {

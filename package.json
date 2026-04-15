@@ -12,6 +12,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "next": "16.1.6",
     "postcss": "^8.5.8",
+    "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "yarn": "^1.22.22"

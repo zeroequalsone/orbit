@@ -28,12 +28,12 @@ export default function DistanceCalculator() {
   }, [distanceFrom, distanceTo]);
 
   return (
-    <div className='flex justify-center items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
-      <div className="flex justify-center items-center flex-col gap-2 w-4/5">
-        <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
-          Distanz-Rechner
-        </h1>
-        <div className="flex flex-col items-center gap-10">
+    <div className='flex justify-center flex-col items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
+      <div className="min-h-screen flex justify-center items-center flex-col gap-10 w-4/5">
+        <div className="flex flex-col items-center gap-2">
+          <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
+            Distanz-Rechner
+          </h1>
           <div className="flex gap-2">
             <h2 className="text-lg">(Vereinfachte Berechnungen)</h2>
             <Tooltip.Provider>
@@ -54,6 +54,8 @@ export default function DistanceCalculator() {
               </Tooltip.Root>
             </Tooltip.Provider>
           </div>
+        </div>
+        <div className="flex flex-col items-center gap-28">
           <div className="flex flex-col items-center gap-10">
             <div className="flex items-center gap-10 text-xl">
               <div className="flex gap-2">
@@ -98,7 +100,7 @@ export default function DistanceCalculator() {
               </div>
             </div>
             {minDistance && maxDistance ? (
-              <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-24">
                 <div className="flex items-center gap-6">
                   <div className="flex flex-col items-center">
                     <p className="text-xl font-bold">Minimale Distanz</p>

@@ -14,7 +14,8 @@ export default function SolarSystem() {
 
   if (!selectedPlanet) return;
 
-  const calculateDistance = selectedPlanet.distanceFromSun / speedOfLight / 60;
+  const calculateLightDistance =
+    selectedPlanet.distanceFromSun / speedOfLight / 60;
 
   return (
     <div className={`text-white min-h-screen scroll-smooth`}>
@@ -117,11 +118,12 @@ export default function SolarSystem() {
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
               <p className="text-5xl">
+                {/* TODO: Minute Fixed = 0, Hour Fixed = 1 + add "ca." */}
                 {selectedPlanet &&
-                  calculateDistance &&
-                  (calculateDistance < 60
-                    ? calculateDistance.toFixed(2) + " Minuten"
-                    : (calculateDistance / 60).toFixed(2) + " Stunden")}
+                  calculateLightDistance &&
+                  (calculateLightDistance < 60
+                    ? calculateLightDistance.toFixed(2) + " Minuten"
+                    : (calculateLightDistance / 60).toFixed(2) + " Stunden")}
               </p>
             </div>
             <div className="flex flex-col gap-4">

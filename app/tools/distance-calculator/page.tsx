@@ -50,8 +50,8 @@ export default function DistanceCalculator() {
                       sideOffset={5}
                       side="right"
                     >
-                      Basierend auf mittleren Sonnenabständen - tatsächliche
-                      Distanzen schwanken je nach Umlaufbahn.
+                      Berechnung basiert auf runder Umlaufbahn (nicht
+                      elliptisch).
                     </Tooltip.Content>
                   </Tooltip.Portal>
                 </Tooltip.Root>
@@ -107,17 +107,44 @@ export default function DistanceCalculator() {
                   <div className="flex items-center gap-6">
                     <div className="flex flex-col items-center gap-4">
                       <div className="flex flex-col items-center">
-                        <p className="text-xl font-bold">Minimale Distanz</p>
+                        <div className="flex gap-2">
+                          <p className="text-xl font-bold">Minimale Distanz</p>
+                          <Tooltip.Provider>
+                            <Tooltip.Root delayDuration={0}>
+                              <Tooltip.Trigger asChild>
+                                <InfoIcon />
+                              </Tooltip.Trigger>
+                              <Tooltip.Portal>
+                                <Tooltip.Content
+                                  className="text-white text-sm bg-black/80 p-3 rounded-md w-1/2"
+                                  sideOffset={5}
+                                  side="right"
+                                >
+                                  Kürzester Abstand zwischen beiden Planeten
+                                  (auf derselben Seite der Sonne)
+                                </Tooltip.Content>
+                              </Tooltip.Portal>
+                            </Tooltip.Root>
+                          </Tooltip.Provider>
+                        </div>
                         <p className="text-lg">
-                          {minDistance / 1e6} Millionen km
+                          {(minDistance / 1e6).toLocaleString("de")} Millionen
+                          km
                         </p>
                       </div>
                       <div className="flex flex-col items-center">
                         <p className="text-xl font-bold">
-                          Minimale Licht Distanz
+                          Minimale Lichtlaufzeit
                         </p>
                         <p className="text-lg">
-                          {(minDistance / speedOfLight / 60).toFixed(2)} min
+                          {" "}
+                          ca.{" "}
+                          {minDistance / speedOfLight / 60 < 60
+                            ? (minDistance / speedOfLight / 60).toFixed(0) +
+                              " Minute(n)"
+                            : (minDistance / speedOfLight / 60 / 60).toFixed(
+                                1,
+                              ) + " Stunde(n)"}
                         </p>
                       </div>
                     </div>
@@ -143,17 +170,44 @@ export default function DistanceCalculator() {
                   <div className="flex items-center gap-6">
                     <div className="flex flex-col items-center gap-4">
                       <div className="flex flex-col items-center">
-                        <p className="text-xl font-bold">Maximale Distanz</p>
+                        <div className="flex gap-2">
+                          <p className="text-xl font-bold">Maximale Distanz</p>
+                          <Tooltip.Provider>
+                            <Tooltip.Root delayDuration={0}>
+                              <Tooltip.Trigger asChild>
+                                <InfoIcon />
+                              </Tooltip.Trigger>
+                              <Tooltip.Portal>
+                                <Tooltip.Content
+                                  className="text-white text-sm bg-black/80 p-3 rounded-md w-1/2"
+                                  sideOffset={5}
+                                  side="right"
+                                >
+                                  Größter Abstand zwischen beiden Planeten (auf
+                                  gegenüberliegenden Seiten der Sonne)
+                                </Tooltip.Content>
+                              </Tooltip.Portal>
+                            </Tooltip.Root>
+                          </Tooltip.Provider>
+                        </div>
                         <p className="text-lg">
-                          {maxDistance / 1e6} Millionen km
+                          {(maxDistance / 1e6).toLocaleString("de")} Millionen
+                          km
                         </p>
                       </div>
                       <div className="flex flex-col items-center">
                         <p className="text-xl font-bold">
-                          Maximale Licht Distanz
+                          Maximale Lichtlaufzeit
                         </p>
                         <p className="text-lg">
-                          {(maxDistance / speedOfLight / 60).toFixed(2)} min
+                          {" "}
+                          ca.{" "}
+                          {maxDistance / speedOfLight / 60 < 60
+                            ? (maxDistance / speedOfLight / 60).toFixed(0) +
+                              " Minute(n)"
+                            : (maxDistance / speedOfLight / 60 / 60).toFixed(
+                                1,
+                              ) + " Stunde(n)"}
                         </p>
                       </div>
                     </div>

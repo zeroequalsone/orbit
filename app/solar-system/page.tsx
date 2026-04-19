@@ -41,13 +41,15 @@ export default function SolarSystem() {
             <div>
               <p className="font-bold uppercase">Tageslänge</p>
               <p className="text-4xl font-light">
-                {selectedPlanet.lengthOfDay} Stunden
+                {selectedPlanet.lengthOfDay < 24
+                  ? selectedPlanet.lengthOfDay.toFixed(1) + " Stunden"
+                  : (selectedPlanet.lengthOfDay / 24).toFixed(1) + " Erdtage"}
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Durchmesser</p>
               <p className="text-4xl font-light">
-                {selectedPlanet.diameter} km
+                {selectedPlanet.diameter.toLocaleString("de")} km
               </p>
             </div>
             <div>
@@ -118,24 +120,30 @@ export default function SolarSystem() {
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
               <p className="text-5xl">
-                {/* TODO: Minute Fixed = 0, Hour Fixed = 1 + add "ca." */}
-                {selectedPlanet &&
-                  calculateLightDistance &&
-                  (calculateLightDistance < 60
-                    ? calculateLightDistance.toFixed(2) + " Minuten"
-                    : (calculateLightDistance / 60).toFixed(2) + " Stunden")}
+                ca.{" "}
+                {calculateLightDistance < 60
+                  ? calculateLightDistance.toFixed(0) + " Minuten"
+                  : (calculateLightDistance / 60).toFixed(1) + " Stunden"}
               </p>
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Distanz zur Sonne</p>
               <p className="text-5xl">
-                {selectedPlanet && selectedPlanet.distanceFromSun} km
+                {selectedPlanet.distanceFromSun / 1e6 < 1e3
+                  ? (selectedPlanet.distanceFromSun / 1e6).toFixed(1) +
+                    " Millionen "
+                  : (selectedPlanet.distanceFromSun / 1e9).toFixed(2) +
+                    " Milliarden "}
+                km
               </p>
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Jahreslänge</p>
               <p className="text-5xl">
-                {selectedPlanet && selectedPlanet.lengthOfYear} Erdentag(e)
+                {selectedPlanet.lengthOfYear < 365
+                  ? selectedPlanet.lengthOfYear.toFixed(1) + " Erdtage"
+                  : (selectedPlanet.lengthOfYear / 365).toFixed(1) +
+                    " Erdjahre"}
               </p>
             </div>
           </div>

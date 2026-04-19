@@ -128,7 +128,9 @@ export default function DistanceCalculator() {
                           </Tooltip.Provider>
                         </div>
                         <p className="text-lg">
-                          {(minDistance / 1e6).toLocaleString("de")} Millionen
+                          {minDistance / 1e6 < 1e3
+                            ? (minDistance / 1e6).toFixed(1) + " Millionen "
+                            : (minDistance / 1e9).toFixed(2) + " Milliarden "}
                           km
                         </p>
                       </div>
@@ -137,14 +139,13 @@ export default function DistanceCalculator() {
                           Minimale Lichtlaufzeit
                         </p>
                         <p className="text-lg">
-                          {" "}
                           ca.{" "}
                           {minDistance / speedOfLight / 60 < 60
                             ? (minDistance / speedOfLight / 60).toFixed(0) +
-                              " Minute(n)"
+                              " Minuten"
                             : (minDistance / speedOfLight / 60 / 60).toFixed(
                                 1,
-                              ) + " Stunde(n)"}
+                              ) + " Stunden"}
                         </p>
                       </div>
                     </div>
@@ -191,7 +192,9 @@ export default function DistanceCalculator() {
                           </Tooltip.Provider>
                         </div>
                         <p className="text-lg">
-                          {(maxDistance / 1e6).toLocaleString("de")} Millionen
+                          {maxDistance / 1e6 < 1e3
+                            ? (maxDistance / 1e6).toFixed(1) + " Millionen "
+                            : (maxDistance / 1e9).toFixed(2) + " Milliarden "}
                           km
                         </p>
                       </div>
@@ -200,14 +203,13 @@ export default function DistanceCalculator() {
                           Maximale Lichtlaufzeit
                         </p>
                         <p className="text-lg">
-                          {" "}
                           ca.{" "}
                           {maxDistance / speedOfLight / 60 < 60
                             ? (maxDistance / speedOfLight / 60).toFixed(0) +
-                              " Minute(n)"
+                              " Minuten"
                             : (maxDistance / speedOfLight / 60 / 60).toFixed(
                                 1,
-                              ) + " Stunde(n)"}
+                              ) + " Stunden"}
                         </p>
                       </div>
                     </div>

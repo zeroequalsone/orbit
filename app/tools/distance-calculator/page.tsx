@@ -31,7 +31,7 @@ export default function DistanceCalculator() {
 
   return (
     <div className="text-white min-h-screen">
-      <section className="min-h-screen flex flex-col justify-center items-center">
+      <section className='min-h-screen flex flex-col justify-center items-center bg-center bg-cover bg-[url("/planets/BG.png")]'>
         <div className="flex flex-col gap-20 w-4/5">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
@@ -42,11 +42,11 @@ export default function DistanceCalculator() {
               <Tooltip.Provider>
                 <Tooltip.Root delayDuration={0}>
                   <Tooltip.Trigger asChild>
-                    <InfoIcon />
+                    <InfoIcon className="cursor-help" />
                   </Tooltip.Trigger>
                   <Tooltip.Portal>
                     <Tooltip.Content
-                      className="text-white text-sm bg-black/80 p-3 rounded-md w-1/2"
+                      className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
                       sideOffset={5}
                       side="right"
                     >
@@ -112,11 +112,11 @@ export default function DistanceCalculator() {
                           <Tooltip.Provider>
                             <Tooltip.Root delayDuration={0}>
                               <Tooltip.Trigger asChild>
-                                <InfoIcon />
+                                <InfoIcon className="cursor-help" />
                               </Tooltip.Trigger>
                               <Tooltip.Portal>
                                 <Tooltip.Content
-                                  className="text-white text-sm bg-black/80 p-3 rounded-md w-1/2"
+                                  className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
                                   sideOffset={5}
                                   side="right"
                                 >
@@ -129,8 +129,12 @@ export default function DistanceCalculator() {
                         </div>
                         <p className="text-lg">
                           {minDistance / 1e6 < 1e3
-                            ? (minDistance / 1e6).toFixed(1) + " Millionen "
-                            : (minDistance / 1e9).toFixed(2) + " Milliarden "}
+                            ? (minDistance / 1e6)
+                                .toFixed(1)
+                                .replaceAll(".", ",") + " Millionen "
+                            : (minDistance / 1e9)
+                                .toFixed(2)
+                                .replaceAll(".", ",") + " Milliarden "}
                           km
                         </p>
                       </div>
@@ -141,11 +145,12 @@ export default function DistanceCalculator() {
                         <p className="text-lg">
                           ca.{" "}
                           {minDistance / speedOfLight / 60 < 60
-                            ? (minDistance / speedOfLight / 60).toFixed(0) +
-                              " Minuten"
-                            : (minDistance / speedOfLight / 60 / 60).toFixed(
-                                1,
-                              ) + " Stunden"}
+                            ? (minDistance / speedOfLight / 60)
+                                .toFixed(0)
+                                .replaceAll(".", ",") + " Minuten"
+                            : (minDistance / speedOfLight / 60 / 60)
+                                .toFixed(1)
+                                .replaceAll(".", ",") + " Stunden"}
                         </p>
                       </div>
                     </div>
@@ -176,11 +181,11 @@ export default function DistanceCalculator() {
                           <Tooltip.Provider>
                             <Tooltip.Root delayDuration={0}>
                               <Tooltip.Trigger asChild>
-                                <InfoIcon />
+                                <InfoIcon className="cursor-help" />
                               </Tooltip.Trigger>
                               <Tooltip.Portal>
                                 <Tooltip.Content
-                                  className="text-white text-sm bg-black/80 p-3 rounded-md w-1/2"
+                                  className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
                                   sideOffset={5}
                                   side="right"
                                 >
@@ -193,8 +198,12 @@ export default function DistanceCalculator() {
                         </div>
                         <p className="text-lg">
                           {maxDistance / 1e6 < 1e3
-                            ? (maxDistance / 1e6).toFixed(1) + " Millionen "
-                            : (maxDistance / 1e9).toFixed(2) + " Milliarden "}
+                            ? (maxDistance / 1e6)
+                                .toFixed(1)
+                                .replaceAll(".", ",") + " Millionen "
+                            : (maxDistance / 1e9)
+                                .toFixed(2)
+                                .replaceAll(".", ",") + " Milliarden "}
                           km
                         </p>
                       </div>
@@ -205,11 +214,12 @@ export default function DistanceCalculator() {
                         <p className="text-lg">
                           ca.{" "}
                           {maxDistance / speedOfLight / 60 < 60
-                            ? (maxDistance / speedOfLight / 60).toFixed(0) +
-                              " Minuten"
-                            : (maxDistance / speedOfLight / 60 / 60).toFixed(
-                                1,
-                              ) + " Stunden"}
+                            ? (maxDistance / speedOfLight / 60)
+                                .toFixed(0)
+                                .replaceAll(".", ",") + " Minuten"
+                            : (maxDistance / speedOfLight / 60 / 60)
+                                .toFixed(1)
+                                .replaceAll(".", ",") + " Stunden"}
                         </p>
                       </div>
                     </div>

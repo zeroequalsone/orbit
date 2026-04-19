@@ -3,12 +3,14 @@ import { useState } from "react";
 import { planets } from "@/data/planets";
 import {
   ClockIcon,
+  InfoIcon,
   LightningIcon,
   ThermometerHotIcon,
 } from "@phosphor-icons/react";
+import { Tooltip } from "radix-ui";
 
 export default function SolarSystem() {
-  const [planetId, selectPlanetId] = useState<number>(3);
+  const [planetId, selectPlanetId] = useState<number>(0);
   const selectedPlanet = planets.find((p) => p.id === planetId);
   const speedOfLight = 3e5;
 
@@ -39,27 +41,54 @@ export default function SolarSystem() {
           </div>
           <div className="flex gap-32">
             <div>
-              <p className="font-bold uppercase">Tageslänge</p>
+              <p className="font-bold uppercase">Tagesdauer</p>
               <p className="text-4xl font-light">
                 {selectedPlanet.lengthOfDay < 24
-                  ? selectedPlanet.lengthOfDay.toFixed(1) + " Stunden"
-                  : (selectedPlanet.lengthOfDay / 24).toFixed(1) + " Erdtage"}
+                  ? selectedPlanet.lengthOfDay.toFixed(1).replaceAll(".", ",") +
+                    " Stunden"
+                  : (selectedPlanet.lengthOfDay / 24)
+                      .toFixed(1)
+                      .replaceAll(".", ",") + " Erdtage"}
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Durchmesser</p>
               <p className="text-4xl font-light">
-                {selectedPlanet.diameter.toLocaleString("de")} km
+                {selectedPlanet.diameter
+                  .toLocaleString("de")
+                  .replaceAll(".", " ")}{" "}
+                km
               </p>
             </div>
             <div>
-              <p className="font-bold uppercase">Monde</p>
+              <div className="flex gap-2">
+                <p className="font-bold uppercase">Monde</p>
+                <Tooltip.Provider>
+                  <Tooltip.Root delayDuration={0}>
+                    <Tooltip.Trigger asChild>
+                      <InfoIcon className="cursor-help" />
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                      <Tooltip.Content
+                        className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
+                        sideOffset={5}
+                        side="right"
+                      >
+                        Stand: {new Date().toLocaleDateString("de")}
+                      </Tooltip.Content>
+                    </Tooltip.Portal>
+                  </Tooltip.Root>
+                </Tooltip.Provider>
+              </div>
               <p className="text-4xl font-light">
-                {selectedPlanet.numberOfMoons} bestätigte
+                {selectedPlanet.numberOfMoons}{" "}
+                {selectedPlanet.numberOfMoons === 1
+                  ? "bestätigter"
+                  : "bestätigte"}
               </p>
             </div>
             <div>
-              <p className="font-bold uppercase">Planet Typ</p>
+              <p className="font-bold uppercase">Planetentyp</p>
               <p className="text-4xl font-light">{selectedPlanet.planetType}</p>
             </div>
           </div>
@@ -73,7 +102,7 @@ export default function SolarSystem() {
                 key={planet.id}
                 className={`flex flex-col gap-6 text-center ${planetId === planet.id ? "text-white" : "text-neutral-400"}`}
               >
-                <p>{planet.astronomicalUnit} AE</p>
+                <p>{planet.astronomicalUnit.toLocaleString("de")} AE</p>
                 <svg
                   onClick={() => selectPlanetId(planet.id)}
                   className={`w-20 h-20 border-2 rounded-full mb-16 mt-16 cursor-pointer`}
@@ -115,38 +144,48 @@ export default function SolarSystem() {
         </div>
       </section>
       <section className="flex flex-col">
-        <div className="min-h-screen flex justify-center items-center w-full flex-col gap-40">
-          <div className="flex justify-center gap-36 uppercase tracking-widest font-light">
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
-              <p className="text-5xl">
-                ca.{" "}
-                {calculateLightDistance < 60
-                  ? calculateLightDistance.toFixed(0) + " Minuten"
-                  : (calculateLightDistance / 60).toFixed(1) + " Stunden"}
-              </p>
+        <div className="flex justify-center items-center w-full flex-col gap-40 pt-48 pb-48">
+          {selectedPlanet.distanceFromSun !== 0 && (
+            <div className="flex justify-center gap-36 uppercase tracking-widest font-light">
+              <div className="flex flex-col gap-4">
+                <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
+                <p className="text-5xl">
+                  ca.{" "}
+                  {calculateLightDistance < 60
+                    ? calculateLightDistance.toFixed(0).replaceAll(".", ",") +
+                      " Minuten"
+                    : (calculateLightDistance / 60)
+                        .toFixed(1)
+                        .replaceAll(".", ",") + " Stunden"}
+                </p>
+              </div>
+              <div className="flex flex-col gap-4">
+                <p className="text-neutral-400">Distanz zur Sonne</p>
+                <p className="text-5xl">
+                  {selectedPlanet.distanceFromSun / 1e6 < 1e3
+                    ? (selectedPlanet.distanceFromSun / 1e6)
+                        .toFixed(1)
+                        .replaceAll(".", ",") + " Millionen "
+                    : (selectedPlanet.distanceFromSun / 1e9)
+                        .toFixed(2)
+                        .replaceAll(".", ",") + " Milliarden "}
+                  km
+                </p>
+              </div>
+              <div className="flex flex-col gap-4">
+                <p className="text-neutral-400">Jahreslänge</p>
+                <p className="text-5xl">
+                  {selectedPlanet.lengthOfYear < 365
+                    ? selectedPlanet.lengthOfYear
+                        .toFixed(1)
+                        .replaceAll(".", ",") + " Erdtage"
+                    : (selectedPlanet.lengthOfYear / 365)
+                        .toFixed(1)
+                        .replaceAll(".", ",") + " Erdjahr(e)"}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Distanz zur Sonne</p>
-              <p className="text-5xl">
-                {selectedPlanet.distanceFromSun / 1e6 < 1e3
-                  ? (selectedPlanet.distanceFromSun / 1e6).toFixed(1) +
-                    " Millionen "
-                  : (selectedPlanet.distanceFromSun / 1e9).toFixed(2) +
-                    " Milliarden "}
-                km
-              </p>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Jahreslänge</p>
-              <p className="text-5xl">
-                {selectedPlanet.lengthOfYear < 365
-                  ? selectedPlanet.lengthOfYear.toFixed(1) + " Erdtage"
-                  : (selectedPlanet.lengthOfYear / 365).toFixed(1) +
-                    " Erdjahre"}
-              </p>
-            </div>
-          </div>
+          )}
           <div className="flex w-4/5 flex-row-reverse items-center gap-24">
             <p
               className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-center"
@@ -186,31 +225,22 @@ export default function SolarSystem() {
               <div className="flex flex-col gap-10 text-neutral-300 w-3/5">
                 <div className="flex gap-4 items-center">
                   <ThermometerHotIcon size={32} className="shrink-0" />
-                  <p>
-                    Extreme Temperaturschwankungen von über 600 °C zwischen Tag
-                    und Nacht.
-                  </p>
+                  <p>{selectedPlanet.quickFacts1}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                   <LightningIcon size={32} className="shrink-0" />
-                  <p>
-                    Kein nennenswertes Magnetfeld - Sonnenwinde treffen direkt
-                    auf die Oberfläche.
-                  </p>
+                  <p>{selectedPlanet.quickFacts2}</p>
                 </div>
                 <div className="flex gap-4 items-center">
                   <ClockIcon size={32} className="shrink-0" />
-                  <p>
-                    Ein Tag dauert doppelt so lang wie ein Merkur-Jahr (176
-                    Erdtage).
-                  </p>
+                  <p>{selectedPlanet.quickFacts3}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="flex flex-col min-h-screen justify-center items-center gap-24">
+      <section className="flex flex-col min-h-screen justify-center items-center gap-24 pt-48 pb-48">
         <div className="flex items-center justify-center gap-24 w-4/5">
           <p
             className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
@@ -230,43 +260,45 @@ export default function SolarSystem() {
             </p>
           </div>
         </div>
-        <div className="flex gap-24">
-          {selectedPlanet.atmosphere.map((atmosphere) => (
-            <div key={atmosphere.gas}>
-              <div className="relative size-72 border-2 border-gray-700 rounded-full p-6">
-                <svg
-                  className="-rotate-90 drop-shadow-[0_0_12px_rgba(43,127,255,1)]"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="18"
-                    cy="18"
-                    r="16"
-                    fill="none"
-                    strokeWidth="1.5"
-                  ></circle>
-                  <circle
-                    cx="18"
-                    cy="18"
-                    r="16"
-                    fill="none"
-                    className="stroke-current text-blue-500"
-                    strokeWidth="1.5"
-                    strokeDasharray={100}
-                    strokeDashoffset={100 - atmosphere.percentage}
-                    strokeLinecap="round"
-                  ></circle>
-                </svg>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <p className="text-4xl font-light">
-                    {atmosphere.percentage}%
-                  </p>
-                  <p className="font-extralight">{atmosphere.gas}</p>
+        <div className="grid grid-cols-3 gap-24">
+          {selectedPlanet.atmosphere
+            .filter((atmosphere) => atmosphere.percentage > 0)
+            .map((atmosphere) => (
+              <div key={atmosphere.gas}>
+                <div className="relative size-72 border-2 border-gray-700 rounded-full p-6">
+                  <svg
+                    className="-rotate-90 drop-shadow-[0_0_12px_rgba(43,127,255,1)]"
+                    viewBox="0 0 36 36"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="16"
+                      fill="none"
+                      strokeWidth="1.5"
+                    ></circle>
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="16"
+                      fill="none"
+                      className="stroke-current text-blue-500"
+                      strokeWidth="1.5"
+                      strokeDasharray={100}
+                      strokeDashoffset={100 - atmosphere.percentage}
+                      strokeLinecap="round"
+                    ></circle>
+                  </svg>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <p className="text-4xl font-light">
+                      {atmosphere.percentage.toLocaleString("de")}%
+                    </p>
+                    <p className="font-extralight">{atmosphere.gas}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
     </div>

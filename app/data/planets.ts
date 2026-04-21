@@ -28,6 +28,8 @@ export type Planet = {
   quickFacts1: string;
   quickFacts2: string;
   quickFacts3: string;
+  gForce: number;
+  funFactWeight: string;
 };
 
 export const planets: Planet[] = [
@@ -76,6 +78,8 @@ export const planets: Planet[] = [
       "Über eine Million Erden würden in das Innere der Sonne passen.",
     quickFacts3:
       "Die Sonne verliert pro Sekunde etwa 4 Millionen Tonnen an Masse durch Energieabstrahlung.",
+    gForce: 0,
+    funFactWeight: "",
   },
   {
     id: 1,
@@ -121,6 +125,9 @@ export const planets: Planet[] = [
       "Kein nennenswertes Magnetfeld - Sonnenwinde treffen direkt auf die Oberfläche.",
     quickFacts3:
       "Ein Tag dauert doppelt so lang wie ein Merkur-Jahr (176 Erdtage).",
+    gForce: 3.7,
+    funFactWeight:
+      "Du würdest nur etwa ein Drittel wiegen - perfekt, um riesige Schritte zu machen!",
   },
   {
     id: 2,
@@ -164,6 +171,9 @@ export const planets: Planet[] = [
       "Dichte Atmosphäre aus Kohlendioxid mit Schwefelsäurewolken erzeugt enormen Druck.",
     quickFacts3:
       "Ein Tag dauert länger als ein Venus-Jahr (243 vs. 225 Erdtage).",
+    gForce: 8.87,
+    funFactWeight:
+      "Fast wie auf der Erde - dein Gewicht bleibt ähnlich, nur die Hitze wäre das größere Problem.",
   },
   {
     id: 3,
@@ -205,6 +215,9 @@ export const planets: Planet[] = [
     quickFacts2:
       "Starkes Magnetfeld schützt vor schädlicher kosmischer Strahlung.",
     quickFacts3: "Ein Tag dauert 24 Stunden, ein Jahr 365,25 Tage.",
+    gForce: 9.81,
+    funFactWeight:
+      "Hier bist du in Bestform - dein gewohntes Gewicht, keine Überraschungen!",
   },
   {
     id: 4,
@@ -247,6 +260,9 @@ export const planets: Planet[] = [
     quickFacts2:
       "Dünne Atmosphäre bietet kaum Schutz vor Strahlung und Meteoroiden.",
     quickFacts3: "Ein Tag dauert 24,7 Stunden, ein Jahr 687 Erdtage.",
+    gForce: 3.72,
+    funFactWeight:
+      "Du wiegst nur rund 38 % - ideal, um dich wie ein Superheld zu fühlen!",
   },
   {
     id: 5,
@@ -290,6 +306,9 @@ export const planets: Planet[] = [
       "Stärkstes Magnetfeld im Sonnensystem und gewaltige Stürme wie der Große Rote Fleck.",
     quickFacts3:
       "Ein Tag dauert nur etwa 10 Stunden, ein Jahr knapp 12 Erdenjahre.",
+    gForce: 24.79,
+    funFactWeight:
+      "Mehr als doppelt so schwer - Aufstehen wäre schon ein Workout für sich!",
   },
   {
     id: 6,
@@ -333,6 +352,9 @@ export const planets: Planet[] = [
       "Bekannt für sein ausgeprägtes Ringsystem aus Eis und Gestein.",
     quickFacts3:
       "Ein Tag dauert etwa 10,7 Stunden, ein Jahr rund 29,5 Erdenjahre.",
+    gForce: 10.44,
+    funFactWeight:
+      "Nur ein bisschen schwerer als auf der Erde - aber auf seinen Ringen würdest du sowieso nicht stehen können.",
   },
   {
     id: 7,
@@ -375,6 +397,9 @@ export const planets: Planet[] = [
     quickFacts2:
       'Achse stark gekippt (97,8°), sodass er "auf der Seite" rotiert.',
     quickFacts3: "Ein Tag dauert etwa 17 Stunden, ein Jahr 84 Erdenjahre.",
+    gForce: 8.69,
+    funFactWeight:
+      "Etwas leichter als auf der Erde - du könntest ein kleines bisschen höher springen.",
   },
   {
     id: 8,
@@ -416,5 +441,8 @@ export const planets: Planet[] = [
     quickFacts2:
       "Heftigste Winde im Sonnensystem mit Geschwindigkeiten über 2.000 km/h.",
     quickFacts3: "Ein Tag dauert etwa 16,1 Stunden, ein Jahr 164,9 Erdenjahre.",
+    gForce: 11.15,
+    funFactWeight:
+      "Ein kleines Plus beim Gewicht - nichts Dramatisches, aber spürbar!",
   },
 ];

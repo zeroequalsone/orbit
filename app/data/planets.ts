@@ -179,7 +179,7 @@ export const planets: Planet[] = [
     id: 3,
     name: "Erde",
     diameter: 12756.0,
-    lengthOfDay: 24.0,
+    lengthOfDay: 23.9,
     lengthOfYear: 365.25,
     distanceFromSun: 149.6e6,
     axialTilt: 23.4,

@@ -44,19 +44,20 @@ export default function SolarSystem() {
               <p className="font-bold uppercase">Tagesdauer</p>
               <p className="text-4xl font-light">
                 {selectedPlanet.lengthOfDay < 24
-                  ? selectedPlanet.lengthOfDay.toFixed(1).replaceAll(".", ",") +
-                    " Stunden"
-                  : (selectedPlanet.lengthOfDay / 24)
-                      .toFixed(1)
-                      .replaceAll(".", ",") + " Erdtage"}
+                  ? selectedPlanet.lengthOfDay.toLocaleString("de", {
+                      maximumFractionDigits: 1,
+                    }) + " Stunden"
+                  : (selectedPlanet.lengthOfDay / 24).toLocaleString("de", {
+                      maximumFractionDigits: 1,
+                    }) + " Erdtage"}
               </p>
             </div>
             <div>
               <p className="font-bold uppercase">Durchmesser</p>
               <p className="text-4xl font-light">
-                {selectedPlanet.diameter
-                  .toLocaleString("de")
-                  .replaceAll(".", " ")}{" "}
+                {selectedPlanet.diameter.toLocaleString("de", {
+                  maximumFractionDigits: 1,
+                })}{" "}
                 km
               </p>
             </div>
@@ -95,20 +96,35 @@ export default function SolarSystem() {
         </div>
       </section>
       <section className="min-h-screen flex justify-center items-center flex-col">
-        <div>
-          <div className="flex gap-24">
+        <div className="flex flex-col">
+          <div className="flex gap-18">
             {[...planets].reverse().map((planet) => (
               <div
                 key={planet.id}
-                className={`flex flex-col gap-6 text-center ${planetId === planet.id ? "text-white" : "text-neutral-400"}`}
+                className={`flex flex-col items-center justify-between cursor-pointer ${planetId === planet.id ? "text-white" : "text-neutral-400"}`}
+                onClick={() => selectPlanetId(planet.id)}
               >
-                <p>{planet.astronomicalUnit.toLocaleString("de")} AE</p>
-                <svg
-                  onClick={() => selectPlanetId(planet.id)}
-                  className={`w-20 h-20 border-2 rounded-full mb-16 mt-16 cursor-pointer`}
+                <p>
+                  {planet.astronomicalUnit.toLocaleString("de", {
+                    maximumFractionDigits: 2,
+                  })}{" "}
+                  AE
+                </p>
+                <div
+                  className={`rounded-full mb-8 mt-8`}
+                  style={{
+                    height: `${planet.id === 6 ? Math.sqrt(planet.diameter / 5) : Math.sqrt(planet.diameter / 20)}px`,
+                    width: `${planet.id === 6 ? Math.sqrt(planet.diameter / 5) : Math.sqrt(planet.diameter / 20)}px`,
+                    backgroundImage: `url('${planet.iconUrl}')`,
+                    backgroundSize: "100%",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
                 />
-                <p className="font-bold">{planet.name}</p>
-                <p>{planet.numberOfMoons} Monde</p>
+                <div className="flex flex-col gap-8 items-center">
+                  <p className="font-bold">{planet.name}</p>
+                  <p>{planet.numberOfMoons} Monde</p>
+                </div>
               </div>
             ))}
           </div>
@@ -152,23 +168,30 @@ export default function SolarSystem() {
                 <p className="text-5xl">
                   ca.{" "}
                   {calculateLightDistance < 60
-                    ? calculateLightDistance.toFixed(0).replaceAll(".", ",") +
-                      " Minuten"
-                    : (calculateLightDistance / 60)
-                        .toFixed(1)
-                        .replaceAll(".", ",") + " Stunden"}
+                    ? calculateLightDistance.toLocaleString("de", {
+                        maximumFractionDigits: 0,
+                      }) + " Minuten"
+                    : (calculateLightDistance / 60).toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Stunden"}
                 </p>
               </div>
               <div className="flex flex-col gap-4">
                 <p className="text-neutral-400">Distanz zur Sonne</p>
                 <p className="text-5xl">
                   {selectedPlanet.distanceFromSun / 1e6 < 1e3
-                    ? (selectedPlanet.distanceFromSun / 1e6)
-                        .toFixed(1)
-                        .replaceAll(".", ",") + " Millionen "
-                    : (selectedPlanet.distanceFromSun / 1e9)
-                        .toFixed(2)
-                        .replaceAll(".", ",") + " Milliarden "}
+                    ? (selectedPlanet.distanceFromSun / 1e6).toLocaleString(
+                        "de",
+                        {
+                          maximumFractionDigits: 1,
+                        },
+                      ) + " Millionen "
+                    : (selectedPlanet.distanceFromSun / 1e9).toLocaleString(
+                        "de",
+                        {
+                          maximumFractionDigits: 2,
+                        },
+                      ) + " Milliarden "}
                   km
                 </p>
               </div>
@@ -176,12 +199,12 @@ export default function SolarSystem() {
                 <p className="text-neutral-400">Jahreslänge</p>
                 <p className="text-5xl">
                   {selectedPlanet.lengthOfYear < 365
-                    ? selectedPlanet.lengthOfYear
-                        .toFixed(1)
-                        .replaceAll(".", ",") + " Erdtage"
-                    : (selectedPlanet.lengthOfYear / 365)
-                        .toFixed(1)
-                        .replaceAll(".", ",") + " Erdjahr(e)"}
+                    ? selectedPlanet.lengthOfYear.toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Erdtage"
+                    : (selectedPlanet.lengthOfYear / 365).toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Erdjahr(e)"}
                 </p>
               </div>
             </div>

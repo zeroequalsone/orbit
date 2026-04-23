@@ -1,11 +1,12 @@
 "use client";
 
 import { planets } from "@/data/planets";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function SizeCalculator() {
-  const [sizeFrom, setSizeFrom] = useState(0);
-  const [sizeTo, setSizeTo] = useState(3);
+  const [sizeFrom, setSizeFrom] = useState(3);
+  const [sizeTo, setSizeTo] = useState(0);
 
   const planetFrom = planets.find((p) => p.id === sizeFrom);
   const planetTo = planets.find((p) => p.id === sizeTo);
@@ -79,11 +80,15 @@ export default function SizeCalculator() {
                     <div
                       className={`flex flex-col gap-6 text-center items-center`}
                     >
-                      <svg
-                        className={`border-2 rounded-full`}
+                      <div
+                        className={`rounded-full`}
                         style={{
-                          height: `${Math.sqrt(planetFrom.diameter / 20)}px`,
-                          width: `${Math.sqrt(planetFrom.diameter / 20)}px`,
+                          height: `${planetFrom.id === 6 ? Math.sqrt(planetFrom.diameter / 5) : Math.sqrt(planetFrom.diameter / 20)}px`,
+                          width: `${planetFrom.id === 6 ? Math.sqrt(planetFrom.diameter / 5) : Math.sqrt(planetFrom.diameter / 20)}px`,
+                          backgroundImage: `url('${planetFrom.iconUrl}')`,
+                          backgroundSize: "100%",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
                         }}
                       />
                       <p className="font-bold">{planetFrom.name}</p>
@@ -97,11 +102,15 @@ export default function SizeCalculator() {
                     <div
                       className={`flex flex-col gap-6 text-center items-center`}
                     >
-                      <svg
-                        className={`border-2 rounded-full`}
+                      <div
+                        className={`rounded-full`}
                         style={{
-                          height: `${Math.sqrt(planetTo.diameter / 20)}px`,
-                          width: `${Math.sqrt(planetTo.diameter / 20)}px`,
+                          height: `${planetTo.id === 6 ? Math.sqrt(planetTo.diameter / 5) : Math.sqrt(planetTo.diameter / 20)}px`,
+                          width: `${planetTo.id === 6 ? Math.sqrt(planetTo.diameter / 5) : Math.sqrt(planetTo.diameter / 20)}px`,
+                          backgroundImage: `url('${planetTo.iconUrl}')`,
+                          backgroundSize: "100%",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
                         }}
                       />
                       <p className="font-bold">{planetTo.name}</p>

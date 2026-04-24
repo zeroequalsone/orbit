@@ -10,7 +10,6 @@ export default function Navbar() {
     { name: "Entdecken", href: "/explore" },
     { name: "Sonnensystem", href: "/solar-system" },
     { name: "Tools", href: "/tools" },
-    { name: "Blog", href: "/blog" },
     { name: "GitHub", href: "https://github.com/zeroequalsone/orbit" },
   ];
 

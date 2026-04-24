@@ -24,6 +24,12 @@ export default function Tools() {
           >
             Größen-Rechner
           </Link>
+          <Link
+            href="/tools/landsat-name-generator"
+            className="border-2 border-white rounded-full px-8 py-4 text-xl font-light"
+          >
+            Landsat Name Generator
+          </Link>
         </div>
       </div>
     </div>

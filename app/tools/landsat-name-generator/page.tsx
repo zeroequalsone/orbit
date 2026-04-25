@@ -127,7 +127,7 @@ export default function LandSatNameGenerator() {
     toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const link = document.createElement("a");
-        link.download = name + ".png";
+        link.download = "orbit.png";
         link.href = dataUrl;
         link.click();
       })

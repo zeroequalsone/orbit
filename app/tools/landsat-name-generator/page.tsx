@@ -119,7 +119,7 @@ export default function LandSatNameGenerator() {
     }
   };
 
-  const onButtonClick = useCallback(() => {
+  const onDownloadClick = useCallback(() => {
     if (ref.current === null) {
       return;
     }
@@ -184,7 +184,7 @@ export default function LandSatNameGenerator() {
             </button>
             {images.length > 0 && (
               <button
-                onClick={onButtonClick}
+                onClick={onDownloadClick}
                 className="border-2 p-4 rounded-xl cursor-pointer"
               >
                 Download

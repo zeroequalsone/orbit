@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { toPng } from "html-to-image";
 
 export default function LandSatNameGenerator() {
-  const [name, setName] = useState("landsat");
-  const [images, setImages] = useState([]);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const [name, setName] = useState("");
+  const [images, setImages] = useState<string[]>([]);
 
   const letterDatabase = {
     a: [
@@ -95,33 +98,46 @@ export default function LandSatNameGenerator() {
     z: ["/landsatLetters/z_0.jpg", "/landsatLetters/z_1.jpg"],
   };
 
-  const generateImages = () => {
+  const generateImages = (name: string) => {
     {
-      // @ts-ignore
-      const bilderListe = [];
+      const imageList: string[] = [];
 
-      const buchstabenArray = [...name];
+      const letterArray = [...name];
 
-      buchstabenArray.forEach((letter) => {
-        // @ts-ignore
-        const bilderListeFuerBuchstaben = letterDatabase[letter.toLowerCase()];
+      letterArray.forEach((letter) => {
+        const imageLetterList =
+          letterDatabase[letter.toLowerCase() as keyof typeof letterDatabase];
 
-        const zufallsIndex = Math.floor(
-          Math.random() * bilderListeFuerBuchstaben.length,
-        );
+        const randomIndex = Math.floor(Math.random() * imageLetterList.length);
 
-        const zufallsBild = bilderListeFuerBuchstaben[zufallsIndex];
+        const randomImage = imageLetterList[randomIndex];
 
-        bilderListe.push(zufallsBild);
+        imageList.push(randomImage);
       });
 
-      // @ts-ignore
-      setImages(bilderListe);
+      setImages(imageList);
     }
   };
 
+  const onDownloadClick = useCallback(() => {
+    if (ref.current === null) {
+      return;
+    }
+
+    toPng(ref.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = name + ".png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [ref]);
+
   useEffect(() => {
-    generateImages();
+    generateImages("orbit");
   }, []);
 
   return (
@@ -136,45 +152,44 @@ export default function LandSatNameGenerator() {
               (Wie sieht dein Name in Landsat Bildern aus?)
             </h2>
           </div>
-          <div className="flex flex-wrap gap-4 h-72">
-            {images.length ? (
-              images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Letter ${index + 1}`}
-                  className="h-full shrink"
-                />
-              ))
-            ) : (
-              <div className="flex flex-col items-center justify-center gap-4">
-                <p className="text-xl">Laden von Bildern...</p>
-              </div>
-            )}
+          <div ref={ref} className="flex flex-wrap gap-4 justify-center h-72">
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Letter ${index + 1}`}
+                className="h-full"
+              />
+            ))}
           </div>
           <div className="flex text-white bg-black/50 w-fit p-8 gap-4 rounded-xl">
             <input
-              id="name"
               type="text"
+              value={name}
               className="border-2 p-4 rounded-xl"
               onChange={(e) =>
                 setName(e.target.value.replace(/[^A-Za-z]/g, ""))
               }
-              onKeyDown={(e) => e.key === "Enter" && generateImages()}
-              max={25}
+              onKeyDown={(e) =>
+                e.key === "Enter" && name.length > 0 && generateImages(name)
+              }
+              maxLength={25}
               autoFocus
             />
             <button
               className="border-2 p-4 rounded-xl cursor-pointer"
-              onClick={() => generateImages()}
+              onClick={() => name.length > 0 && generateImages(name)}
             >
               Enter
             </button>
-            {/* {images.length > 0 && (
-              <button className="border-2 p-4 rounded-xl cursor-pointer">
+            {images.length > 0 && (
+              <button
+                onClick={onDownloadClick}
+                className="border-2 p-4 rounded-xl cursor-pointer"
+              >
                 Download
               </button>
-            )} */}
+            )}
           </div>
         </div>
       </section>

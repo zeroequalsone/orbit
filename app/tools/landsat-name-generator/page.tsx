@@ -3,8 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { landsatLetters } from "@/data/landsatLetters";
+import { useRouter } from "next/navigation";
 
 export default function LandSatNameGenerator() {
+  const router = useRouter();
+
   const ref = useRef<HTMLDivElement>(null);
 
   const [name, setName] = useState("");
@@ -57,14 +60,19 @@ export default function LandSatNameGenerator() {
   return (
     <div className="text-white min-h-screen">
       <section className='min-h-screen flex flex-col justify-center items-center bg-center bg-cover bg-[url("/planets/BG.png")]'>
-        <div className="flex flex-col items-center gap-20 w-4/5">
+        <div className="flex flex-col items-center gap-10 w-4/5">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
               Landsat Name Generator
             </h1>
-            <h2 className="text-lg">
-              (Wie sieht dein Name in Landsat Bildern aus?)
-            </h2>
+            <div className="flex flex-col justify-center items-center gap-8">
+              <h2 className="text-lg">
+                (Wie sieht dein Name in Landsat Bildern aus?)
+              </h2>
+              <button onClick={router.back} className="cursor-pointer">
+                Zurück zu Tools
+              </button>
+            </div>
           </div>
           <div ref={ref} className="flex flex-wrap gap-4 justify-center h-72">
             {images.map((image, index) => (

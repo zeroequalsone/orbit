@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { landsatLetters } from "@/data/landsatLetters";
 
 export default function LandSatNameGenerator() {
   const ref = useRef<HTMLDivElement>(null);
@@ -9,114 +10,27 @@ export default function LandSatNameGenerator() {
   const [name, setName] = useState("");
   const [images, setImages] = useState<string[]>([]);
 
-  const letterDatabase = {
-    a: [
-      "/landsatLetters/a_0.jpg",
-      "/landsatLetters/a_1.jpg",
-      "/landsatLetters/a_2.jpg",
-      "/landsatLetters/a_3.jpg",
-      "/landsatLetters/a_4.jpg",
-    ],
-    b: ["/landsatLetters/b_0.jpg", "/landsatLetters/b_1.jpg"],
-    c: [
-      "/landsatLetters/c_0.jpg",
-      "/landsatLetters/c_1.jpg",
-      "/landsatLetters/c_2.jpg",
-    ],
-    d: ["/landsatLetters/d_0.jpg", "/landsatLetters/d_1.jpg"],
-    e: [
-      "/landsatLetters/e_0.jpg",
-      "/landsatLetters/e_1.jpg",
-      "/landsatLetters/e_2.jpg",
-      "/landsatLetters/e_3.jpg",
-    ],
-    f: ["/landsatLetters/f_0.jpg", "/landsatLetters/f_1.jpg"],
-    g: ["/landsatLetters/g_0.jpg"],
-    h: ["/landsatLetters/h_0.jpg", "/landsatLetters/h_1.jpg"],
-    i: [
-      "/landsatLetters/i_0.jpg",
-      "/landsatLetters/i_1.jpg",
-      "/landsatLetters/i_2.jpg",
-      "/landsatLetters/i_3.jpg",
-      "/landsatLetters/i_4.jpg",
-    ],
-    j: [
-      "/landsatLetters/j_0.jpg",
-      "/landsatLetters/j_1.jpg",
-      "/landsatLetters/j_2.jpg",
-    ],
-    k: ["/landsatLetters/k_0.jpg", "/landsatLetters/k_1.jpg"],
-    l: [
-      "/landsatLetters/l_0.jpg",
-      "/landsatLetters/l_1.jpg",
-      "/landsatLetters/l_2.jpg",
-      "/landsatLetters/l_3.jpg",
-    ],
-    m: [
-      "/landsatLetters/m_0.jpg",
-      "/landsatLetters/m_1.jpg",
-      "/landsatLetters/m_2.jpg",
-    ],
-    n: [
-      "/landsatLetters/n_0.jpg",
-      "/landsatLetters/n_1.jpg",
-      "/landsatLetters/n_2.jpg",
-    ],
-    o: ["/landsatLetters/o_0.jpg", "/landsatLetters/o_1.jpg"],
-    p: ["/landsatLetters/p_0.jpg", "/landsatLetters/p_1.jpg"],
-    q: ["/landsatLetters/q_0.jpg", "/landsatLetters/q_1.jpg"],
-    r: [
-      "/landsatLetters/r_0.jpg",
-      "/landsatLetters/r_1.jpg",
-      "/landsatLetters/r_2.jpg",
-      "/landsatLetters/r_3.jpg",
-    ],
-    s: [
-      "/landsatLetters/s_0.jpg",
-      "/landsatLetters/s_1.jpg",
-      "/landsatLetters/s_2.jpg",
-    ],
-    t: ["/landsatLetters/t_0.jpg", "/landsatLetters/t_1.jpg"],
-    u: ["/landsatLetters/u_0.jpg", "/landsatLetters/u_1.jpg"],
-    v: [
-      "/landsatLetters/v_0.jpg",
-      "/landsatLetters/v_1.jpg",
-      "/landsatLetters/v_2.jpg",
-      "/landsatLetters/v_3.jpg",
-    ],
-    w: ["/landsatLetters/w_0.jpg", "/landsatLetters/w_1.jpg"],
-    x: [
-      "/landsatLetters/x_0.jpg",
-      "/landsatLetters/x_1.jpg",
-      "/landsatLetters/x_2.jpg",
-    ],
-    y: [
-      "/landsatLetters/y_0.jpg",
-      "/landsatLetters/y_1.jpg",
-      "/landsatLetters/y_2.jpg",
-    ],
-    z: ["/landsatLetters/z_0.jpg", "/landsatLetters/z_1.jpg"],
-  };
-
   const generateImages = (name: string) => {
-    {
-      const imageList: string[] = [];
+    const imageList: string[] = [];
+    const letterArray = [...name];
 
-      const letterArray = [...name];
+    letterArray.forEach((letter) => {
+      const imageLetterList = landsatLetters.find(
+        (checkLetter) => checkLetter.letter === letter,
+      );
 
-      letterArray.forEach((letter) => {
-        const imageLetterList =
-          letterDatabase[letter.toLowerCase() as keyof typeof letterDatabase];
+      const imagesArray = imageLetterList?.images;
 
-        const randomIndex = Math.floor(Math.random() * imageLetterList.length);
+      if (!imagesArray) return;
 
-        const randomImage = imageLetterList[randomIndex];
+      const randomIndex = Math.floor(Math.random() * imagesArray.length);
 
-        imageList.push(randomImage);
-      });
+      const randomImage = imagesArray[randomIndex].url;
 
-      setImages(imageList);
-    }
+      imageList.push(randomImage);
+    });
+
+    setImages(imageList);
   };
 
   const onDownloadClick = useCallback(() => {

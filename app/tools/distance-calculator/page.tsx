@@ -3,8 +3,11 @@ import { planets } from "@/data/planets";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Tooltip } from "radix-ui";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function DistanceCalculator() {
+  const router = useRouter();
+
   const [minDistance, setMinDistance] = useState<number>(0);
   const [maxDistance, setMaxDistance] = useState<number>(0);
   const [distanceFrom, setDistanceFrom] = useState(1);
@@ -32,30 +35,35 @@ export default function DistanceCalculator() {
   return (
     <div className="text-white min-h-screen">
       <section className='min-h-screen flex flex-col justify-center items-center bg-center bg-cover bg-[url("/planets/BG.png")]'>
-        <div className="flex flex-col gap-20 w-4/5">
+        <div className="flex flex-col gap-10 w-4/5">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
               Distanz-Rechner
             </h1>
-            <div className="flex gap-2">
-              <h2 className="text-lg">(Vereinfachte Berechnungen)</h2>
-              <Tooltip.Provider>
-                <Tooltip.Root delayDuration={0}>
-                  <Tooltip.Trigger asChild>
-                    <InfoIcon className="cursor-help" />
-                  </Tooltip.Trigger>
-                  <Tooltip.Portal>
-                    <Tooltip.Content
-                      className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
-                      sideOffset={5}
-                      side="right"
-                    >
-                      Berechnung basiert auf runder Umlaufbahn (nicht
-                      elliptisch).
-                    </Tooltip.Content>
-                  </Tooltip.Portal>
-                </Tooltip.Root>
-              </Tooltip.Provider>
+            <div className="flex flex-col justify-center items-center gap-8">
+              <div className="flex gap-2">
+                <h2 className="text-lg">(Vereinfachte Berechnungen)</h2>
+                <Tooltip.Provider>
+                  <Tooltip.Root delayDuration={0}>
+                    <Tooltip.Trigger asChild>
+                      <InfoIcon className="cursor-help" />
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                      <Tooltip.Content
+                        className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
+                        sideOffset={5}
+                        side="right"
+                      >
+                        Berechnung basiert auf runder Umlaufbahn (nicht
+                        elliptisch).
+                      </Tooltip.Content>
+                    </Tooltip.Portal>
+                  </Tooltip.Root>
+                </Tooltip.Provider>
+              </div>
+              <button onClick={router.back} className="cursor-pointer">
+                Zurück zu Tools
+              </button>
             </div>
           </div>
           <div className="flex flex-col items-center gap-28">

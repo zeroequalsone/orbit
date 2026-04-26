@@ -1,9 +1,13 @@
 "use client";
 
 import { planets } from "@/data/planets";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function WeightCalculator() {
+  const router = useRouter();
+
   const [earthWeight, setEarthWeight] = useState<number>(60);
   const [newWeight, setNewWeight] = useState<number>(0);
   const [planetId, selectPlanetId] = useState<number>(1);
@@ -22,14 +26,19 @@ export default function WeightCalculator() {
   return (
     <div className="text-white min-h-screen">
       <section className='min-h-screen flex flex-col justify-center items-center bg-center bg-cover bg-[url("/planets/BG.png")]'>
-        <div className="flex flex-col gap-20 w-4/5">
+        <div className="flex flex-col gap-10 w-4/5">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
               Gewicht-Rechner
             </h1>
-            <h2 className="text-lg">
-              (Wie viel wiegst du auf anderen Planeten?)
-            </h2>
+            <div className="flex flex-col justify-center items-center gap-8">
+              <h2 className="text-lg">
+                (Wie viel wiegst du auf anderen Planeten?)
+              </h2>
+              <button onClick={router.back} className="cursor-pointer">
+                Zurück zu Tools
+              </button>
+            </div>
           </div>
           <div className="flex flex-col items-center gap-12">
             <div className="flex flex-col items-center gap-4 text-xl">

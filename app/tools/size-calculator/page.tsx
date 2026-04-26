@@ -1,10 +1,12 @@
 "use client";
 
 import { planets } from "@/data/planets";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function SizeCalculator() {
+  const router = useRouter();
+
   const [sizeFrom, setSizeFrom] = useState(3);
   const [sizeTo, setSizeTo] = useState(0);
 
@@ -23,12 +25,17 @@ export default function SizeCalculator() {
   return (
     <div className="text-white min-h-screen">
       <section className='min-h-screen flex flex-col justify-center items-center bg-center bg-cover bg-[url("/planets/BG.png")]'>
-        <div className="flex flex-col gap-20 w-4/5">
+        <div className="flex flex-col gap-10 w-4/5">
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
               Größen-Rechner
             </h1>
-            <h2 className="text-lg">(Wie oft passen Planete ineinander?)</h2>
+            <div className="flex flex-col justify-center items-center gap-8">
+              <h2 className="text-lg">(Wie oft passen Planete ineinander?)</h2>
+              <button onClick={router.back} className="cursor-pointer">
+                Zurück zu Tools
+              </button>
+            </div>
           </div>
           <div className="flex flex-col items-center gap-28">
             <div className="flex flex-col items-center gap-10">

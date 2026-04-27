@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orbit 🪐
 
-## Getting Started
+**Orbit** ist eine interaktive Space/Science-Webapp auf Basis von Next.js (App Router). Die App kombiniert externe NASA-Daten mit einem kuratierten Planetendatensatz und übersetzt diese in verständliche, direkt nutzbare UI-Tools.
 
-First, run the development server:
+## Live Demo
+
+Die aktuelle Deploy-Version ist hier erreichbar: `https://orbit-two-sigma.vercel.app/`
+
+Hinweis: Die Demo wird von **Vercel** nach einem erfolgreichen PR-Merge **zeitverzögert** aktualisiert und ist danach wieder **up to date** mit dem aktuellen Stand.
+
+## Screenshots
+
+![APOD Landing](./screenshots/apod-landing.png)
+![Solar System](./screenshots/solar-system-earth.png)
+![Distance Calculator](./screenshots/distance-calculator.png)
+![Landsat Name Generator](./screenshots/landsat-name-generator.png)
+
+## Highlights
+
+- **Solar-System Explorer**: Detailseiten mit planetenspezifischen Kennzahlen (z. B. Tageslänge, Durchmesser, Monde) plus abgeleitete Metriken (u. a. Lichtlaufzeit).
+- **Mini-Tools**:
+  - **Gewicht-Rechner**: Berechnet Körpergewicht auf Basis planetarer Oberflächengravitation.
+  - **Distanz-Rechner**: Schätzt Min-/Max-Distanzen zwischen Planeten (vereinfachtes Modell) inkl. Lichtlaufzeit.
+  - **Größen-Rechner**: Vergleicht Volumina nach dem Prinzip "Wie oft passt X in Y?".
+  - **Landsat Name Generator**: Erzeugt eine Buchstaben-Collage aus Landsat-Bildern und exportiert clientseitig als PNG.
+- **Klarer Datenfluss**: Externe API-Daten (NASA APOD) und interne Referenzdaten werden sauber getrennt verarbeitet und im UI konsistent zusammengeführt.
+- **Serverseitiger API-Proxy**: Eigene Route unter `/api/nasa` kapselt den NASA-Request und hält API-Details vom Client fern.
+
+## Projektstruktur (Kurzüberblick)
+
+- `app/page.tsx`: APOD Landing Page (ruft `/api/nasa` auf)
+- `app/api/nasa/route.ts`: NASA APOD Proxy (Server Route Handler)
+- `app/solar-system/page.tsx`: Solar-System Explorer UI
+- `app/tools/*`: Rechner und Generatoren
+- `app/data/*`: Kuratierte Datensätze (u. a. Planetenwerte, Texte und weitere Referenzdaten)
+
+## Tech-Stack
+
+- **Framework**: Next.js (App Router) + React
+- **Sprache**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI**: Radix UI + Phosphor Icons
+- **Utilities**: `html-to-image` (PNG-Export)
+
+## Lokal starten
+
+### Voraussetzungen
+
+- Node.js (aktuell) + npm
+- NASA API Key für APOD
+
+### Setup
+
+1. Dependencies installieren:
+
+```bash
+npm ci
+```
+
+2. Environment Variable setzen (z. B. in `.env.local`):
+
+```bash
+NASA_APOD_API_KEY=dein_key_hier
+```
+
+3. Dev-Server starten:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Dann im Browser öffnen: `http://localhost:3000`

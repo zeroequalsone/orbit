@@ -17,12 +17,13 @@ export default function Explore() {
             <Link
               href={category.slug}
               key={category.id}
-              className="w-56 hover:scale-105 duration-200"
+              className="w-3xs hover:scale-105 duration-200 transition-transform"
             >
-              <div className="size-56">
+              <div className="size-64">
                 <img
                   className="w-full h-full object-cover"
                   src={category.imageUrl}
+                  alt={category.name}
                   loading="lazy"
                 />
               </div>

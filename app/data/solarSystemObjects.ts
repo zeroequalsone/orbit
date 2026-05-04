@@ -72,11 +72,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Stern",
     age: "ca. 4,603 Milliarden Jahre",
     diameter_km: 1_392_700,
-    displayImageUrl: "/planets/sun/Icon.webp",
+    displayImageUrl: "/explore/solar-system/stars/sun/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/sun",
+    slug: "sun",
   },
   {
     id: 1,
@@ -84,11 +84,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 4_879,
-    displayImageUrl: "/planets/mercury/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/mercury/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/mercury",
+    slug: "mercury",
   },
   {
     id: 2,
@@ -96,11 +96,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 12_104,
-    displayImageUrl: "/planets/venus/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/venus/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/venus",
+    slug: "venus",
   },
   {
     id: 3,
@@ -108,11 +108,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,543 Milliarden Jahre",
     diameter_km: 12_742,
-    displayImageUrl: "/planets/earth/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/earth/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/earth",
+    slug: "earth",
   },
   {
     id: 4,
@@ -120,11 +120,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Mond",
     age: "ca. 4,53 Milliarden Jahre",
     diameter_km: 3_475,
-    displayImageUrl: "solar-system/moons/moon/Icon.webp",
+    displayImageUrl: "/explore/solar-system/moons/moon/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/moons/moon",
+    slug: "moon",
   },
   {
     id: 5,
@@ -132,11 +132,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,603 Milliarden Jahre",
     diameter_km: 6_779,
-    displayImageUrl: "/planets/mars/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/mars/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/mars",
+    slug: "mars",
   },
   {
     id: 6,
@@ -144,11 +144,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Zwergplanet",
     age: "ca. 4,5 Milliarden Jahre",
     diameter_km: 940,
-    displayImageUrl: "solar-system/dwarf-planets/ceres/Icon.webp",
+    displayImageUrl: "/explore/solar-system/dwarf-planets/ceres/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/ceres",
+    slug: "ceres",
   },
   {
     id: 7,
@@ -156,11 +156,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,603 Milliarden Jahre",
     diameter_km: 139_820,
-    displayImageUrl: "/planets/jupiter/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/jupiter/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/jupiter",
+    slug: "jupiter",
   },
   {
     id: 8,
@@ -168,11 +168,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 116_460,
-    displayImageUrl: "/planets/saturn/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/saturn/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/saturn",
+    slug: "saturn",
   },
   {
     id: 9,
@@ -180,11 +180,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 50_724,
-    displayImageUrl: "/planets/uranus/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/uranus/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/uranus",
+    slug: "uranus",
   },
   {
     id: 10,
@@ -192,11 +192,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Planet",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 49_244,
-    displayImageUrl: "/planets/neptune/Icon.webp",
+    displayImageUrl: "/explore/solar-system/planets/neptune/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/neptune",
+    slug: "neptune",
   },
   {
     id: 11,
@@ -204,11 +204,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Zwergplanet",
     age: "ca. 4,5 Milliarden Jahre",
     diameter_km: 2_377,
-    displayImageUrl: "solar-system/dwarf-planets/pluto/Icon.webp",
+    displayImageUrl: "/explore/solar-system/dwarf-planets/pluto/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/pluto",
+    slug: "pluto",
   },
   {
     id: 12,
@@ -216,11 +216,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Zwergplanet",
     age: "ca. 4,5 Milliarden Jahre",
     diameter_km: 1_632,
-    displayImageUrl: "solar-system/dwarf-planets/haumea/Icon.webp",
+    displayImageUrl: "/explore/solar-system/dwarf-planets/haumea/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/haumea",
+    slug: "haumea",
   },
   {
     id: 13,
@@ -228,11 +228,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Zwergplanet",
     age: "ca. 4,5 Milliarden Jahre",
     diameter_km: 1_430,
-    displayImageUrl: "solar-system/dwarf-planets/makemake/Icon.webp",
+    displayImageUrl: "/explore/solar-system/dwarf-planets/makemake/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/makemake",
+    slug: "makemake",
   },
   {
     id: 14,
@@ -240,11 +240,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Zwergplanet",
     age: "ca. 4,5 Milliarden Jahre",
     diameter_km: 2_326,
-    displayImageUrl: "solar-system/dwarf-planets/eris/Icon.webp",
+    displayImageUrl: "/explore/solar-system/dwarf-planets/eris/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/eris",
+    slug: "eris",
   },
   {
     id: 15,
@@ -252,10 +252,11 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     type: "Asteroidengürtel",
     age: "ca. 4,503 Milliarden Jahre",
     diameter_km: 119_680_000_000_000,
-    displayImageUrl: "solar-system/asteroid-belts/kuiper-belt/Icon.webp",
+    displayImageUrl:
+      "/explore/solar-system/asteroid-belts/kuiper-belt/Icon.webp",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     detailedDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam erat, vitae tristique enim est a nisi. Pellentesque et aliquam nunc, ac condimentum leo. Duis in urna tellus.",
-    slug: "solar-system/asteroid-belts/kuiper-belt",
+    slug: "kuiper-belt",
   },
 ];

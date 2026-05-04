@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div
-      className={`flex flex-col justify-center items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")]`}
+      className={`flex flex-col justify-center items-center min-h-screen bg-center bg-cover bg-[url("/BG.png")]`}
     >
       <div className="flex flex-col justify-center items-center w-4/5 text-white">
         {data ? (

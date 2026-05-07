@@ -23,9 +23,12 @@ export default async function CategoryPage({
   return (
     <div className='flex justify-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
       <div className="flex items-center flex-col gap-20 w-4/5 py-52">
-        <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
-          Sonnensystem
-        </h1>
+        <div className="flex flex-col items-center gap-2">
+          <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
+            {typeMap[categorySlug]}
+          </h1>
+          <Link href={`../solar-system`}>Zurück zu Sonnensystem</Link>
+        </div>
         <div className="grid grid-cols-3 place-items-center gap-24">
           {objects.map((planet) => (
             <Link

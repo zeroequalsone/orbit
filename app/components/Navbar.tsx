@@ -59,7 +59,7 @@ export default function Navbar() {
           )}
         </div>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-[url('/planets/BG.png')] bg-center bg-cover flex items-center justify-center">
+          <div className="fixed inset-0 bg-[url('/BG.png')] bg-center bg-cover flex items-center justify-center">
             <div className="flex flex-col justify-center items-center gap-16 p-8 text-xl uppercase">
               {navLinks.map((navLink) => (
                 <Link

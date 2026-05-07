@@ -1,67 +1,223 @@
 import { SolarSystemObjects } from "@/data/solarSystemObjects";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 export default async function ItemPage({
   params,
 }: {
-  params: Promise<{ categorySlug: string; itemSlug: string }>;
+  params: { itemSlug: string };
 }) {
-  const { categorySlug, itemSlug } = await params;
+  const { itemSlug } = await params;
 
   const objects = SolarSystemObjects.find((obj) => obj.slug === itemSlug);
-  if (!objects) notFound();
+
+  if (!objects) return;
 
   return (
-    <div className='flex justify-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
+    <div className='flex justify-center min-h-screen bg-center bg-cover bg-[url("/BG.png")] text-white'>
       <div className="flex items-center flex-col gap-20 w-4/5 py-52">
-        <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
-          Sonnensystem
-        </h1>
-        <article className="flex flex-col items-center gap-10 max-w-2xl w-full">
-          <Link
-            href={`/explore/solar-system/${categorySlug}`}
-            className="text-sm tracking-wide text-white/70 hover:text-white transition-colors text-center"
-          >
-            ← Zurück zur Übersicht
-          </Link>
-          <div className="w-52 h-52 shrink-0">
-            <img
-              className="w-full h-full object-contain bg-black"
-              src={objects.displayImageUrl}
-              alt={objects.name}
-              loading="lazy"
-            />
-          </div>
-          <div className="flex flex-col gap-2 text-center">
-            <h2 className="text-2xl font-semibold tracking-wide">
-              {objects.name}
-            </h2>
-            <p className="text-lg text-white/80">{objects.type}</p>
-          </div>
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 text-sm text-white/90 w-full max-w-md text-left">
-            <div className="flex flex-col gap-0.5">
-              <dt className="text-white/55 uppercase tracking-wider text-xs">
-                Alter
-              </dt>
-              <dd>{objects.age}</dd>
+        <div className="flex flex-col items-center gap-2">
+          <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
+            {objects.name}
+          </h1>
+          <Link href={`../${objects.category}`}>Zurück zu {objects.type}</Link>
+        </div>
+        <div className="max-w-6xl rounded-2xl border border-white/20 bg-black p-8 backdrop-blur-sm">
+          <div className="grid grid-cols-[320px_1fr] gap-10">
+            <div className="size-80">
+              <img
+                src={objects.displayImageUrl}
+                alt={objects.name}
+                className="w-full h-full object-contain"
+                loading="eager"
+              />
             </div>
-            <div className="flex flex-col gap-0.5">
-              <dt className="text-white/55 uppercase tracking-wider text-xs">
-                Durchmesser
-              </dt>
-              <dd>
-                {objects.diameter_km.toLocaleString("de-DE")} km
-              </dd>
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-3">
+                <p className="text-sm uppercase tracking-[0.25em] text-white/70">
+                  {objects.type}
+                </p>
+                <h2 className="text-4xl font-bold">{objects.name}</h2>
+                <p className="text-lg text-white/90">{objects.description}</p>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-base">
+                <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Alter
+                  </p>
+                  <p className="mt-1 text-lg">{objects.age}</p>
+                </div>
+                <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Durchmesser
+                  </p>
+                  <p className="mt-1 text-lg">{objects.diameter_km} km</p>
+                </div>
+                {objects.distance_from_sun_km && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Distanz zur Sonne
+                    </p>
+                    <p className="mt-1 text-lg">
+                      {objects.distance_from_sun_km} km
+                    </p>
+                  </div>
+                )}
+                {objects.numberOfMoons && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Monde
+                    </p>
+                    <p className="mt-1 text-lg">{objects.numberOfMoons}</p>
+                  </div>
+                )}
+              </div>
+              <div className="space-y-3">
+                <p className="text-xs uppercase tracking-widest text-white/70">
+                  Details
+                </p>
+                <p className="leading-relaxed text-white/90">
+                  {objects.detailedDescription}
+                </p>
+              </div>
+              {objects.moonNames && objects.moonNames.length > 0 && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Benannte Monde
+                  </p>
+                  <p className="text-white/90">
+                    {objects.moonNames.join(", ")}
+                  </p>
+                </div>
+              )}
+              {objects.missions && objects.missions.length > 0 && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Missionen
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {objects.missions.map((mission) => (
+                      <div
+                        key={`${mission.name}-${mission.year}`}
+                        className="rounded-xl border border-white/15 bg-white/5 p-4"
+                      >
+                        <p className="text-lg font-semibold">
+                          {mission.name} ({mission.year})
+                        </p>
+                        <p className="text-white/80">{mission.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {objects.atmosphere && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Atmosphäre
+                  </p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {objects.atmosphere.slice(0, 3).map((gas) => (
+                      <div
+                        key={`${gas.gas}`}
+                        className="rounded-xl border border-white/15 bg-white/5 p-4 w-full"
+                      >
+                        <p className="text-lg font-semibold">{gas.gas}</p>
+                        <p className="text-white/80">{gas.percentage} %</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {objects.atmosphereLayers && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Klima
+                  </p>
+                  <div className="space-y-8">
+                    <div className="grid grid-cols-3 gap-2">
+                      {objects.atmosphereLayers
+                        .slice(0, 3)
+                        .map((atmosphereLayer) => (
+                          <div
+                            key={`${atmosphereLayer.name}-${atmosphereLayer}`}
+                            className="rounded-xl border border-white/15 bg-white/5 p-4 w-full"
+                          >
+                            <p className="text-lg font-semibold">
+                              {atmosphereLayer.name}
+                            </p>
+                            <p className="text-white/80">
+                              {atmosphereLayer.temperature}
+                            </p>
+                            <p className="text-white/80">
+                              {atmosphereLayer.pressure}
+                            </p>
+                          </div>
+                        ))}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          Oberflächendruck
+                        </p>
+                        <p className="mt-1 text-lg">
+                          {objects.surface_pressure_bars} bar
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          Durchschnittstemperatur
+                        </p>
+                        <p className="mt-1 text-lg">
+                          {objects.average_temperature_celsius}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          Temperaturbereich
+                        </p>
+                        <p className="mt-1 text-lg">
+                          {objects.temperature_range}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          Windgeschwindigkeit
+                        </p>
+                        <p className="mt-1 text-lg">
+                          {objects.wind_speed_kmh} km/h
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                        <p className="text-xs uppercase tracking-widest text-white/70">
+                          Magnetfeld
+                        </p>
+                        <p className="mt-1 text-lg">{objects.magnetic_field}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {objects.timeline && objects.timeline.length > 0 && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Zeitstrahl
+                  </p>
+                  <div className="space-y-8 border-l-2">
+                    {objects.timeline.map((timeline) => (
+                      <div key={timeline.year} className="ml-4">
+                        <p className="text-white/70">
+                          {timeline.year < 0
+                            ? `${Math.abs(timeline.year)} v. Chr.`
+                            : timeline.year}
+                        </p>
+                        <p className="text-lg">{timeline.event}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </dl>
-          <div className="flex flex-col gap-6">
-            <p className="leading-relaxed text-white/90">{objects.description}</p>
-            <p className="leading-relaxed text-white/80 text-sm">
-              {objects.detailedDescription}
-            </p>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   );

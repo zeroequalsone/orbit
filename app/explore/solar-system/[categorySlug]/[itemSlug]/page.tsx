@@ -50,7 +50,9 @@ export default async function ItemPage({
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Durchmesser
                   </p>
-                  <p className="mt-1 text-lg">{objects.diameter_km} km</p>
+                  <p className="mt-1 text-lg">
+                    {objects.diameter_km.toLocaleString("de")} km
+                  </p>
                 </div>
                 {objects.distance_from_sun_km && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -58,7 +60,7 @@ export default async function ItemPage({
                       Distanz zur Sonne
                     </p>
                     <p className="mt-1 text-lg">
-                      {objects.distance_from_sun_km} km
+                      {objects.distance_from_sun_km.toLocaleString("de")} km
                     </p>
                   </div>
                 )}
@@ -70,6 +72,14 @@ export default async function ItemPage({
                     <p className="mt-1 text-lg">{objects.numberOfMoons}</p>
                   </div>
                 )}
+                {objects.discovered && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Entdecker
+                    </p>
+                    <p className="mt-1 text-lg">{objects.discovered}</p>
+                  </div>
+                )}
               </div>
               <div className="space-y-3">
                 <p className="text-xs uppercase tracking-widest text-white/70">
@@ -79,7 +89,7 @@ export default async function ItemPage({
                   {objects.detailedDescription}
                 </p>
               </div>
-              {objects.moonNames && objects.moonNames.length > 0 && (
+              {objects.moonNames && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Benannte Monde
@@ -87,6 +97,14 @@ export default async function ItemPage({
                   <p className="text-white/90">
                     {objects.moonNames.join(", ")}
                   </p>
+                </div>
+              )}
+              {objects.ringSystem == true && objects.ringDescription && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Ringsystem: {objects.ringSystem}
+                  </p>
+                  <p className="text-white/90">{objects.ringDescription}</p>
                 </div>
               )}
               {objects.missions && objects.missions.length > 0 && (
@@ -196,17 +214,15 @@ export default async function ItemPage({
                   </div>
                 </div>
               )}
-              {objects.timeline && objects.timeline.length > 0 && (
+              {objects.timeline && (
                 <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-widest text-white/70">
-                    Zeitstrahl
-                  </p>
+                  <p className="text-xs uppercase text-white/70">Zeitstrahl</p>
                   <div className="space-y-8 border-l-2">
                     {objects.timeline.map((timeline) => (
                       <div key={timeline.year} className="ml-4">
                         <p className="text-white/70">
                           {timeline.year < 0
-                            ? `${Math.abs(timeline.year)} v. Chr.`
+                            ? `${Math.abs(timeline.year).toLocaleString("de")} v. Chr.`
                             : timeline.year}
                         </p>
                         <p className="text-lg">{timeline.event}</p>

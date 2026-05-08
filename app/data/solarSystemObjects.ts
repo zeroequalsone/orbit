@@ -232,7 +232,7 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
       {
         name: "Artemis II",
-        year: 2025,
+        year: 2026,
         description: "Erster bemannter Flug um den Mond seit über 50 Jahren.",
       },
       {

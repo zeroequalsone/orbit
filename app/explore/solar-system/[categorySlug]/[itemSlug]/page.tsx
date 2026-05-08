@@ -102,7 +102,7 @@ export default async function ItemPage({
               {objects.ringSystem == true && objects.ringDescription && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-widest text-white/70">
-                    Benannte Monde
+                    Ringsystem: {objects.ringSystem}
                   </p>
                   <p className="text-white/90">{objects.ringDescription}</p>
                 </div>
@@ -214,7 +214,7 @@ export default async function ItemPage({
                   </div>
                 </div>
               )}
-              {objects.timeline && objects.timeline.length > 0 && (
+              {objects.timeline && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase text-white/70">Zeitstrahl</p>
                   <div className="space-y-8 border-l-2">

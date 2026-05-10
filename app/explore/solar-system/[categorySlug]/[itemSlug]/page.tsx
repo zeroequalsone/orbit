@@ -46,13 +46,19 @@ export default async function ItemPage({
                   </p>
                   <p className="mt-1 text-lg">{objects.age}</p>
                 </div>
+                {objects.rotation_period && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Tageslänge
+                    </p>
+                    <p className="mt-1 text-lg">{objects.rotation_period}</p>
+                  </div>
+                )}
                 <div className="rounded-xl border border-white/15 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Durchmesser
                   </p>
-                  <p className="mt-1 text-lg">
-                    {objects.diameter_km.toLocaleString("de")} km
-                  </p>
+                  <p className="mt-1 text-lg">{objects.diameter_km} km</p>
                 </div>
                 {objects.distance_from_sun_km && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -60,7 +66,7 @@ export default async function ItemPage({
                       Distanz zur Sonne
                     </p>
                     <p className="mt-1 text-lg">
-                      {objects.distance_from_sun_km.toLocaleString("de")} km
+                      {objects.distance_from_sun_km} km
                     </p>
                   </div>
                 )}
@@ -72,12 +78,66 @@ export default async function ItemPage({
                     <p className="mt-1 text-lg">{objects.numberOfMoons}</p>
                   </div>
                 )}
-                {objects.discovered && (
+                {objects.mass_kg && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
                     <p className="text-xs uppercase tracking-widest text-white/70">
-                      Entdecker
+                      Masse
                     </p>
-                    <p className="mt-1 text-lg">{objects.discovered}</p>
+                    <p className="mt-1 text-lg">{objects.mass_kg}</p>
+                  </div>
+                )}
+                {objects.gravity_m_s2 && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Fallbeschleunigung
+                    </p>
+                    <p className="mt-1 text-lg">{objects.gravity_m_s2}</p>
+                  </div>
+                )}
+                {objects.escape_velocity_km_s && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Fluchtgeschwindigkeit
+                    </p>
+                    <p className="mt-1 text-lg">
+                      {objects.escape_velocity_km_s}
+                    </p>
+                  </div>
+                )}
+                {objects.perihelion_km && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Sonnennächster Punkt
+                    </p>
+                    <p className="mt-1 text-lg">{objects.perihelion_km} km</p>
+                  </div>
+                )}
+                {objects.aphelion_km && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Sonnenfernster Punkt
+                    </p>
+                    <p className="mt-1 text-lg">{objects.aphelion_km} km</p>
+                  </div>
+                )}
+                {objects.orbital_period_days && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Umlaufzeit
+                    </p>
+                    <p className="mt-1 text-lg">
+                      {objects.orbital_period_days}
+                    </p>
+                  </div>
+                )}
+                {objects.axial_tilt_degrees && (
+                  <div className="rounded-xl border border-white/15 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-widest text-white/70">
+                      Achsenneigung
+                    </p>
+                    <p className="mt-1 text-lg">
+                      {objects.axial_tilt_degrees}°
+                    </p>
                   </div>
                 )}
               </div>
@@ -89,6 +149,14 @@ export default async function ItemPage({
                   {objects.detailedDescription}
                 </p>
               </div>
+              {objects.composition && (
+                <div className="space-y-3">
+                  <p className="text-xs uppercase tracking-widest text-white/70">
+                    Hauptbestandteile
+                  </p>
+                  <p className="text-white/90">{objects.composition}</p>
+                </div>
+              )}
               {objects.moonNames && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-widest text-white/70">
@@ -102,12 +170,12 @@ export default async function ItemPage({
               {objects.ringSystem == true && objects.ringDescription && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-widest text-white/70">
-                    Ringsystem: {objects.ringSystem}
+                    {objects.ringSystem}
                   </p>
                   <p className="text-white/90">{objects.ringDescription}</p>
                 </div>
               )}
-              {objects.missions && objects.missions.length > 0 && (
+              {objects.missions && (
                 <div className="space-y-3">
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Missionen
@@ -133,7 +201,7 @@ export default async function ItemPage({
                     Atmosphäre
                   </p>
                   <div className="grid grid-cols-3 gap-2">
-                    {objects.atmosphere.slice(0, 3).map((gas) => (
+                    {objects.atmosphere.map((gas) => (
                       <div
                         key={`${gas.gas}`}
                         className="rounded-xl border border-white/15 bg-white/5 p-4 w-full"
@@ -152,24 +220,22 @@ export default async function ItemPage({
                   </p>
                   <div className="space-y-8">
                     <div className="grid grid-cols-3 gap-2">
-                      {objects.atmosphereLayers
-                        .slice(0, 3)
-                        .map((atmosphereLayer) => (
-                          <div
-                            key={`${atmosphereLayer.name}-${atmosphereLayer}`}
-                            className="rounded-xl border border-white/15 bg-white/5 p-4 w-full"
-                          >
-                            <p className="text-lg font-semibold">
-                              {atmosphereLayer.name}
-                            </p>
-                            <p className="text-white/80">
-                              {atmosphereLayer.temperature}
-                            </p>
-                            <p className="text-white/80">
-                              {atmosphereLayer.pressure}
-                            </p>
-                          </div>
-                        ))}
+                      {objects.atmosphereLayers.map((atmosphereLayer) => (
+                        <div
+                          key={`${atmosphereLayer.name}-${atmosphereLayer}`}
+                          className="rounded-xl border border-white/15 bg-white/5 p-4 w-full"
+                        >
+                          <p className="text-lg font-semibold">
+                            {atmosphereLayer.name}
+                          </p>
+                          <p className="text-white/80">
+                            {atmosphereLayer.temperature}
+                          </p>
+                          <p className="text-white/80">
+                            {atmosphereLayer.pressure}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -185,7 +251,7 @@ export default async function ItemPage({
                           Durchschnittstemperatur
                         </p>
                         <p className="mt-1 text-lg">
-                          {objects.average_temperature_celsius}
+                          {objects.average_temperature_celsius} °C
                         </p>
                       </div>
                       <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -220,11 +286,7 @@ export default async function ItemPage({
                   <div className="space-y-8 border-l-2">
                     {objects.timeline.map((timeline) => (
                       <div key={timeline.year} className="ml-4">
-                        <p className="text-white/70">
-                          {timeline.year < 0
-                            ? `${Math.abs(timeline.year).toLocaleString("de")} v. Chr.`
-                            : timeline.year}
-                        </p>
+                        <p className="text-white/70">{timeline.year}</p>
                         <p className="text-lg">{timeline.event}</p>
                       </div>
                     ))}

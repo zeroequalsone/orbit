@@ -21,18 +21,18 @@ export type SolarSystemObject = {
   // Grunddaten
   age: string; // "4,6 Milliarden Jahre"
   composition?: string; // Hauptbestandteile
-  diameter_km: number; // Durchmesser
+  diameter_km: string; // Durchmesser
   mass_kg?: string; // "3,3 x 10^23 kg"
-  gravity_m_s2?: number; // Fallbeschleunigung
-  escape_velocity_km_s?: number; // Fluchtgeschwindigkeit
+  gravity_m_s2?: string; // Fallbeschleunigung
+  escape_velocity_km_s?: string; // Fluchtgeschwindigkeit
 
   // Position & Bewegung
-  distance_from_sun_km?: number; // Distanz von der Sonne
-  perihelion_km?: number; // sonnennächster Punkt
-  aphelion_km?: number; // sonnenfernster Punkt
-  orbital_period_days?: number; // Umlaufzeit
-  rotation_period_hours?: number; // Tageslänge
-  axial_tilt_degrees?: number; // Achsenneigung
+  distance_from_sun_km?: string; // Distanz von der Sonne
+  perihelion_km?: string; // sonnennächster Punkt
+  aphelion_km?: string; // sonnenfernster Punkt
+  orbital_period_days?: string; // Umlaufzeit
+  rotation_period?: string; // Tageslänge
+  axial_tilt_degrees?: string; // Achsenneigung
 
   // Atmosphäre & Klima
   atmosphere?: { gas: string; percentage: number }[];
@@ -50,14 +50,13 @@ export type SolarSystemObject = {
   ringDescription?: string;
 
   // Exploration
-  discovered?: string;
   missions?: ExplorationMission[];
 
   // Visuelles & Storytelling
   displayImageUrl: string;
   description: string; // kurze Einleitung
   detailedDescription: string; // ausführlicher Text
-  timeline?: { year: number; event: string }[];
+  timeline?: { year: string; event: string }[];
 
   // Navigation
   slug: string;
@@ -86,18 +85,18 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     age: "ca. 4,543 Milliarden Jahre",
     composition:
       "70% Ozeane, 30% Kontinentalplatten; Kern aus Eisen und Nickel, Mantel aus Silikatgestein",
-    diameter_km: 12_742,
+    diameter_km: "12,742",
     mass_kg: "5,972 x 10^24 kg",
-    gravity_m_s2: 9.807,
-    escape_velocity_km_s: 11.186,
+    gravity_m_s2: "9,81 m/s²",
+    escape_velocity_km_s: "11,2 km/s",
 
     // Position & Bewegung
-    distance_from_sun_km: 149_600_000,
-    perihelion_km: 147_095_000,
-    aphelion_km: 152_100_000,
-    orbital_period_days: 365.25,
-    rotation_period_hours: 23.934,
-    axial_tilt_degrees: 23.44,
+    distance_from_sun_km: "149,6 Millionen",
+    perihelion_km: "147,1 Millionen",
+    aphelion_km: "152,1 Millionen",
+    orbital_period_days: "1 Erdjahr",
+    rotation_period: "23,9 Stunden",
+    axial_tilt_degrees: "23,4",
 
     // Atmosphäre & Klima
     atmosphere: [
@@ -110,25 +109,25 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       {
         name: "Troposphäre",
         composition: [{ gas: "Luftgemisch", percentage: 100 }],
-        temperature: "-50°C bis 15°C",
+        temperature: "-50 °C bis 15 °C",
         pressure: "1,013 bar (NN)",
       },
       {
         name: "Stratosphäre",
         composition: [{ gas: "Ozon", percentage: 0.001 }],
-        temperature: "-50°C bis 0°C",
+        temperature: "-50 °C bis 0 °C",
         pressure: "0,001 bar",
       },
       {
         name: "Mesosphäre",
         composition: [{ gas: "Stickstoff/Sauerstoff", percentage: 100 }],
-        temperature: "-90°C bis -50°C",
+        temperature: "-90 °C bis -50 °C",
         pressure: "0,00001 bar",
       },
       {
         name: "Thermosphäre",
         composition: [{ gas: "Atomarer Sauerstoff", percentage: 100 }],
-        temperature: "500°C bis 1500°C",
+        temperature: "500 °C bis 1500 °C",
         pressure: "fast Vakuum",
       },
       {
@@ -151,7 +150,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     ringSystem: false,
 
     // Exploration
-    discovered: "Bekannt seit der Antike",
     missions: [
       {
         name: "V-2 Rakete No. 13",
@@ -250,10 +248,13 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     detailedDescription:
       "Unsere Heimatwelt zeichnet sich durch flüssiges Wasser an der Oberfläche, eine sauerstoffreiche Atmosphäre und ein starkes Magnetfeld aus, das uns vor kosmischer Strahlung schützt. Die Neigung der Erdachse sorgt für die Jahreszeiten, während der Mond die Gezeiten steuert und die Erdrotation stabilisiert.",
     timeline: [
-      { year: -4540000000, event: "Entstehung der Erde" },
-      { year: -3500000000, event: "Erstes Leben in den Ozeanen" },
+      { year: "4,54 Milliarden Jahre v. Chr.", event: "Entstehung der Erde" },
       {
-        year: 1961,
+        year: "3,5 Milliarden Jahre v. Chr.",
+        event: "Erstes Leben in den Ozeanen",
+      },
+      {
+        year: "1961",
         event: "Juri Gagarin erreicht als erster Mensch den Orbit",
       },
     ],

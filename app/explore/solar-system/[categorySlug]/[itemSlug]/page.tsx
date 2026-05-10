@@ -58,9 +58,7 @@ export default async function ItemPage({
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Durchmesser
                   </p>
-                  <p className="mt-1 text-lg">
-                    {objects.diameter_km.toLocaleString("de")} km
-                  </p>
+                  <p className="mt-1 text-lg">{objects.diameter_km} km</p>
                 </div>
                 {objects.distance_from_sun_km && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -68,7 +66,7 @@ export default async function ItemPage({
                       Distanz zur Sonne
                     </p>
                     <p className="mt-1 text-lg">
-                      {objects.distance_from_sun_km.toLocaleString("de")} km
+                      {objects.distance_from_sun_km} km
                     </p>
                   </div>
                 )}

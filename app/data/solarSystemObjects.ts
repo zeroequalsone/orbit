@@ -67,21 +67,134 @@ export const SolarSystemObjects: SolarSystemObject[] = [
   //   id: 0,
   //   name: "Sonne",
   // },
-  // {
-  //   id: 1,
-  //   name: "Merkur",
-  // },
-  // {
-  //   id: 2,
-  //   name: "Venus",
-  // },
+  {
+    id: 1,
+    name: "Merkur",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
+  {
+    id: 2,
+    name: "Venus",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
   {
     id: 3,
     name: "Erde",
     type: "Planet",
     category: "planets",
 
-    // Grunddaten
     age: "ca. 4,543 Milliarden Jahre",
     composition:
       "70% Ozeane, 30% Kontinentalplatten; Kern aus Eisen und Nickel, Mantel aus Silikatgestein",
@@ -90,7 +203,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     gravity_m_s2: "9,81 m/s²",
     escape_velocity_km_s: "11,2 km/s",
 
-    // Position & Bewegung
     distance_from_sun_km: "149,6 Millionen",
     perihelion_km: "147,1 Millionen",
     aphelion_km: "152,1 Millionen",
@@ -98,7 +210,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     rotation_period: "23,9 Stunden",
     axial_tilt_degrees: "23,4",
 
-    // Atmosphäre & Klima
     atmosphere: [
       { gas: "Stickstoff", percentage: 78.08 },
       { gas: "Sauerstoff", percentage: 20.95 },
@@ -138,18 +249,16 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
     ],
 
-    surface_pressure_bars: 1.013, // Oberflächendruck (bar)
-    average_temperature_celsius: 15, // Durchschnittstemperatur (°C)
-    temperature_range: "Min: -89°C / Max: 58°C", // Temperaturbereich
-    wind_speed_kmh: 408, // Windgeschwindigkeit (km/h)
-    magnetic_field: "Starkes globales Dipolfeld", // Magnetfeld
+    surface_pressure_bars: 1.013,
+    average_temperature_celsius: 15,
+    temperature_range: "Min: -89°C / Max: 58°C",
+    wind_speed_kmh: 408,
+    magnetic_field: "Starkes globales Dipolfeld",
 
-    // Monde & Ringsysteme
     numberOfMoons: 1,
     moonNames: ["Mond"],
     ringSystem: false,
 
-    // Exploration
     missions: [
       {
         name: "V-2 Rakete No. 13",
@@ -241,7 +350,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
     ],
 
-    // Visuelles & Storytelling
     displayImageUrl: "/explore/solar-system/planets/earth/Icon.webp",
     description:
       "Die Erde ist der dritte Planet im Sonnensystem und der einzige bekannte Ort, der Leben beherbergt.",
@@ -259,37 +367,321 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
     ],
 
-    // Navigation
     slug: "earth",
   },
   // {
   //   id: 4,
   //   name: "Mond",
   // },
-  // {
-  //   id: 5,
-  //   name: "Mars",
-  // },
+  {
+    id: 5,
+    name: "Mars",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
   // {
   //   id: 6,
   //   name: "Ceres",
   // },
-  // {
-  //   id: 7,
-  //   name: "Jupiter",
-  // },
-  // {
-  //   id: 8,
-  //   name: "Saturn",
-  // },
-  // {
-  //   id: 9,
-  //   name: "Uranus",
-  // },
-  // {
-  //   id: 10,
-  //   name: "Neptun",
-  // },
+  {
+    id: 7,
+    name: "Jupiter",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
+  {
+    id: 8,
+    name: "Saturn",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
+  {
+    id: 9,
+    name: "Uranus",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
+  {
+    id: 10,
+    name: "Neptun",
+    type: "",
+    category: "",
+
+    age: "ca.  Milliarden Jahre",
+    composition: "",
+    diameter_km: "",
+    mass_kg: " x  kg",
+    gravity_m_s2: " m/s²",
+    escape_velocity_km_s: " km/s",
+
+    distance_from_sun_km: " Millionen",
+    perihelion_km: " Millionen",
+    aphelion_km: " Millionen",
+    orbital_period_days: " Erdjahr",
+    rotation_period: " Stunden",
+    axial_tilt_degrees: "",
+
+    atmosphere: [
+      { gas: "", percentage:  },
+    ],
+    atmosphereLayers: [
+      {
+        name: "",
+        composition: [{ gas: "", percentage:  }],
+        temperature: " °C bis  °C",
+        pressure: " bar (NN)",
+      },
+    ],
+
+    surface_pressure_bars: ,
+    average_temperature_celsius: ,
+    temperature_range: "Min: °C / Max: °C",
+    wind_speed_kmh: ,
+    magnetic_field: "",
+
+    numberOfMoons: ,
+    moonNames: [""],
+    ringSystem: ,
+
+    missions: [
+      {
+        name: "",
+        year: ,
+        description: "",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system///Icon.webp",
+    description:
+      "",
+    detailedDescription:
+      "",
+    timeline: [
+      { year: " Milliarden Jahre v. Chr.", event: "" },
+    ],
+
+    slug: "",
+  },
   // {
   //   id: 11,
   //   name: "Pluto",

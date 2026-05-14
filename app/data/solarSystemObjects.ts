@@ -71,26 +71,219 @@ export const SolarSystemObjects: SolarSystemObject[] = [
   //   id: 1,
   //   name: "Merkur",
   // },
-  // {
-  //   id: 2,
-  //   name: "Venus",
-  // },
+  {
+    id: 2,
+    name: "Venus",
+    type: "Planet",
+    category: "planets",
+
+    age: "ca. 4,503 Milliarden Jahre",
+    composition:
+      "~80% vulkanische Ebenen; Kern aus Eisen und Nickel, Mantel und Kruste aus Silikatgestein.",
+    diameter_km: "12.104",
+    mass_kg: "4,867 x 10^24 kg",
+    gravity_m_s2: "8,87 m/s²",
+    escape_velocity_km_s: "10,36 km/s",
+
+    distance_from_sun_km: "108,2 Millionen",
+    perihelion_km: "107,5 Millionen",
+    aphelion_km: "108,9 Millionen",
+    orbital_period_days: "224,7 Erdtage",
+    rotation_period: "243 Erdtage",
+    axial_tilt_degrees: "177,4",
+
+    atmosphere: [
+      { gas: "Kohlenstoffdioxid", percentage: 96.5 },
+      { gas: "Stickstoff", percentage: 3.5 },
+    ],
+    atmosphereLayers: [
+      {
+        name: "Troposphäre",
+        composition: [{ gas: "Kohlenstoffdioxid", percentage: 96.5 }],
+        temperature: "460 °C",
+        pressure: "92 bar",
+      },
+      {
+        name: "Mesosphäre",
+        composition: [{ gas: "Schwefelsäure (Wolken)", percentage: 0.01 }],
+        temperature: "0 °C bis -100 °C",
+        pressure: "1 bar bis 0,1 bar",
+      },
+      {
+        name: "Thermosphäre",
+        composition: [{ gas: "Kohlenstoffdioxid/Stickstoff", percentage: 100 }],
+        temperature: "-100 °C bis 200 °C",
+        pressure: "fast Vakuum",
+      },
+      {
+        name: "Exosphäre",
+        composition: [{ gas: "Wasserstoff/Helium", percentage: 100 }],
+        temperature: "variabel",
+        pressure: "Vakuum",
+      },
+    ],
+
+    surface_pressure_bars: 92,
+    average_temperature_celsius: 464,
+    temperature_range: "Min: 437°C / Max: 497°C",
+    wind_speed_kmh: 360,
+    magnetic_field: "Induziertes Magnetfeld",
+
+    numberOfMoons: 0,
+    ringSystem: false,
+
+    missions: [
+      {
+        name: "Venera 1",
+        year: 1961,
+        description:
+          "Erster Vorbeiflug an der Venus (Kontakt ging jedoch verloren).",
+      },
+      {
+        name: "Mariner 2",
+        year: 1962,
+        description:
+          "Erster erfolgreicher Vorbeiflug; Bestätigung der hohen Oberflächentemperaturen.",
+      },
+      {
+        name: "Venera 4",
+        year: 1967,
+        description: "Erste chemische Analyse der Atmosphäre direkt vor Ort.",
+      },
+      {
+        name: "Venera 7",
+        year: 1970,
+        description:
+          "Erste erfolgreiche weiche Landung auf einem anderen Planeten.",
+      },
+      {
+        name: "Mariner 10",
+        year: 1974,
+        description:
+          "Vorbeiflug zur Nutzung der Schwerkraft (Gravity Assist) in Richtung Merkur.",
+      },
+      {
+        name: "Venera 9",
+        year: 1975,
+        description:
+          "Übermittlung der ersten Schwarz-Weiß-Panoramafotos von der Oberfläche.",
+      },
+      {
+        name: "Pioneer Venus Orbiter",
+        year: 1978,
+        description: "Langfristige Kartierung der Venus mittels Radar.",
+      },
+      {
+        name: "Venera 13",
+        year: 1982,
+        description: "Erste Farbfotos von der Oberfläche und Bodenanalyse.",
+      },
+      {
+        name: "Magellan",
+        year: 1989,
+        description: "Hochauflösende globale Radarkartierung der Oberfläche.",
+      },
+      {
+        name: "Venus Express",
+        year: 2005,
+        description:
+          "Langzeitmission der ESA zur Erforschung der atmosphärischen Dynamik.",
+      },
+      {
+        name: "Akatsuki",
+        year: 2010,
+        description:
+          "Japanische Sonde zur Untersuchung des Klimas und der Wolkenstrukturen.",
+      },
+      {
+        name: "Parker Solar Probe",
+        year: 2018,
+        description:
+          "Mehrfache Vorbeiflüge (bis 2024) zur Kurskorrektur Richtung Sonne.",
+      },
+      {
+        name: "BepiColombo",
+        year: 2020,
+        description: "Vorbeiflüge (2020/2021) auf dem Weg zum Merkur.",
+      },
+      {
+        name: "Solar Orbiter",
+        year: 2020,
+        description:
+          "Nutzt Venus-Vorbeiflüge (laufend bis 2026), um die Bahnneigung zu ändern.",
+      },
+    ],
+
+    displayImageUrl: "/explore/solar-system/planets/venus/Icon.webp",
+    description:
+      "Die Venus ist der zweite Planet im Sonnensystem und wird aufgrund ihrer ähnlichen Größe und Masse oft als 'Zwillingsschwester der Erde' bezeichnet.",
+    detailedDescription:
+      "Trotz ihrer Ähnlichkeit zur Erde ist die Venus eine lebensfeindliche Welt mit einem extremen Treibhauseffekt, der sie zum heißesten Planeten im Sonnensystem macht. Ihre dichte Atmosphäre aus Schwefelsäurewolken reflektiert das Sonnenlicht stark, weshalb sie als 'Abend- oder Morgenstern' hell am Himmel leuchtet. Eine Besonderheit ist ihre retrograde Rotation - sie dreht sich entgegengesetzt zur Umlaufrichtung der meisten anderen Planeten.",
+    timeline: [
+      { year: "4,5 Milliarden Jahre v. Chr.", event: "Entstehung der Venus" },
+      {
+        year: "vor ca. 3 - 4 Milliarden Jahren",
+        event:
+          "Vermutete Existenz von flüssigem Wasser oder Ozeanen vor dem einsetzenden Treibhauseffekt",
+      },
+      {
+        year: "vor ca. 700 Millionen Jahren",
+        event:
+          "Globales Resurfacing-Ereignis: Massive vulkanische Aktivität erneuert fast die gesamte Planetenoberfläche",
+      },
+      {
+        year: "1610",
+        event:
+          "Galileo Galilei beobachtet erstmals die Phasen der Venus, was das heliozentrische Weltbild stützt",
+      },
+      {
+        year: "1761",
+        event:
+          "Michail Lomonossow entdeckt während eines Venusdurchgangs die Atmosphäre des Planeten",
+      },
+      {
+        year: "1962",
+        event:
+          "Mariner 2 (USA) gelingt der erste erfolgreiche Vorbeiflug einer Raumsonde",
+      },
+      {
+        year: "1970",
+        event:
+          "Venera 7 (UdSSR) führt die erste erfolgreiche Landung und Datenübertragung von der Oberfläche aus",
+      },
+      {
+        year: "1975",
+        event:
+          "Venera 9 sendet die ersten Bilder von der extrem lebensfeindlichen Oberfläche",
+      },
+      {
+        year: "1990 - 1994",
+        event:
+          "Die Sonde Magellan kartiert mittels Radar 98 % der Oberfläche unter der dichten Wolkendecke",
+      },
+      {
+        year: "2020",
+        event:
+          "Mögliche Entdeckung von Phosphin in der Atmosphäre löst Debatten über potenzielles mikrobielles Leben aus",
+      },
+    ],
+
+    slug: "venus",
+  },
   {
     id: 3,
     name: "Erde",
     type: "Planet",
     category: "planets",
 
-    // Grunddaten
-    age: "ca. 4,543 Milliarden Jahre",
+    age: "4,543 Milliarden",
     composition:
       "70% Ozeane, 30% Kontinentalplatten; Kern aus Eisen und Nickel, Mantel aus Silikatgestein",
-    diameter_km: "12,742",
+    diameter_km: "12.742",
     mass_kg: "5,972 x 10^24 kg",
     gravity_m_s2: "9,81 m/s²",
     escape_velocity_km_s: "11,2 km/s",
 
-    // Position & Bewegung
     distance_from_sun_km: "149,6 Millionen",
     perihelion_km: "147,1 Millionen",
     aphelion_km: "152,1 Millionen",
@@ -98,7 +291,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
     rotation_period: "23,9 Stunden",
     axial_tilt_degrees: "23,4",
 
-    // Atmosphäre & Klima
     atmosphere: [
       { gas: "Stickstoff", percentage: 78.08 },
       { gas: "Sauerstoff", percentage: 20.95 },
@@ -115,7 +307,7 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       {
         name: "Stratosphäre",
         composition: [{ gas: "Ozon", percentage: 0.001 }],
-        temperature: "-50 °C bis 0 °C",
+        temperature: `-50 °C bis 0 °C`,
         pressure: "0,001 bar",
       },
       {
@@ -138,18 +330,16 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
     ],
 
-    surface_pressure_bars: 1.013, // Oberflächendruck (bar)
-    average_temperature_celsius: 15, // Durchschnittstemperatur (°C)
-    temperature_range: "Min: -89°C / Max: 58°C", // Temperaturbereich
-    wind_speed_kmh: 408, // Windgeschwindigkeit (km/h)
-    magnetic_field: "Starkes globales Dipolfeld", // Magnetfeld
+    surface_pressure_bars: 1.013,
+    average_temperature_celsius: 15,
+    temperature_range: "Min: -89°C / Max: 58°C",
+    wind_speed_kmh: 408,
+    magnetic_field: "Starkes globales Dipolfeld",
 
-    // Monde & Ringsysteme
     numberOfMoons: 1,
     moonNames: ["Mond"],
     ringSystem: false,
 
-    // Exploration
     missions: [
       {
         name: "V-2 Rakete No. 13",
@@ -233,15 +423,8 @@ export const SolarSystemObjects: SolarSystemObject[] = [
         year: 2026,
         description: "Erster bemannter Flug um den Mond seit über 50 Jahren.",
       },
-      {
-        name: "SMILE",
-        year: 2026,
-        description:
-          "Aktuelle Mission zur Erforschung der Wechselwirkung zwischen Sonnenwind und Magnetosphäre.",
-      },
     ],
 
-    // Visuelles & Storytelling
     displayImageUrl: "/explore/solar-system/planets/earth/Icon.webp",
     description:
       "Die Erde ist der dritte Planet im Sonnensystem und der einzige bekannte Ort, der Leben beherbergt.",
@@ -259,7 +442,6 @@ export const SolarSystemObjects: SolarSystemObject[] = [
       },
     ],
 
-    // Navigation
     slug: "earth",
   },
   // {

@@ -44,7 +44,7 @@ export default async function ItemPage({
                   <p className="text-xs uppercase tracking-widest text-white/70">
                     Alter
                   </p>
-                  <p className="mt-1 text-lg">{objects.age}</p>
+                  <p className="mt-1 text-lg">Ca. {objects.age} Jahre</p>
                 </div>
                 {objects.rotation_period && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
@@ -70,7 +70,7 @@ export default async function ItemPage({
                     </p>
                   </div>
                 )}
-                {objects.numberOfMoons && (
+                {objects.moonNames && (
                   <div className="rounded-xl border border-white/15 bg-white/5 p-4">
                     <p className="text-xs uppercase tracking-widest text-white/70">
                       Monde

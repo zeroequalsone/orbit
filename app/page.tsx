@@ -3,6 +3,7 @@ import Image from "next/image";
 async function getNasaData() {
   const apikey = process.env.NASA_APOD_API_KEY;
 
+  // ERROR HANDLING
   if (!apikey) {
     throw new Error(
       "NASA_APOD_API_KEY ist nicht in den Umgebungsvariablen definiert.",
@@ -18,8 +19,34 @@ async function getNasaData() {
     { next: { revalidate: 3600 } },
   );
 
+  // ERROR HANDLING
   if (!res.ok) {
-    throw new Error("Daten konnten nicht geladen werden");
+    switch (res.status) {
+      case 400:
+        throw new Error(
+          "Ungültige Anfrage (400) - diese Koordinaten existieren (noch) nicht im Universum.",
+        );
+      case 401:
+        throw new Error(
+          "Zugriff verweigert (401) - ohne gültige Berechtigung kein Zugang zum Kontrollzentrum.",
+        );
+      case 403:
+        throw new Error(
+          "Keine Berechtigung (403) - diese Sternenregion ist für deine Mission nicht freigegeben.",
+        );
+      case 404:
+        throw new Error(
+          "Nicht gefunden (404) - dieses Himmelsobjekt konnte im kosmischen Netz nicht lokalisiert werden.",
+        );
+      case 500:
+        throw new Error(
+          "Bordcomputer-Fehler (500) - ein unerwarteter Störimpuls hat das System beeinträchtigt.",
+        );
+      default:
+        throw new Error(
+          "Unbekannter Fehler - das Signal wurde von einem schwarzen Loch verschluckt.",
+        );
+    }
   }
 
   return res.json();

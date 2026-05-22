@@ -14,7 +14,6 @@ Hinweis: Die Demo wird von **Vercel** nach einem erfolgreichen PR-Merge **zeitve
 ![Solar System](./screenshots/solar-system-earth.png)
 ![Distance Calculator](./screenshots/distance-calculator.png)
 ![Landsat Name Generator](./screenshots/landsat-name-generator.png)
-![Explore Solar System Earth](./screenshots/explore-solar-system-planets-earth.png)
 
 ## Highlights
 

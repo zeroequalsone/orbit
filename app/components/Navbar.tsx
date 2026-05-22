@@ -14,9 +14,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div
-      className={"fixed w-full z-50 flex justify-center text-white bg-black/50"}
-    >
+    <div className={"fixed w-full z-50 flex justify-center bg-black/25"}>
       <div className="hidden lg:flex justify-between items-center pt-8 pb-8 lg:max-w-4/5 w-full uppercase">
         <Link href={"/"} className="text-2xl drop-shadow-sm drop-shadow-white">
           Orbit

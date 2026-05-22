@@ -29,7 +29,7 @@ const calculateTypeAmount = [
 
 export default function ExploreSolarSystem() {
   return (
-    <div className='flex justify-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
+    <div className="flex justify-center min-h-screen">
       <div className="flex items-center flex-col gap-20 w-4/5 py-52">
         <div className="flex flex-col items-center gap-2">
           <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">

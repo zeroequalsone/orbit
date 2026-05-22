@@ -56,9 +56,7 @@ export default async function Home() {
   const data = await getNasaData();
 
   return (
-    <div
-      className={`flex flex-col justify-center items-center min-h-screen bg-center bg-cover bg-[url("/BG.png")]`}
-    >
+    <div className={`flex flex-col justify-center items-center min-h-screen`}>
       <div className="flex flex-col justify-center items-center w-4/5 text-white">
         <div className="flex flex-col">
           <p className="text-5xl mb-12 font-extrabold uppercase tracking-widest text-center">

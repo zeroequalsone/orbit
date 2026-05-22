@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Tools() {
   return (
-    <div className='flex justify-center items-center min-h-screen bg-center bg-cover bg-[url("/planets/BG.png")] text-white'>
+    <div className="flex justify-center items-center min-h-screen">
       <div className="flex justify-center items-center flex-col gap-10 w-4/5">
         <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">Tools</h1>
         <div className="flex gap-10">

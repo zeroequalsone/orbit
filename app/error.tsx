@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Error({ error }: { error: Error }) {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-center bg-cover bg-[url('/BG.png')]">
-      <div className="flex flex-col justify-center items-center w-4/5 text-white">
+    <div className="flex flex-col justify-center items-center min-h-screen">
+      <div className="flex flex-col justify-center items-center w-4/5">
         <div className="flex flex-col items-center gap-10">
           <p className="text-7xl font-extrabold uppercase text-center tracking-[0.3em]">
             Error

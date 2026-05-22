@@ -20,7 +20,7 @@ export default function SolarSystem() {
     selectedPlanet.distanceFromSun / speedOfLight / 60;
 
   return (
-    <div className={`text-white min-h-screen scroll-smooth`}>
+    <div className={`min-h-screen bg-black`}>
       <section
         className={`min-h-screen bg-center bg-cover flex flex-col justify-center items-center`}
         style={{ backgroundImage: `url("${selectedPlanet.imageUrl}")` }}

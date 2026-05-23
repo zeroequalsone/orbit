@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-Die aktuelle Deploy-Version ist hier erreichbar: `https://orbit-two-sigma.vercel.app/`
+Die aktuelle Deploy-Version ist hier erreichbar: `https://orbit-two-sigma.vercel.app`
 
 Hinweis: Die Demo wird von **Vercel** nach einem erfolgreichen PR-Merge **zeitverzögert** aktualisiert und ist danach wieder **up to date** mit dem aktuellen Stand.
 

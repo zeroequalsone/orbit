@@ -14,8 +14,13 @@ async function getNasaData() {
     timeZone: "America/New_York",
   });
 
+  // const res = await fetch(
+  //   `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=${today}`,
+  //   { next: { revalidate: 3600 } },
+  // );
+
   const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=${today}`,
+    `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=2026-05-11`,
     { next: { revalidate: 3600 } },
   );
 
@@ -55,6 +60,9 @@ async function getNasaData() {
 export default async function Home() {
   const data = await getNasaData();
 
+  const isDirectVideo =
+    data.media_type === "video" && data.url.endsWith(".mp4");
+
   return (
     <div className={`flex flex-col justify-center items-center min-h-screen`}>
       <div className="flex flex-col justify-center items-center w-4/5 text-white">
@@ -64,14 +72,34 @@ export default async function Home() {
           </p>
           <div className="flex flex-row gap-16 items-center justify-center">
             <div className="h-120 w-120 relative">
-              <Image
-                src={data.url}
-                alt={data.title}
-                width={500}
-                height={500}
-                className="w-full h-full object-cover"
-                priority
-              />
+              {data.media_type === "image" ? (
+                <Image
+                  src={data.url}
+                  alt={data.title}
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover select-none"
+                  priority
+                />
+              ) : isDirectVideo ? (
+                <video
+                  src={data.url}
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover pointer-events-none select-none"
+                  muted
+                  autoPlay
+                  loop
+                />
+              ) : (
+                <iframe
+                  src={`${data.url}&autoplay=1&mute=1&loop=1&controls=0&playlist=${data.url.split("/").pop()?.split("?")[0]}`}
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover pointer-events-none select-none"
+                  allow="autoplay"
+                />
+              )}
               <p className="text-xl font-semibold italic mt-4">
                 ”{data.title}”
               </p>

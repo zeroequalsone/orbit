@@ -14,13 +14,8 @@ async function getNasaData() {
     timeZone: "America/New_York",
   });
 
-  // const res = await fetch(
-  //   `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=${today}`,
-  //   { next: { revalidate: 3600 } },
-  // );
-
   const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=2026-05-11`,
+    `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=${today}`,
     { next: { revalidate: 3600 } },
   );
 

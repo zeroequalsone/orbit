@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 
 import { Montserrat } from "next/font/google";
+import Footer from "./components/Footer";
 
 const montserratFont = Montserrat({
   subsets: ["latin"],
@@ -24,9 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${montserratFont.className} bg-black bg-[url("/BG.png")] bg-center bg-cover text-white`}>
+      <body
+        className={`antialiased ${montserratFont.className} bg-black bg-[url("/BG.png")] bg-center bg-cover text-white`}
+      >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

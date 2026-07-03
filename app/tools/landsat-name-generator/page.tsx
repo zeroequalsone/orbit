@@ -4,6 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { landsatLetters } from "@/data/landsatLetters";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+type LandsatImageInfo = {
+  letter: string;
+  url: string;
+  locationCoordinates: string;
+};
 
 export default function LandSatNameGenerator() {
   const router = useRouter();
@@ -11,29 +18,41 @@ export default function LandSatNameGenerator() {
   const ref = useRef<HTMLDivElement>(null);
 
   const [name, setName] = useState("");
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<LandsatImageInfo[]>([]);
 
   const generateImages = (name: string) => {
-    const imageList: string[] = [];
-    const letterArray = [...name];
+    if (name.length <= 0) return;
 
-    letterArray.forEach((letter) => {
-      const imageLetterList = landsatLetters.find(
-        (checkLetter) => checkLetter.letter === letter,
-      );
+    const letters = [...name];
 
-      const imagesArray = imageLetterList?.images;
+    const imageInfos = letters
+      .map((letter) => {
+        const letterEntry = landsatLetters.find(
+          (entry) => entry.letter.toLowerCase() === letter.toLowerCase(),
+        );
 
-      if (!imagesArray) return;
+        if (
+          !letterEntry ||
+          !letterEntry.images ||
+          letterEntry.images.length === 0
+        )
+          return null;
 
-      const randomIndex = Math.floor(Math.random() * imagesArray.length);
+        const randomIndex = Math.floor(
+          Math.random() * letterEntry.images.length,
+        );
 
-      const randomImage = imagesArray[randomIndex].url;
+        const randomImage = letterEntry.images[randomIndex];
 
-      imageList.push(randomImage);
-    });
+        return {
+          letter,
+          url: randomImage.url,
+          locationCoordinates: randomImage.locationCoordinates,
+        };
+      })
+      .filter((info): info is LandsatImageInfo => info !== null);
 
-    setImages(imageList);
+    setImages(imageInfos);
   };
 
   const onDownloadClick = useCallback(() => {
@@ -74,17 +93,23 @@ export default function LandSatNameGenerator() {
               </button>
             </div>
           </div>
-          <div ref={ref} className="flex flex-wrap gap-4 justify-center h-72">
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`Letter ${index + 1}`}
-                className="h-full"
-              />
+          <div ref={ref} className="flex flex-wrap gap-4 justify-center">
+            {images.map((randomImage, idx) => (
+              <Link
+                className="h-80"
+                key={`${randomImage.letter}-${randomImage.locationCoordinates}-${idx}`}
+                href={`https://www.google.com/maps?q=${encodeURIComponent(randomImage.locationCoordinates)}`}
+                target="_blank"
+              >
+                <img
+                  src={randomImage.url}
+                  alt={`Letter ${randomImage.letter}`}
+                  className="h-full"
+                />
+              </Link>
             ))}
           </div>
-          <div className="flex text-white bg-black/50 w-fit p-8 gap-4 rounded-xl">
+          <div className="flex text-white bg-black/50 p-8 gap-4 rounded-xl">
             <input
               type="text"
               value={name}
@@ -92,15 +117,13 @@ export default function LandSatNameGenerator() {
               onChange={(e) =>
                 setName(e.target.value.replace(/[^A-Za-z]/g, ""))
               }
-              onKeyDown={(e) =>
-                e.key === "Enter" && name.length > 0 && generateImages(name)
-              }
+              onKeyDown={(e) => e.key === "Enter" && generateImages(name)}
               maxLength={25}
               autoFocus
             />
             <button
               className="border-2 p-4 rounded-xl cursor-pointer"
-              onClick={() => name.length > 0 && generateImages(name)}
+              onClick={() => generateImages(name)}
             >
               Enter
             </button>

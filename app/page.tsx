@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getNasaData } from "./data/lib/nasaData";
+import { getYoutubeEmbedUrl } from "./data/lib/nasaEmbedUrl";
 
 export default async function Home() {
   const data = await getNasaData();
@@ -37,7 +38,7 @@ export default async function Home() {
                 />
               ) : (
                 <iframe
-                  src={`${data.url}&autoplay=1&mute=1&loop=1&controls=0&playlist=${data.url.split("/").pop()?.split("?")[0]}`}
+                  src={getYoutubeEmbedUrl(data.url)}
                   width={500}
                   height={500}
                   className="w-full h-full object-cover pointer-events-none select-none"

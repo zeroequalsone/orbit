@@ -135,13 +135,13 @@ export default function SolarSystem() {
       </section>
       <section
         className="min-h-screen bg-center bg-cover flex justify-center items-center"
-        style={{ backgroundImage: `url('${selectedPlanet.sectionOneUrl}')` }}
+        style={{ backgroundImage: `url('${selectedPlanet.section[0]}')` }}
       >
         <div className="flex w-4/5 gap-14">
           <p
             className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
             style={{
-              backgroundImage: `url('${selectedPlanet.sectionOneUrl}')`,
+              backgroundImage: `url('${selectedPlanet.section[0]}')`,
             }}
           >
             01
@@ -213,7 +213,7 @@ export default function SolarSystem() {
             <p
               className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-center"
               style={{
-                backgroundImage: `url('${selectedPlanet.sectionTwoUrl}')`,
+                backgroundImage: `url('${selectedPlanet.section[1]}')`,
               }}
             >
               02
@@ -232,7 +232,7 @@ export default function SolarSystem() {
         <div
           className="min-h-screen bg-center bg-cover flex justify-center items-center w-full flex-col gap-40"
           style={{
-            backgroundImage: `url('${selectedPlanet.sectionTwoUrl}')`,
+            backgroundImage: `url('${selectedPlanet.section[1]}')`,
           }}
         >
           <div className="flex max-w-4/5 justify-end">
@@ -246,18 +246,23 @@ export default function SolarSystem() {
                 </p>
               </div>
               <div className="flex flex-col gap-10 text-neutral-300 w-3/5">
-                <div className="flex gap-4 items-center">
-                  <ThermometerHotIcon size={32} className="shrink-0" />
-                  <p>{selectedPlanet.quickFacts1}</p>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <LightningIcon size={32} className="shrink-0" />
-                  <p>{selectedPlanet.quickFacts2}</p>
-                </div>
-                <div className="flex gap-4 items-center">
-                  <ClockIcon size={32} className="shrink-0" />
-                  <p>{selectedPlanet.quickFacts3}</p>
-                </div>
+                {selectedPlanet.quickFacts.map((quickFact) => (
+                  <div
+                    key={`${quickFact.id}-${quickFact.text}`}
+                    className="flex gap-4 items-center"
+                  >
+                    {quickFact.id === 1 && (
+                      <ThermometerHotIcon size={32} className="shrink-0" />
+                    )}
+                    {quickFact.id === 2 && (
+                      <LightningIcon size={32} className="shrink-0" />
+                    )}
+                    {quickFact.id === 3 && (
+                      <ClockIcon size={32} className="shrink-0" />
+                    )}
+                    <p>{quickFact.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -268,7 +273,7 @@ export default function SolarSystem() {
           <p
             className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-position-[left_40rem_top_40rem]"
             style={{
-              backgroundImage: `url('${selectedPlanet.sectionThreeUrl}')`,
+              backgroundImage: `url('${selectedPlanet.section[2]}')`,
             }}
           >
             03

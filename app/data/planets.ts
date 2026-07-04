@@ -13,10 +13,7 @@ export type Planet = {
   funFact: string;
   imageUrl: string;
   iconUrl: string;
-  sectionOneUrl: string;
-  sectionTwoUrl: string;
-  sectionThreeUrl: string;
-  sectionFourUrl: string;
+  section: string[];
   descriptionLong: string;
   descriptionShort: string;
   inDepthDescription: string;
@@ -25,9 +22,7 @@ export type Planet = {
   featureInfo: string;
   planetType: "Gesteinsplanet" | "Gasriese" | "Eisriese" | "Stern";
   astronomicalUnit: number;
-  quickFacts1: string;
-  quickFacts2: string;
-  quickFacts3: string;
+  quickFacts: { id: number; text: string }[];
   gForce: number;
   funFactWeight: string;
 };
@@ -55,10 +50,12 @@ export const planets: Planet[] = [
       "Die Sonne macht 99,86 % der gesamten Masse unseres Sonnensystems aus.",
     imageUrl: "/explore/solar-system/stars/sun/BG.webp",
     iconUrl: "/explore/solar-system/stars/sun/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/stars/sun/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/stars/sun/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/stars/sun/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/stars/sun/Section4.webp",
+    section: [
+      "/explore/solar-system/stars/sun/Section1.webp",
+      "/explore/solar-system/stars/sun/Section2.webp",
+      "/explore/solar-system/stars/sun/Section3.webp",
+      "/explore/solar-system/stars/sun/Section4.webp",
+    ],
     descriptionLong:
       "Die Sonne ist das Herzstück unseres Sonnensystems. Dieser gelbe Zwergstern liefert durch Kernfusion in seinem Inneren die Energie, die das Leben auf der Erde ermöglicht. Ihre gewaltige Schwerkraft hält alle Planeten auf ihren Umlaufbahnen.",
     descriptionShort:
@@ -72,12 +69,20 @@ export const planets: Planet[] = [
       "In ihrem Inneren verschmilzt die Sonne Wasserstoff zu Helium. Dieser Prozess setzt gigantische Mengen an Energie in Form von Licht und Wärme frei, die nach etwa 8 Minuten und 20 Sekunden die Erde erreichen.",
     planetType: "Stern",
     astronomicalUnit: 0.0,
-    quickFacts1:
-      "Licht benötigt etwa 8 Minuten und 20 Sekunden, um von der Sonne zur Erde zu gelangen.",
-    quickFacts2:
-      "Über eine Million Erden würden in das Innere der Sonne passen.",
-    quickFacts3:
-      "Die Sonne verliert pro Sekunde etwa 4 Millionen Tonnen an Masse durch Energieabstrahlung.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Licht benötigt etwa 8 Minuten und 20 Sekunden, um von der Sonne zur Erde zu gelangen.",
+      },
+      {
+        id: 2,
+        text: "Über eine Million Erden würden in das Innere der Sonne passen.",
+      },
+      {
+        id: 3,
+        text: "Die Sonne verliert pro Sekunde etwa 4 Millionen Tonnen an Masse durch Energieabstrahlung.",
+      },
+    ],
     gForce: 0,
     funFactWeight: "",
   },
@@ -103,10 +108,12 @@ export const planets: Planet[] = [
       "Ein Tag auf Merkur dauert 176 Erdtage - doppelt so lang wie sein ganzes Jahr.",
     imageUrl: "/explore/solar-system/planets/mercury/BG.webp",
     iconUrl: "/explore/solar-system/planets/mercury/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/mercury/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/mercury/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/mercury/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/mercury/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/mercury/Section1.webp",
+      "/explore/solar-system/planets/mercury/Section2.webp",
+      "/explore/solar-system/planets/mercury/Section3.webp",
+      "/explore/solar-system/planets/mercury/Section4.webp",
+    ],
     descriptionLong:
       "Der Merkur ist der innerste Planet unseres Sonnensystems und der Sonne am nächsten. Er ist ein kleiner, felsiger Planet mit extremen Temperaturschwankungen - tagsüber glühend heiß und nachts eisig kalt - und besitzt weder eine nennenswerte Atmosphäre noch Monde.",
     descriptionShort: "Merkur ist nach dem römischen Götterboten benannt.",
@@ -119,12 +126,20 @@ export const planets: Planet[] = [
       "Auf dem Merkur herrschen extreme Temperaturschwankungen, da der Planet praktisch keine schützende Atmosphäre besitzt. Tagsüber können über 400 °C erreicht werden, während die Temperaturen nachts auf etwa -180 °C fallen. Diese Unterschiede gehören zu den größten im gesamten Sonnensystem.",
     planetType: "Gesteinsplanet",
     astronomicalUnit: 0.39,
-    quickFacts1:
-      "Extreme Temperaturschwankungen von über 600 °C zwischen Tag und Nacht.",
-    quickFacts2:
-      "Kein nennenswertes Magnetfeld - Sonnenwinde treffen direkt auf die Oberfläche.",
-    quickFacts3:
-      "Ein Tag dauert doppelt so lang wie ein Merkur-Jahr (176 Erdtage).",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Extreme Temperaturschwankungen von über 600 °C zwischen Tag und Nacht.",
+      },
+      {
+        id: 2,
+        text: "Kein nennenswertes Magnetfeld - Sonnenwinde treffen direkt auf die Oberfläche.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert doppelt so lang wie ein Merkur-Jahr (176 Erdtage).",
+      },
+    ],
     gForce: 3.7,
     funFactWeight:
       "Du würdest nur etwa ein Drittel wiegen - perfekt, um riesige Schritte zu machen!",
@@ -149,10 +164,12 @@ export const planets: Planet[] = [
       "Der heißeste Planet, obwohl er nicht der sonnennächste ist. (über 460°C)",
     imageUrl: "/explore/solar-system/planets/venus/BG.webp",
     iconUrl: "/explore/solar-system/planets/venus/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/venus/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/venus/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/venus/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/venus/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/venus/Section1.webp",
+      "/explore/solar-system/planets/venus/Section2.webp",
+      "/explore/solar-system/planets/venus/Section3.webp",
+      "/explore/solar-system/planets/venus/Section4.webp",
+    ],
     descriptionLong:
       "Die Venus ist der zweite Planet von der Sonne aus gesehen und der hellste Planet am Nachthimmel. Sie ist der Erde in Größe und Aufbau ähnlich, besitzt jedoch eine dichte, giftige Atmosphäre, die einen extremen Treibhauseffekt verursacht und sie zum heißesten Planeten im Sonnensystem macht.",
     descriptionShort: "Venus ist nach der römischen Göttin der Liebe benannt.",
@@ -165,12 +182,20 @@ export const planets: Planet[] = [
       "Die Venus besitzt eine dichte Atmosphäre aus Kohlendioxid, die einen extremen Treibhauseffekt verursacht. Dadurch wird Wärme nahezu vollständig eingeschlossen, was zu Oberflächentemperaturen von über 460 °C führt. Selbst Merkur, der näher an der Sonne ist, bleibt deutlich kälter.",
     planetType: "Gesteinsplanet",
     astronomicalUnit: 0.72,
-    quickFacts1:
-      "Oberflächentemperaturen von rund 464 °C - heißer als Merkur durch extremen Treibhauseffekt.",
-    quickFacts2:
-      "Dichte Atmosphäre aus Kohlendioxid mit Schwefelsäurewolken erzeugt enormen Druck.",
-    quickFacts3:
-      "Ein Tag dauert länger als ein Venus-Jahr (243 vs. 225 Erdtage).",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Oberflächentemperaturen von rund 464 °C - heißer als Merkur durch extremen Treibhauseffekt.",
+      },
+      {
+        id: 2,
+        text: "Dichte Atmosphäre aus Kohlendioxid mit Schwefelsäurewolken erzeugt enormen Druck.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert länger als ein Venus-Jahr (243 vs. 225 Erdtage).",
+      },
+    ],
     gForce: 8.87,
     funFactWeight:
       "Fast wie auf der Erde - dein Gewicht bleibt ähnlich, nur die Hitze wäre das größere Problem.",
@@ -194,10 +219,12 @@ export const planets: Planet[] = [
     funFact: "Der einzig bekannte Ort mit Leben. (Hier lebst du. 👀)",
     imageUrl: "/explore/solar-system/planets/earth/BG.webp",
     iconUrl: "/explore/solar-system/planets/earth/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/earth/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/earth/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/earth/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/earth/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/earth/Section1.webp",
+      "/explore/solar-system/planets/earth/Section2.webp",
+      "/explore/solar-system/planets/earth/Section3.webp",
+      "/explore/solar-system/planets/earth/Section4.webp",
+    ],
     descriptionLong:
       "Die Erde ist der dritte Planet von der Sonne und der einzige bekannte Planet, auf dem Leben existiert. Sie ist ein felsiger Planet mit einer schützenden Atmosphäre, großen Ozeanen aus flüssigem Wasser und einem Mond, der Gezeiten erzeugt und die Erdachse stabilisiert.",
     descriptionShort: "Erde stammt aus dem Althochdeutschen.",
@@ -210,11 +237,20 @@ export const planets: Planet[] = [
       "Die Erde ist der einzige bekannte Planet mit stabilen großen Mengen flüssigen Wassers an der Oberfläche. Dieses Wasser bedeckt etwa 70 % des Planeten und spielt eine entscheidende Rolle für Klima, Wetter und Leben. Es ermöglicht komplexe Ökosysteme und eine außergewöhnliche Vielfalt an Lebensformen.",
     planetType: "Gesteinsplanet",
     astronomicalUnit: 1.0,
-    quickFacts1:
-      "Durchschnittstemperatur von etwa 15 °C - ideal für flüssiges Wasser.",
-    quickFacts2:
-      "Starkes Magnetfeld schützt vor schädlicher kosmischer Strahlung.",
-    quickFacts3: "Ein Tag dauert 24 Stunden, ein Jahr 365,25 Tage.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Durchschnittstemperatur von etwa 15 °C - ideal für flüssiges Wasser.",
+      },
+      {
+        id: 2,
+        text: "Starkes Magnetfeld schützt vor schädlicher kosmischer Strahlung.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert 24 Stunden, ein Jahr 365,25 Tage.",
+      },
+    ],
     gForce: 9.81,
     funFactWeight:
       "Hier bist du in Bestform - dein gewohntes Gewicht, keine Überraschungen!",
@@ -239,10 +275,12 @@ export const planets: Planet[] = [
     funFact: "Der höchste Berg des Sonnensystems. (22 km - 3x Mount Everest)",
     imageUrl: "/explore/solar-system/planets/mars/BG.webp",
     iconUrl: "/explore/solar-system/planets/mars/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/mars/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/mars/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/mars/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/mars/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/mars/Section1.webp",
+      "/explore/solar-system/planets/mars/Section2.webp",
+      "/explore/solar-system/planets/mars/Section3.webp",
+      "/explore/solar-system/planets/mars/Section4.webp",
+    ],
     descriptionLong:
       'Der Mars ist der vierte Planet von der Sonne aus gesehen und wird wegen seiner rötlichen Oberfläche auch der "Rote Planet" genannt. Er ist kleiner als die Erde, besitzt eine dünne Atmosphäre, gewaltige Vulkane und Schluchten und gilt als einer der vielversprechendsten Kandidaten für vergangenes Leben.',
     descriptionShort: "Mars ist nach dem römischen Kriegsgott benannt.",
@@ -255,11 +293,20 @@ export const planets: Planet[] = [
       "Der Olympus Mons auf dem Mars ist der größte Vulkan im gesamten Sonnensystem. Mit einer Höhe von etwa 22 Kilometern überragt er selbst die höchsten Berge der Erde deutlich. Seine enorme Größe ist auf die geringe Schwerkraft und fehlende Plattentektonik des Mars zurückzuführen.",
     planetType: "Gesteinsplanet",
     astronomicalUnit: 1.52,
-    quickFacts1:
-      "Durchschnittstemperaturen um -65 °C, mit starken Schwankungen.",
-    quickFacts2:
-      "Dünne Atmosphäre bietet kaum Schutz vor Strahlung und Meteoroiden.",
-    quickFacts3: "Ein Tag dauert 24,7 Stunden, ein Jahr 687 Erdtage.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Durchschnittstemperaturen um -65 °C, mit starken Schwankungen.",
+      },
+      {
+        id: 2,
+        text: "Dünne Atmosphäre bietet kaum Schutz vor Strahlung und Meteoroiden.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert 24,7 Stunden, ein Jahr 687 Erdtage.",
+      },
+    ],
     gForce: 3.72,
     funFactWeight:
       "Du wiegst nur rund 38 % - ideal, um dich wie ein Superheld zu fühlen!",
@@ -284,10 +331,12 @@ export const planets: Planet[] = [
       "Sein roter Fleck ist ein Sturm, der größer als die Erde ist. (16.350 km)",
     imageUrl: "/explore/solar-system/planets/jupiter/BG.webp",
     iconUrl: "/explore/solar-system/planets/jupiter/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/jupiter/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/jupiter/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/jupiter/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/jupiter/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/jupiter/Section1.webp",
+      "/explore/solar-system/planets/jupiter/Section2.webp",
+      "/explore/solar-system/planets/jupiter/Section3.webp",
+      "/explore/solar-system/planets/jupiter/Section4.webp",
+    ],
     descriptionLong:
       "Der Jupiter ist der fünfte Planet von der Sonne aus gesehen und der größte im Sonnensystem. Er ist ein Riesenplanet mit einer Masse, die ein Tausendstel der Sonnenmasse beträgt, aber zweieinhalb Mal so groß ist wie die aller anderen Planeten im Sonnensystem zusammen.",
     descriptionShort:
@@ -301,11 +350,20 @@ export const planets: Planet[] = [
       "Der Große Rote Fleck auf Jupiter ist ein gewaltiger Sturm, der seit über 300 Jahren beobachtet wird. Er ist so groß, dass die Erde problemlos hineinpassen würde, und rotiert gegen den Uhrzeigersinn. Trotz seiner langen Existenz verändert er ständig Form, Farbe und Intensität.",
     planetType: "Gasriese",
     astronomicalUnit: 5.2,
-    quickFacts1: "Temperaturen von etwa -145 °C in den Wolkenobergrenzen.",
-    quickFacts2:
-      "Stärkstes Magnetfeld im Sonnensystem und gewaltige Stürme wie der Große Rote Fleck.",
-    quickFacts3:
-      "Ein Tag dauert nur etwa 10 Stunden, ein Jahr knapp 12 Erdenjahre.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Temperaturen von etwa -145 °C in den Wolkenobergrenzen.",
+      },
+      {
+        id: 2,
+        text: "Stärkstes Magnetfeld im Sonnensystem und gewaltige Stürme wie der Große Rote Fleck.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert nur etwa 10 Stunden, ein Jahr knapp 12 Erdenjahre.",
+      },
+    ],
     gForce: 24.79,
     funFactWeight:
       "Mehr als doppelt so schwer - Aufstehen wäre schon ein Workout für sich!",
@@ -330,10 +388,12 @@ export const planets: Planet[] = [
       "Saturn würde oben schwimmen - gäbe es ein Meer, das groß genug ist.",
     imageUrl: "/explore/solar-system/planets/saturn/BG.webp",
     iconUrl: "/explore/solar-system/planets/saturn/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/saturn/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/saturn/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/saturn/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/saturn/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/saturn/Section1.webp",
+      "/explore/solar-system/planets/saturn/Section2.webp",
+      "/explore/solar-system/planets/saturn/Section3.webp",
+      "/explore/solar-system/planets/saturn/Section4.webp",
+    ],
     descriptionLong:
       "Der Saturn ist der sechste Planet von der Sonne und bekannt für sein beeindruckendes Ringsystem. Er ist ein Gasriese mit geringer Dichte, sodass er theoretisch auf Wasser schwimmen könnte, und besitzt zahlreiche Monde, darunter einige mit unterirdischen Ozeanen.",
     descriptionShort:
@@ -347,11 +407,20 @@ export const planets: Planet[] = [
       "Das Ringsystem des Saturns besteht aus Milliarden von Eis- und Gesteinspartikeln, die den Planeten in mehreren klar abgegrenzten Bändern umkreisen. Diese Ringe variieren stark in Dichte und Breite und zählen zu den auffälligsten Strukturen im gesamten Sonnensystem.",
     planetType: "Gasriese",
     astronomicalUnit: 9.58,
-    quickFacts1: "Temperaturen um -180 °C in der oberen Atmosphäre.",
-    quickFacts2:
-      "Bekannt für sein ausgeprägtes Ringsystem aus Eis und Gestein.",
-    quickFacts3:
-      "Ein Tag dauert etwa 10,7 Stunden, ein Jahr rund 29,5 Erdenjahre.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Temperaturen um -180 °C in der oberen Atmosphäre.",
+      },
+      {
+        id: 2,
+        text: "Bekannt für sein ausgeprägtes Ringsystem aus Eis und Gestein.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert etwa 10,7 Stunden, ein Jahr rund 29,5 Erdenjahre.",
+      },
+    ],
     gForce: 10.44,
     funFactWeight:
       "Nur ein bisschen schwerer als auf der Erde - aber auf seinen Ringen würdest du sowieso nicht stehen können.",
@@ -376,10 +445,12 @@ export const planets: Planet[] = [
     funFact: "Er rollt durchs All. Seine Achse ist um 97.8° gekippt.",
     imageUrl: "/explore/solar-system/planets/uranus/BG.webp",
     iconUrl: "/explore/solar-system/planets/uranus/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/uranus/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/uranus/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/uranus/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/uranus/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/uranus/Section1.webp",
+      "/explore/solar-system/planets/uranus/Section2.webp",
+      "/explore/solar-system/planets/uranus/Section3.webp",
+      "/explore/solar-system/planets/uranus/Section4.webp",
+    ],
     descriptionLong:
       'Der Uranus, der siebte Planet von der Sonne, gehört zu den Eisriesen und zeichnet sich durch eine auffällige bläulich-grüne Farbe aus. Besonders bemerkenswert ist seine stark gekippte Rotationsachse, wodurch der Planet fast "seitwärts" rotiert und außergewöhnlich extreme, langanhaltende Jahreszeiten durchlebt.',
     descriptionShort: "Uranus ist nach dem griechischen Himmelsgott benannt.",
@@ -392,11 +463,20 @@ export const planets: Planet[] = [
       "Uranus rotiert nahezu auf der Seite, da seine Achse um etwa 97,8° geneigt ist. Dadurch erlebt der Planet extreme Jahreszeiten, bei denen ein Pol über Jahrzehnte hinweg ständig von der Sonne beleuchtet wird, während der andere im Dunkeln liegt.",
     planetType: "Eisriese",
     astronomicalUnit: 19.21,
-    quickFacts1:
-      "Extrem kalte Temperaturen bis zu -224 °C - einer der kältesten Planeten.",
-    quickFacts2:
-      'Achse stark gekippt (97,8°), sodass er "auf der Seite" rotiert.',
-    quickFacts3: "Ein Tag dauert etwa 17 Stunden, ein Jahr 84 Erdenjahre.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Extrem kalte Temperaturen bis zu -224 °C - einer der kältesten Planeten.",
+      },
+      {
+        id: 2,
+        text: 'Achse stark gekippt (97,8°), sodass er "auf der Seite" rotiert.',
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert etwa 17 Stunden, ein Jahr 84 Erdenjahre.",
+      },
+    ],
     gForce: 8.69,
     funFactWeight:
       "Etwas leichter als auf der Erde - du könntest ein kleines bisschen höher springen.",
@@ -421,10 +501,12 @@ export const planets: Planet[] = [
     funFact: "Die schnellsten Winde im Sonnensystem. (über 2000 km/h)",
     imageUrl: "/explore/solar-system/planets/neptune/BG.webp",
     iconUrl: "/explore/solar-system/planets/neptune/Icon.webp",
-    sectionOneUrl: "/explore/solar-system/planets/neptune/Section1.webp",
-    sectionTwoUrl: "/explore/solar-system/planets/neptune/Section2.webp",
-    sectionThreeUrl: "/explore/solar-system/planets/neptune/Section3.webp",
-    sectionFourUrl: "/explore/solar-system/planets/neptune/Section4.webp",
+    section: [
+      "/explore/solar-system/planets/neptune/Section1.webp",
+      "/explore/solar-system/planets/neptune/Section2.webp",
+      "/explore/solar-system/planets/neptune/Section3.webp",
+      "/explore/solar-system/planets/neptune/Section4.webp",
+    ],
     descriptionLong:
       "Der Neptun ist der äußerste Planet unseres Sonnensystems und steht an achter Stelle von der Sonne. Dieser tiefblaue Eisriese beeindruckt mit den stärksten Winden aller Planeten, die enorme Geschwindigkeiten erreichen. Für einen Umlauf um die Sonne benötigt er über 160 Jahre, was seine Bahn besonders lang macht.",
     descriptionShort: "Neptun ist nach dem römischen Meeresgott benannt.",
@@ -437,10 +519,20 @@ export const planets: Planet[] = [
       "Neptun besitzt die schnellsten Winde im Sonnensystem, die Geschwindigkeiten von über 2000 km/h erreichen können. Diese extremen Stürme entstehen trotz der großen Entfernung zur Sonne und führen zu dynamischen, sich ständig verändernden Wolkenstrukturen in seiner Atmosphäre.",
     planetType: "Eisriese",
     astronomicalUnit: 30.07,
-    quickFacts1: "Temperaturen um -200 °C, trotz großer Entfernung zur Sonne.",
-    quickFacts2:
-      "Heftigste Winde im Sonnensystem mit Geschwindigkeiten über 2.000 km/h.",
-    quickFacts3: "Ein Tag dauert etwa 16,1 Stunden, ein Jahr 164,9 Erdenjahre.",
+    quickFacts: [
+      {
+        id: 1,
+        text: "Temperaturen um -200 °C, trotz großer Entfernung zur Sonne.",
+      },
+      {
+        id: 2,
+        text: "Heftigste Winde im Sonnensystem mit Geschwindigkeiten über 2.000 km/h.",
+      },
+      {
+        id: 3,
+        text: "Ein Tag dauert etwa 16,1 Stunden, ein Jahr 164,9 Erdenjahre.",
+      },
+    ],
     gForce: 11.15,
     funFactWeight:
       "Ein kleines Plus beim Gewicht - nichts Dramatisches, aber spürbar!",

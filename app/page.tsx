@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { getNasaData } from "./lib/nasaData";
-import { getYoutubeEmbedUrl } from "./lib/nasaEmbedUrl";
+import { getNasaData } from "./lib/nasa/nasaData";
+import { getYoutubeEmbedUrl } from "./lib/nasa/nasaEmbedUrl";
 
 export default async function Home() {
   const data = await getNasaData();

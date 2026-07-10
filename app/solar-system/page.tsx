@@ -8,7 +8,7 @@ import FeaturesSection from "@/components/solar-system/FeaturesSection";
 import InDepthSection from "@/components/solar-system/InDepthSection";
 
 export default function SolarSystem() {
-  const [planetId, selectPlanetId] = useState<number>(0);
+  const [planetId, selectPlanetId] = useState<number>(3);
   const selectedPlanet = planets.find((p) => p.id === planetId);
 
   if (!selectedPlanet) return;

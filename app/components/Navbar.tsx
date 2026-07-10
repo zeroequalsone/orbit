@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <div className={"fixed w-full z-50 flex justify-center bg-black/25"}>
-      <div className="hidden lg:flex justify-between items-center pt-8 pb-8 lg:max-w-4/5 w-full uppercase">
+      <div className="hidden lg:flex justify-between items-center p-8 max-w-384 w-full uppercase">
         <Link href={"/"} className="text-2xl drop-shadow-sm drop-shadow-white">
           Orbit
         </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
           )}
         </div>
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-[url('/BG.png')] bg-center bg-cover flex items-center justify-center">
+          <div className="fixed inset-0 bg-black flex items-center justify-center">
             <div className="flex flex-col justify-center items-center gap-16 p-8 text-xl uppercase">
               {navLinks.map((navLink) => (
                 <Link

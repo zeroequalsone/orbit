@@ -10,8 +10,8 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center bg-transparent">
-      <div className="flex flex-col items-center lg:w-4/5 gap-8 py-12">
+    <footer>
+      <div className="flex flex-col items-center gap-8 py-12">
         <div className="text-sm flex flex-col items-center gap-8">
           <p className="font-knicknack text-3xl lg:text-4xl">Orbit</p>
           <ul className="flex flex-col lg:flex-row items-center gap-2 lg:gap-8">

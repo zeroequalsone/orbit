@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased ${montserratFont.className} bg-black text-white min-h-screen`}
+        className={`antialiased ${montserratFont.className} bg-black text-white`}
       >
         <Navbar />
         {children}

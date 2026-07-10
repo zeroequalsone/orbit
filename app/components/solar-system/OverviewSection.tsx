@@ -15,7 +15,7 @@ export default function OverviewSection({ planet }: { planet: Planet }) {
         >
           01
         </p>
-        <div className="flex flex-col gap-8 lg:gap-16">
+        <div className="flex flex-col gap-8 lg:gap-16 bg-black/35 p-8 rounded-2xl">
           <div className="flex flex-col lg:gap-4 gap-8">
             <span className="border border-white w-14 lg:w-28 lg:mb-10"></span>
             <p className="text-3xl lg:text-7xl font-bold uppercase tracking-[0.3em]">

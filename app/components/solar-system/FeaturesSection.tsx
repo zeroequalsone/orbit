@@ -82,7 +82,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
           }}
         >
           <div className="flex lg:flex-col gap-14 p-8 lg:p-40 items-end">
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center gap-8 bg-black/35 p-8 rounded-2xl">
               <div className="flex flex-col gap-6 lg:w-xl">
                 <p className="text-xl lg:text-2xl font-bold uppercase">
                   {planet.featureTitle}

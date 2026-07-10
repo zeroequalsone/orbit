@@ -10,13 +10,13 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
   const lightTravelTime = planet.distanceFromSun / SPEED_OF_LIGHT_IN_KM_S / 60;
 
   return (
-    <section className="flex flex-col">
-      <div className="flex justify-center items-center w-full flex-col gap-40 pt-48 pb-48">
+    <section>
+      <div className="flex flex-col">
         {planet.distanceFromSun !== 0 && (
-          <div className="flex justify-center gap-36 uppercase tracking-widest font-light">
+          <div className="flex p-8 lg:flex-row flex-col justify-between gap-8 lg:gap-36 uppercase tracking-widest font-light w-full max-w-384 mx-auto">
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
-              <p className="text-5xl">
+              <p className="text-2xl lg:text-4xl">
                 ca.{" "}
                 {lightTravelTime < 60
                   ? lightTravelTime.toLocaleString("de", {
@@ -29,7 +29,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Distanz zur Sonne</p>
-              <p className="text-5xl">
+              <p className="text-2xl lg:text-4xl">
                 {planet.distanceFromSun / 1e6 < 1e3
                   ? (planet.distanceFromSun / 1e6).toLocaleString("de", {
                       maximumFractionDigits: 1,
@@ -42,7 +42,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
             </div>
             <div className="flex flex-col gap-4">
               <p className="text-neutral-400">Jahreslänge</p>
-              <p className="text-5xl">
+              <p className="text-2xl lg:text-4xl">
                 {planet.lengthOfYear < 365
                   ? planet.lengthOfYear.toLocaleString("de", {
                       maximumFractionDigits: 1,
@@ -54,60 +54,62 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
             </div>
           </div>
         )}
-        <div className="flex w-4/5 flex-row-reverse items-center gap-24">
+
+        <div className="flex flex-col lg:flex-row-reverse items-end gap-6 lg:gap-14 lg:p-40 p-8">
           <p
-            className="text-[15rem] font-semibold leading-44 bg-clip-text text-transparent bg-center"
+            className="text-9xl lg:text-[15rem] font-semibold bg-clip-text text-transparent bg-center"
             style={{
               backgroundImage: `url('${planet.section[1]}')`,
             }}
           >
             02
           </p>
-          <div className="flex flex-col gap-6 items-end text-left">
-            <p className="relative text-7xl font-bold uppercase tracking-[0.3em] mb-8 pt-14 w-fit">
+          <div className="flex flex-col items-end gap-8">
+            <span className="border border-white w-14 lg:w-28"></span>
+            <p className="text-3xl lg:text-7xl font-bold uppercase tracking-[0.3em]">
               Merkmale
-              <span className="absolute top-0 right-6 w-28 border-t-2"></span>
             </p>
-            <p className="w-2/5 text-neutral-300 tracking-wider">
+            <p className="w-xs text-neutral-300 tracking-wider text-right">
               {planet.featureDescription}
             </p>
           </div>
         </div>
-      </div>
-      <div
-        className="min-h-screen bg-center bg-cover flex justify-center items-center w-full flex-col gap-40"
-        style={{
-          backgroundImage: `url('${planet.section[1]}')`,
-        }}
-      >
-        <div className="flex max-w-4/5 justify-end">
-          <div className="w-2/5 flex flex-col gap-14 items-center">
-            <div className="flex flex-col gap-6">
-              <p className="text-2xl font-bold uppercase">
-                {planet.featureTitle}
-              </p>
-              <p className="text-neutral-300 tracking-wider">
-                {planet.featureInfo}
-              </p>
-            </div>
-            <div className="flex flex-col gap-10 text-neutral-300 w-3/5">
-              {planet.quickFacts.map((quickFact) => (
-                <div
-                  key={`${quickFact.id}-${quickFact.text}`}
-                  className="flex gap-4 items-center"
-                >
-                  {quickFact.id === 1 && (
-                    <ThermometerHotIcon size={32} className="shrink-0" />
-                  )}
-                  {quickFact.id === 2 && (
-                    <LightningIcon size={32} className="shrink-0" />
-                  )}
-                  {quickFact.id === 3 && (
-                    <ClockIcon size={32} className="shrink-0" />
-                  )}
-                  <p>{quickFact.text}</p>
-                </div>
-              ))}
+
+        <div
+          className="bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${planet.section[1]}')`,
+          }}
+        >
+          <div className="flex lg:flex-col gap-14 p-8 lg:p-40 items-end">
+            <div className="flex flex-col items-center gap-8">
+              <div className="flex flex-col gap-6 lg:w-xl">
+                <p className="text-xl lg:text-2xl font-bold uppercase">
+                  {planet.featureTitle}
+                </p>
+                <p className="text-neutral-300 tracking-wider">
+                  {planet.featureInfo}
+                </p>
+              </div>
+              <div className="flex flex-col text-neutral-300 gap-10 lg:w-sm">
+                {planet.quickFacts.map((quickFact) => (
+                  <div
+                    key={`${quickFact.id}-${quickFact.text}`}
+                    className="flex gap-4 items-center"
+                  >
+                    {quickFact.id === 1 && (
+                      <ThermometerHotIcon size={32} className="shrink-0" />
+                    )}
+                    {quickFact.id === 2 && (
+                      <LightningIcon size={32} className="shrink-0" />
+                    )}
+                    {quickFact.id === 3 && (
+                      <ClockIcon size={32} className="shrink-0" />
+                    )}
+                    <p>{quickFact.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

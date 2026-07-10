@@ -4,10 +4,10 @@ import { Tooltip } from "radix-ui";
 
 export default function PlanetStats({ planet }: { planet: Planet }) {
   return (
-    <div className="flex gap-32">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-32">
       <div>
         <p className="font-bold uppercase">Tagesdauer</p>
-        <p className="text-4xl font-light">
+        <p className="text-2xl lg:text-4xl font-light">
           {planet.lengthOfDay < 24
             ? planet.lengthOfDay.toLocaleString("de", {
                 maximumFractionDigits: 1,
@@ -19,7 +19,7 @@ export default function PlanetStats({ planet }: { planet: Planet }) {
       </div>
       <div>
         <p className="font-bold uppercase">Durchmesser</p>
-        <p className="text-4xl font-light">
+        <p className="text-2xl lg:text-4xl font-light">
           {planet.diameter.toLocaleString("de", {
             maximumFractionDigits: 1,
           })}{" "}
@@ -46,14 +46,14 @@ export default function PlanetStats({ planet }: { planet: Planet }) {
             </Tooltip.Root>
           </Tooltip.Provider>
         </div>
-        <p className="text-4xl font-light">
+        <p className="text-2xl lg:text-4xl font-light">
           {planet.numberOfMoons}{" "}
           {planet.numberOfMoons === 1 ? "bestätigter" : "bestätigte"}
         </p>
       </div>
       <div>
         <p className="font-bold uppercase">Planetentyp</p>
-        <p className="text-4xl font-light">{planet.planetType}</p>
+        <p className="text-2xl lg:text-4xl font-light">{planet.planetType}</p>
       </div>
     </div>
   );

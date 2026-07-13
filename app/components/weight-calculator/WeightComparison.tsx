@@ -1,8 +1,7 @@
 import { Planet } from "@/data/planets";
-import { Dispatch } from "react";
 import FunFact from "./FunFact";
 
-export default function WeightTableSection({
+export default function WeightComparison({
   selectedPlanet,
   earthWeight,
 }: {

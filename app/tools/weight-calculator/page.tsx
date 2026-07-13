@@ -1,6 +1,6 @@
 "use client";
 
-import WeightTableSection from "@/components/weight-calculator/WeightTableSection";
+import WeightComparison from "@/components/weight-calculator/WeightComparison";
 import { planets } from "@/data/planets";
 import Link from "next/link";
 import { useState } from "react";
@@ -66,7 +66,7 @@ export default function WeightCalculator() {
             </div>
           </div>
           {selectedPlanet && (
-            <WeightTableSection
+            <WeightComparison
               selectedPlanet={selectedPlanet}
               earthWeight={earthWeight}
             />

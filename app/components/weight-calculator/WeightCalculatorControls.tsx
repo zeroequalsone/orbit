@@ -24,7 +24,7 @@ export default function WeightCalculatorControls({
           value={earthWeight}
           onChange={(e) => onEarthWeightChange(Number(e.target.value))}
           min={0}
-          max={999}
+          max={3}
           step={0.5}
           autoFocus
         />

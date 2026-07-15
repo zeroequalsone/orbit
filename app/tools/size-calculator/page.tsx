@@ -1,5 +1,6 @@
 "use client";
 
+import ToolHeader from "@/components/tools/ToolHeader";
 import { planets } from "@/data/planets";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -26,17 +27,10 @@ export default function SizeCalculator() {
     <div className="min-h-screen">
       <section className="min-h-screen flex flex-col justify-center items-center">
         <div className="flex flex-col gap-10 w-4/5">
-          <div className="flex flex-col items-center gap-2">
-            <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
-              Größen-Rechner
-            </h1>
-            <div className="flex flex-col justify-center items-center gap-8">
-              <h2 className="text-lg">(Wie oft passen Planete ineinander?)</h2>
-              <button onClick={router.back} className="cursor-pointer">
-                Zurück zu Tools
-              </button>
-            </div>
-          </div>
+          <ToolHeader
+            header="Größen-Rechner"
+            desc="Wie oft passen Planete ineinander?"
+          />
           <div className="flex flex-col items-center gap-28">
             <div className="flex flex-col items-center gap-10">
               <div className="flex items-center gap-10 text-xl">

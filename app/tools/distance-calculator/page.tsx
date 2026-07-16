@@ -10,7 +10,7 @@ import MinimumDistance from "@/components/tools/distance-calculator/MinimumDista
 export default function DistanceCalculator() {
   const SPEED_OF_LIGHT_IN_KM_S = 300_000;
 
-  const [distanceFrom, setDistanceFrom] = useState(1);
+  const [distanceFrom, setDistanceFrom] = useState(0);
   const [distanceTo, setDistanceTo] = useState(3);
 
   const planetFrom = planets.find((planet) => planet.id === distanceFrom);
@@ -21,7 +21,7 @@ export default function DistanceCalculator() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-col gap-10 max-w-384">
+      <div className="flex flex-col p-8 mt-20 gap-10 lg:max-w-384">
         <ToolHeader
           header="Distanz-Rechner"
           desc="Vereinfachte Berechnungen"
@@ -35,7 +35,7 @@ export default function DistanceCalculator() {
               setDistanceTo={setDistanceTo}
               distanceTo={distanceTo}
             />
-            <div className="flex flex-col gap-24">
+            <div className="flex flex-col lg:gap-24 gap-12">
               <MinimumDistance
                 from={planetFrom}
                 to={planetTo}

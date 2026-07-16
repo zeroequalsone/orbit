@@ -14,11 +14,11 @@ export default function Selection({
   distanceTo,
 }: SelectionProps) {
   return (
-    <div className="flex items-center gap-10 text-xl">
+    <div className="flex lg:flex-row flex-col items-center lg:gap-10 gap-4 text-xl">
       <div className="flex gap-2">
         <label htmlFor="distanceFrom">Von:</label>
         <select
-          name="distanceFrom"
+          className="bg-neutral-900 cursor-pointer hover:cursor-pointer"
           id="distanceFrom"
           onChange={(e) => setDistanceFrom(Number(e.target.value))}
           value={distanceFrom}
@@ -38,7 +38,7 @@ export default function Selection({
       <div className="flex gap-2">
         <label htmlFor="distanceTo">Nach:</label>
         <select
-          name="distanceTo"
+          className="bg-neutral-900"
           id="distanceTo"
           onChange={(e) => setDistanceTo(Number(e.target.value))}
           value={distanceTo}

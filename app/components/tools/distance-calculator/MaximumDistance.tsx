@@ -16,7 +16,7 @@ export default function MaximumDistance({
   const maxDistance = from.distanceFromSun + to.distanceFromSun;
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex lg:flex-row flex-col items-center lg:gap-6">
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center">
           <div className="flex gap-2">
@@ -40,10 +40,10 @@ export default function MaximumDistance({
             </Tooltip.Provider>
           </div>
           <p className="text-lg">
-            {maxDistance / 1e6 < 1e3
-              ? (maxDistance / 1e6).toFixed(1).replaceAll(".", ",") +
+            {maxDistance / 1_000_000 < 1_000
+              ? (maxDistance / 1_000_000).toFixed(1).replaceAll(".", ",") +
                 " Millionen "
-              : (maxDistance / 1e9).toFixed(2).replaceAll(".", ",") +
+              : (maxDistance / 1_000_000_000).toFixed(2).replaceAll(".", ",") +
                 " Milliarden "}
             km
           </p>
@@ -62,23 +62,36 @@ export default function MaximumDistance({
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-2">
-        <div className={`relative flex flex-col text-center`}>
-          <svg className={`w-30 h-30 border-2 rounded-full`} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p className="font-bold">{from.name}</p>
-          </div>
-        </div>
+      <div className="flex justify-center items-center gap-2 lg:max-h-full max-h-48">
+        <div
+          className={`rounded-full lg:max-w-full max-w-24`}
+          style={{
+            height: `${from.id === 6 ? Math.sqrt(from.diameter / 5) : Math.sqrt(from.diameter / 20)}px`,
+            width: `${from.id === 6 ? Math.sqrt(from.diameter / 5) : Math.sqrt(from.diameter / 20)}px`,
+            backgroundImage: `url('${from.iconUrl}')`,
+            backgroundSize: "100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
         <span
-          className={`h-0 border border-dashed rounded-full`}
-          style={{ width: `${Math.sqrt(maxDistance / 2e4)}px` }}
+          className={`hidden lg:block h-0 border border-dashed rounded-full`}
+          style={{ width: `${Math.sqrt(maxDistance / 20_000)}px` }}
         ></span>
-        <div className={`relative flex flex-col text-center`}>
-          <svg className={`w-30 h-30 border-2 rounded-full`} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <p className="font-bold">{to.name}</p>
-          </div>
-        </div>
+        <span
+          className={`lg:hidden h-0 border border-dashed rounded-full w-20`}
+        ></span>
+        <div
+          className={`rounded-full lg:max-w-full max-w-24`}
+          style={{
+            height: `${to.id === 6 ? Math.sqrt(to.diameter / 5) : Math.sqrt(to.diameter / 20)}px`,
+            width: `${to.id === 6 ? Math.sqrt(to.diameter / 5) : Math.sqrt(to.diameter / 20)}px`,
+            backgroundImage: `url('${to.iconUrl}')`,
+            backgroundSize: "100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
       </div>
     </div>
   );

@@ -1,17 +1,16 @@
 "use client";
+
 import { planets } from "@/data/planets";
-import { InfoIcon } from "@phosphor-icons/react";
-import { Tooltip } from "radix-ui";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import ToolHeader from "@/components/tools/ToolHeader";
+import Selection from "@/components/tools/distance-calculator/Selection";
+import MaximumDistance from "@/components/tools/distance-calculator/MaximumDistance";
+import MinimumDistance from "@/components/tools/distance-calculator/MinimumDistance";
 
 export default function DistanceCalculator() {
-  const router = useRouter();
+  const SPEED_OF_LIGHT_IN_KM_S = 300_000;
 
-  const speedOfLight = 3e5;
-
-  const [distanceFrom, setDistanceFrom] = useState(1);
+  const [distanceFrom, setDistanceFrom] = useState(0);
   const [distanceTo, setDistanceTo] = useState(3);
 
   const planetFrom = planets.find((planet) => planet.id === distanceFrom);
@@ -20,209 +19,37 @@ export default function DistanceCalculator() {
   if (!planetFrom || !planetTo)
     throw new Error("Fehler beim Auswählen eines Planeten.");
 
-  const minDistance = Math.abs(
-    planetFrom.distanceFromSun - planetTo.distanceFromSun,
-  );
-
-  const maxDistance = planetFrom.distanceFromSun + planetTo.distanceFromSun;
-
   return (
-    <div className="min-h-screen">
-      <section className="min-h-screen flex flex-col justify-center items-center">
-        <div className="flex flex-col gap-10 w-4/5">
-          <ToolHeader
-            header="Distanz-Rechner"
-            desc="Vereinfachte Berechnungen"
-            toolTip="Berechnung basiert auf runder Umlaufbahn (nicht elliptisch)."
-          />
-          <div className="flex flex-col items-center gap-28">
-            <div className="flex flex-col items-center gap-10">
-              <div className="flex items-center gap-10 text-xl">
-                <div className="flex gap-2">
-                  <label htmlFor="distanceFrom">Von:</label>
-                  <select
-                    name="distanceFrom"
-                    id="distanceFrom"
-                    onChange={(e) => setDistanceFrom(Number(e.target.value))}
-                    value={distanceFrom}
-                  >
-                    {planets.map((planet) => (
-                      <option
-                        key={planet.id}
-                        value={planet.id}
-                        className="bg-black"
-                        disabled={distanceTo === planet.id && true}
-                      >
-                        {planet.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex gap-2">
-                  <label htmlFor="distanceTo">Nach:</label>
-                  <select
-                    name="distanceTo"
-                    id="distanceTo"
-                    onChange={(e) => setDistanceTo(Number(e.target.value))}
-                    value={distanceTo}
-                  >
-                    {planets.map((planet) => (
-                      <option
-                        key={planet.id}
-                        value={planet.id}
-                        className="bg-black"
-                        disabled={distanceFrom === planet.id && true}
-                      >
-                        {planet.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <div className="flex flex-col gap-24">
-                <div className="flex items-center gap-6">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className="flex gap-2">
-                        <p className="text-xl font-bold">Minimale Distanz</p>
-                        <Tooltip.Provider>
-                          <Tooltip.Root delayDuration={0}>
-                            <Tooltip.Trigger asChild>
-                              <InfoIcon className="cursor-help" />
-                            </Tooltip.Trigger>
-                            <Tooltip.Portal>
-                              <Tooltip.Content
-                                className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
-                                sideOffset={5}
-                                side="right"
-                              >
-                                Kürzester Abstand zwischen beiden Planeten (auf
-                                derselben Seite der Sonne)
-                              </Tooltip.Content>
-                            </Tooltip.Portal>
-                          </Tooltip.Root>
-                        </Tooltip.Provider>
-                      </div>
-                      <p className="text-lg">
-                        {minDistance / 1e6 < 1e3
-                          ? (minDistance / 1e6)
-                              .toFixed(1)
-                              .replaceAll(".", ",") + " Millionen "
-                          : (minDistance / 1e9)
-                              .toFixed(2)
-                              .replaceAll(".", ",") + " Milliarden "}
-                        km
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <p className="text-xl font-bold">
-                        Minimale Lichtlaufzeit
-                      </p>
-                      <p className="text-lg">
-                        ca.{" "}
-                        {minDistance / speedOfLight / 60 < 60
-                          ? (minDistance / speedOfLight / 60)
-                              .toFixed(0)
-                              .replaceAll(".", ",") + " Minuten"
-                          : (minDistance / speedOfLight / 60 / 60)
-                              .toFixed(1)
-                              .replaceAll(".", ",") + " Stunden"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex justify-center items-center gap-2">
-                    <div className={`relative flex flex-col text-center`}>
-                      <svg className={`w-30 h-30 border-2 rounded-full`} />
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <p className="font-bold">{planetFrom.name}</p>
-                      </div>
-                    </div>
-                    <span
-                      className={`h-0 border border-dashed rounded-full`}
-                      style={{ width: `${Math.sqrt(minDistance / 2e4)}px` }}
-                    ></span>
-                    <div className={`relative flex flex-col text-center`}>
-                      <svg className={`w-30 h-30 border-2 rounded-full`} />
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <p className="font-bold">{planetTo.name}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className="flex gap-2">
-                        <p className="text-xl font-bold">Maximale Distanz</p>
-                        <Tooltip.Provider>
-                          <Tooltip.Root delayDuration={0}>
-                            <Tooltip.Trigger asChild>
-                              <InfoIcon className="cursor-help" />
-                            </Tooltip.Trigger>
-                            <Tooltip.Portal>
-                              <Tooltip.Content
-                                className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
-                                sideOffset={5}
-                                side="right"
-                              >
-                                Größter Abstand zwischen beiden Planeten (auf
-                                gegenüberliegenden Seiten der Sonne)
-                              </Tooltip.Content>
-                            </Tooltip.Portal>
-                          </Tooltip.Root>
-                        </Tooltip.Provider>
-                      </div>
-                      <p className="text-lg">
-                        {maxDistance / 1e6 < 1e3
-                          ? (maxDistance / 1e6)
-                              .toFixed(1)
-                              .replaceAll(".", ",") + " Millionen "
-                          : (maxDistance / 1e9)
-                              .toFixed(2)
-                              .replaceAll(".", ",") + " Milliarden "}
-                        km
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <p className="text-xl font-bold">
-                        Maximale Lichtlaufzeit
-                      </p>
-                      <p className="text-lg">
-                        ca.{" "}
-                        {maxDistance / speedOfLight / 60 < 60
-                          ? (maxDistance / speedOfLight / 60)
-                              .toFixed(0)
-                              .replaceAll(".", ",") + " Minuten"
-                          : (maxDistance / speedOfLight / 60 / 60)
-                              .toFixed(1)
-                              .replaceAll(".", ",") + " Stunden"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex justify-center items-center gap-2">
-                    <div className={`relative flex flex-col text-center`}>
-                      <svg className={`w-30 h-30 border-2 rounded-full`} />
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <p className="font-bold">{planetFrom.name}</p>
-                      </div>
-                    </div>
-                    <span
-                      className={`h-0 border border-dashed rounded-full`}
-                      style={{ width: `${Math.sqrt(maxDistance / 2e4)}px` }}
-                    ></span>
-                    <div className={`relative flex flex-col text-center`}>
-                      <svg className={`w-30 h-30 border-2 rounded-full`} />
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <p className="font-bold">{planetTo.name}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <section className="min-h-screen flex flex-col justify-center items-center">
+      <div className="flex flex-col p-8 mt-20 gap-10 lg:max-w-384">
+        <ToolHeader
+          header="Distanz-Rechner"
+          desc="Vereinfachte Berechnungen"
+          toolTip="Berechnung basiert auf runder Umlaufbahn (nicht elliptisch)."
+        />
+        <div className="flex flex-col items-center gap-28">
+          <div className="flex flex-col items-center gap-10">
+            <Selection
+              setDistanceFrom={setDistanceFrom}
+              distanceFrom={distanceFrom}
+              setDistanceTo={setDistanceTo}
+              distanceTo={distanceTo}
+            />
+            <div className="flex flex-col lg:gap-24 gap-12">
+              <MinimumDistance
+                from={planetFrom}
+                to={planetTo}
+                speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
+              />
+              <MaximumDistance
+                from={planetFrom}
+                to={planetTo}
+                speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
+              />
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

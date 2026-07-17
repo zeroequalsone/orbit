@@ -22,7 +22,10 @@ export default function WeightCalculatorControls({
           type="number"
           id="earthWeight"
           value={earthWeight}
-          onChange={(e) => onEarthWeightChange(Number(e.target.value))}
+          onChange={(e) => {
+            const value = Math.max(0, Math.min(Number(e.target.value), 999));
+            onEarthWeightChange(value);
+          }}
           min={0}
           max={3}
           step={0.5}

@@ -1,9 +1,10 @@
 "use client";
 
 import ToolHeader from "@/components/tools/ToolHeader";
-import WeightCalculatorControls from "@/components/tools/weight-calculator/WeightCalculatorControls";
-import WeightComparison from "@/components/tools/weight-calculator/WeightComparison";
+import WeightCalculatorControls from "@/components/weight-calculator/WeightCalculatorControls";
+import WeightComparison from "@/components/weight-calculator/WeightComparison";
 import { planets } from "@/data/planets";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function WeightCalculator() {

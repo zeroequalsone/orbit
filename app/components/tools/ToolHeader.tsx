@@ -11,8 +11,8 @@ type ToolHeaderProps = {
 export default function ToolHeader({ header, desc, toolTip }: ToolHeaderProps) {
   return (
     <div className="flex flex-col items-center gap-8">
-      <div className="flex items-center flex-col gap-2">
-        <h1 className="text-5xl text-center font-bold uppercase tracking-[0.3em]">
+      <div className="flex items-center flex-col gap-2 text-center">
+        <h1 className="text-4xl lg:text-5xl font-bold uppercase tracking-[0.3em]">
           {header}
         </h1>
         <div className="flex gap-2">

@@ -1,12 +1,8 @@
-import Image from "next/image";
+import NasaMedia from "./components/homepage/NasaMedia";
 import { getNasaData } from "./lib/nasaData";
-import { getYoutubeEmbedUrl } from "./lib/nasaEmbedUrl";
 
 export default async function Home() {
   const data = await getNasaData();
-
-  const isDirectVideo =
-    data.media_type === "video" && data.url.endsWith(".mp4");
 
   return (
     <div className={`flex flex-col justify-center items-center min-h-screen`}>
@@ -17,34 +13,7 @@ export default async function Home() {
           </p>
           <div className="flex flex-row gap-16 items-center justify-center">
             <div className="h-120 w-120 relative">
-              {data.media_type === "image" ? (
-                <Image
-                  src={data.url}
-                  alt={data.title}
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover select-none"
-                  priority
-                />
-              ) : isDirectVideo ? (
-                <video
-                  src={data.url}
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover pointer-events-none select-none"
-                  muted
-                  autoPlay
-                  loop
-                />
-              ) : (
-                <iframe
-                  src={getYoutubeEmbedUrl(data.url)}
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover pointer-events-none select-none"
-                  allow="autoplay"
-                />
-              )}
+              <NasaMedia data={data} />
               <p className="text-xl font-semibold italic mt-4">
                 ”{data.title}”
               </p>

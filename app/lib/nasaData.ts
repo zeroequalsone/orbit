@@ -1,4 +1,11 @@
-export async function getNasaData() {
+export type NasaData = {
+  title: string;
+  explanation: string;
+  media_type: string;
+  url: string;
+};
+
+export async function getNasaData(): Promise<NasaData> {
   const apikey = process.env.NASA_APOD_API_KEY;
 
   // ERROR HANDLING

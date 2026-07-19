@@ -11,10 +11,9 @@ export default function NasaMedia({ data }: { data: NasaData }) {
       <Image
         src={data.url}
         alt={data.title}
-        width={500}
-        height={500}
-        className="w-full h-full object-cover select-none"
-        priority
+        className="object-cover"
+        fill
+        loading="eager"
       />
     );
   }
@@ -25,7 +24,7 @@ export default function NasaMedia({ data }: { data: NasaData }) {
         src={data.url}
         width={500}
         height={500}
-        className="w-full h-full object-cover pointer-events-none select-none"
+        className="object-cover pointer-events-none select-none"
         muted
         autoPlay
         loop
@@ -38,7 +37,7 @@ export default function NasaMedia({ data }: { data: NasaData }) {
       src={getYoutubeEmbedUrl(data.url)}
       width={500}
       height={500}
-      className="w-full h-full object-cover pointer-events-none select-none"
+      className="object-cover pointer-events-none select-none"
       allow="autoplay"
     />
   );

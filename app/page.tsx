@@ -10,14 +10,16 @@ export default async function Home() {
         <h1 className="text-3xl lg:text-5xl font-extrabold uppercase tracking-widest text-center lg:w-full w-xs">
           Astronomy Picture of the Day
         </h1>
-        <div className="flex lg:flex-row flex-col items-center gap-16">
+        <div className="flex lg:flex-row flex-col items-center gap-16 lg:w-5xl">
           <div className="flex flex-col gap-4 lg:items-start items-center">
             <div className="relative lg:size-96 size-80">
               <NasaMedia data={data} />
             </div>
-            <p className="text-xl font-semibold italic text-center">”{data.title}”</p>
+            <p className="lg:text-xl font-semibold italic text-center">
+              ”{data.title}”
+            </p>
           </div>
-          <p className="lg:w-lg w-xs text-justify">{data.explanation}</p>
+          <p className="text-justify">{data.explanation}</p>
         </div>
       </div>
     </div>

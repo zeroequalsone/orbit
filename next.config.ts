@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "apod.nasa.gov",
+        hostname: "assets.science.nasa.gov",
+      },
+      {
+        protocol: "https",
+        hostname: "science.nasa.gov",
       },
     ],
   },

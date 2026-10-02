@@ -6,23 +6,9 @@ export type NasaData = {
 };
 
 export async function getNasaData(): Promise<NasaData> {
-  const apikey = process.env.NASA_APOD_API_KEY;
-
-  // ERROR HANDLING
-  if (!apikey) {
-    throw new Error(
-      "NASA_APOD_API_KEY ist nicht in den Umgebungsvariablen definiert.",
-    );
-  }
-
-  const today = new Date().toLocaleDateString("en-CA", {
-    timeZone: "America/New_York",
+  const res = await fetch("https://science.nasa.gov/wp-json/wp/v2/apod-basic", {
+    next: { revalidate: 3600 },
   });
-
-  const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${apikey}&date=${today}`,
-    { next: { revalidate: 3600 } },
-  );
 
   // ERROR HANDLING
   if (!res.ok) {
@@ -54,5 +40,12 @@ export async function getNasaData(): Promise<NasaData> {
     }
   }
 
-  return res.json();
+  const data = await res.json();
+
+  return {
+    title: data[0].title,
+    explanation: data[0].explanation,
+    media_type: data[0].media_type,
+    url: data[0].hdurl,
+  };
 }

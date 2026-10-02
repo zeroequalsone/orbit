@@ -19,7 +19,10 @@ export default async function Home() {
               ”{data.title}”
             </p>
           </div>
-          <p className="text-justify">{data.explanation}</p>
+          <div
+            className="text-justify"
+            dangerouslySetInnerHTML={{ __html: data.explanation }}
+          />
         </div>
       </div>
     </div>

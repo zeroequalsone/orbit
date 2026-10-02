@@ -13,7 +13,7 @@ export default function NasaMedia({ data }: { data: NasaData }) {
         alt={data.title}
         className="object-cover"
         fill
-        loading="eager"
+        priority
       />
     );
   }

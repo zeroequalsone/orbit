@@ -4,9 +4,9 @@ import { usePathname } from "next/navigation";
 import { FaGithub } from "react-icons/fa";
 
 const footerLinks = [
-  { name: "Impressum", href: "/impressum" },
-  { name: "Datenschutz", href: "/datenschutz" },
-  { name: "AGB", href: "/agb" },
+  { name: "Impressum", href: "/imprint" },
+  { name: "Datenschutz", href: "/privacy" },
+  { name: "AGB", href: "/terms" },
   { name: "Kontakt", href: "/kontakt" },
 ];
 

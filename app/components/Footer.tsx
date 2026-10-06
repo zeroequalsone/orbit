@@ -7,7 +7,7 @@ const footerLinks = [
   { name: "Impressum", href: "/imprint" },
   { name: "Datenschutz", href: "/privacy" },
   { name: "AGB", href: "/terms" },
-  { name: "Kontakt", href: "/kontakt" },
+  { name: "Kontakt", href: "/contact" },
 ];
 
 function isLinkActive(pathname: string, href: string) {

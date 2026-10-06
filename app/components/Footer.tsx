@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { FaGithub } from "react-icons/fa";
 
 const footerLinks = [
-  { name: "Impressum", href: "/impressum" },
+  { name: "Impressum", href: "/imprint" },
   { name: "Datenschutz", href: "/datenschutz" },
   { name: "AGB", href: "/agb" },
   { name: "Kontakt", href: "/kontakt" },

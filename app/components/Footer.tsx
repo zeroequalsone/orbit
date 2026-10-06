@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 const footerLinks = [
   { name: "Impressum", href: "/imprint" },
   { name: "Datenschutz", href: "/privacy" },
-  { name: "AGB", href: "/agb" },
+  { name: "AGB", href: "/terms" },
   { name: "Kontakt", href: "/kontakt" },
 ];
 

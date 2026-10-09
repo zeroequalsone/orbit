@@ -7,40 +7,65 @@ import { Tooltip } from "radix-ui";
 
 export default function Explore() {
   return (
-    <div className="flex justify-center min-h-screen">
-      <div className="flex items-center flex-col gap-20 w-4/5 py-52">
-        <h1 className="text-5xl font-bold uppercase tracking-[0.3em]">
-          Entdecken
-        </h1>
-        <div className="grid grid-cols-3 place-items-center gap-24">
+    <div className="flex flex-col w-full max-w-7xl mx-auto items-center px-4 pb-24 pt-40">
+      <div className="flex flex-col items-center gap-16">
+        {/* Eyebrow + Heading */}
+        <div className="flex flex-col items-center gap-4 text-center">
+          <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-widest text-white/60">
+            Kategorien · {exploreData.length} Themen
+          </span>
+          <h1 className="text-3xl font-semibold uppercase tracking-tight text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] md:text-5xl">
+            Entdecken
+          </h1>
+          <p className="max-w-xl text-sm leading-relaxed text-white/70 md:text-base">
+            Tauche ein in die Welt der Astronomie und erkunde Planeten, Monde,
+            Sterne und mehr.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {exploreData.map((category) => (
             <Link
               href={category.slug}
               key={category.id}
-              className="w-3xs hover:scale-105 duration-200 transition-transform"
+              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
             >
-              <div className="size-64">
+              {/* Bild */}
+              <div className="relative aspect-square overflow-hidden rounded-xl">
                 <img
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   src={category.imageUrl}
                   alt={category.name}
                   loading="lazy"
                 />
               </div>
-              <div className="flex gap-2 mt-2 justify-center">
-                <h2 className="text-lg text-center">{category.name}</h2>
+
+              {/* Titel + Tooltip */}
+              <div className="flex items-center justify-between gap-2 px-3 pb-3">
+                <h2 className="text-sm font-medium uppercase tracking-widest text-white/80 transition-colors group-hover:text-white">
+                  {category.name}
+                </h2>
                 <Tooltip.Provider>
                   <Tooltip.Root delayDuration={0}>
                     <Tooltip.Trigger asChild>
-                      <InfoIcon className="cursor-help shrink-0" />
+                      <button
+                        type="button"
+                        aria-label={`Info zu ${category.name}`}
+                        onClick={(e) => e.preventDefault()}
+                        className="shrink-0 cursor-help text-white/50 transition-colors hover:text-white"
+                      >
+                        <InfoIcon size={18} />
+                      </button>
                     </Tooltip.Trigger>
                     <Tooltip.Portal>
                       <Tooltip.Content
-                        className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
+                        className="z-50 max-w-64 rounded-xl border border-white/10 bg-black/80 p-3 text-sm leading-relaxed text-white/80 backdrop-blur-md"
                         sideOffset={5}
-                        side="right"
+                        side="top"
                       >
                         {category.tooltip}
+                        <Tooltip.Arrow className="fill-white/10" />
                       </Tooltip.Content>
                     </Tooltip.Portal>
                   </Tooltip.Root>

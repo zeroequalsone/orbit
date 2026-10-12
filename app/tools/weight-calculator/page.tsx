@@ -16,21 +16,23 @@ export default function WeightCalculator() {
   if (!selectedPlanet) throw new Error("Selected planet could not be found.");
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-col p-8 mt-20 gap-10 lg:max-w-384">
+    <section className="w-full max-w-7xl mx-auto px-4 pb-24 pt-40">
+      <div className="flex flex-col items-center gap-16">
         <ToolHeader
           header="Gewicht-Rechner"
           desc="Wie viel wiegst du auf anderen Planeten?"
         />
-        <WeightCalculatorControls
-          earthWeight={earthWeight}
-          onEarthWeightChange={setEarthWeight}
-          onPlanetChange={setSelectedPlanetId}
-        />
-        <WeightComparison
-          selectedPlanet={selectedPlanet}
-          earthWeight={earthWeight}
-        />
+        <div className="flex w-full flex-col items-center gap-6">
+          <WeightCalculatorControls
+            earthWeight={earthWeight}
+            onEarthWeightChange={setEarthWeight}
+            onPlanetChange={setSelectedPlanetId}
+          />
+          <WeightComparison
+            selectedPlanet={selectedPlanet}
+            earthWeight={earthWeight}
+          />
+        </div>
       </div>
     </section>
   );

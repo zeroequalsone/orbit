@@ -20,33 +20,31 @@ export default function DistanceCalculator() {
     throw new Error("Fehler beim Auswählen eines Planeten.");
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-col p-8 mt-20 gap-10 lg:max-w-384">
+    <section className="max-w-7xl mx-auto px-4 pb-24 pt-40">
+      <div className="flex flex-col gap-16">
         <ToolHeader
           header="Distanz-Rechner"
           desc="Vereinfachte Berechnungen"
           toolTip="Berechnung basiert auf runder Umlaufbahn (nicht elliptisch)."
         />
-        <div className="flex flex-col items-center gap-28">
-          <div className="flex flex-col items-center gap-10">
-            <Selection
-              setDistanceFrom={setDistanceFrom}
-              distanceFrom={distanceFrom}
-              setDistanceTo={setDistanceTo}
-              distanceTo={distanceTo}
+        <div className="flex flex-col items-center gap-10">
+          <Selection
+            setDistanceFrom={setDistanceFrom}
+            distanceFrom={distanceFrom}
+            setDistanceTo={setDistanceTo}
+            distanceTo={distanceTo}
+          />
+          <div className="flex flex-col">
+            <MinimumDistance
+              from={planetFrom}
+              to={planetTo}
+              speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
             />
-            <div className="flex flex-col lg:gap-24 gap-12">
-              <MinimumDistance
-                from={planetFrom}
-                to={planetTo}
-                speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
-              />
-              <MaximumDistance
-                from={planetFrom}
-                to={planetTo}
-                speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
-              />
-            </div>
+            <MaximumDistance
+              from={planetFrom}
+              to={planetTo}
+              speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
+            />
           </div>
         </div>
       </div>

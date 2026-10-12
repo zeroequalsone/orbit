@@ -17,28 +17,28 @@ export default function SizeCalculator() {
     throw new Error("Fehler beim Auswählen eines Planeten.");
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-col p-8 mt-20 gap-10 lg:max-w-384">
+    <section className="max-w-7xl mx-auto px-4 pb-24 pt-40">
+      <div className="flex flex-col items-center gap-16">
         <ToolHeader
           header="Größen-Rechner"
           desc="Wie oft passen Planete ineinander?"
         />
-        <div className="flex flex-col items-center gap-28">
-          <div className="flex flex-col items-center gap-10">
-            <SizeComparison
-              setSizeFrom={setSizeFrom}
-              setSizeTo={setSizeTo}
-              sizeFrom={sizeFrom}
-              sizeTo={sizeTo}
-            />
-            {planetFrom && planetTo ? (
-              <SizeDisplay planetFrom={planetFrom} planetTo={planetTo} />
-            ) : (
-              <div className="flex flex-col gap-4">
-                <p className="text-xl">Berechnen von Größen...</p>
-              </div>
-            )}
-          </div>
+        <div className="flex flex-col items-center gap-10">
+          <SizeComparison
+            setSizeFrom={setSizeFrom}
+            setSizeTo={setSizeTo}
+            sizeFrom={sizeFrom}
+            sizeTo={sizeTo}
+          />
+          {planetFrom && planetTo ? (
+            <SizeDisplay planetFrom={planetFrom} planetTo={planetTo} />
+          ) : (
+            <div className="flex flex-col gap-4">
+              <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+                Berechnen von Größen...
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -16,14 +16,14 @@ export default function SizeDisplay({
   const fitsIntoPlanet = Math.pow(bigger.diameter / smaller.diameter, 3);
 
   return (
-    <div className="flex flex-col gap-12 items-center">
-      <div className="flex items-end gap-12">
+    <div className="flex w-full flex-col items-center gap-6">
+      <div className="flex w-full max-w-4xl items-end justify-between gap-12 rounded-2xl p-6 md:p-10">
         <PlanetPreview planet={planetFrom} />
         <PlanetPreview planet={planetTo} />
       </div>
-      <p>
+      <p className="max-w-2xl text-center text-sm leading-relaxed text-white/70 md:text-base">
         {smaller.name} passt in {bigger.name}{" "}
-        <b>
+        <b className="text-white">
           {fitsIntoPlanet.toLocaleString("de", {
             maximumFractionDigits: 0,
           })}

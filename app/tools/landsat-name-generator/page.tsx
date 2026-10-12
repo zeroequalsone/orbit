@@ -78,43 +78,45 @@ export default function LandSatNameGenerator() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <section className="min-h-screen flex flex-col justify-center items-center">
-        <div className="flex flex-col items-center gap-10 w-4/5">
-          <ToolHeader
-            header="Landsat Name Generator"
-            desc="Wie sieht dein Name in Landsat Bildern aus?"
+    <section className="max-w-7xl mx-auto px-4 pb-24 pt-40">
+      <div className="flex flex-col items-center gap-16">
+        <ToolHeader
+          header="Landsat Name Generator"
+          desc="Wie sieht dein Name in Landsat Bildern aus?"
+        />
+
+        {/* Ergebnis */}
+        <div ref={ref} className="flex flex-wrap justify-center gap-4">
+          {images.map((randomImage, idx) => (
+            <Link
+              className="group h-50 lg:h-80 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:-translate-y-1 active:border-white/20 active:bg-white/10"
+              key={`${randomImage.letter}-${randomImage.locationCoordinates}-${idx}`}
+              href={`https://www.google.com/maps?q=${encodeURIComponent(randomImage.locationCoordinates)}`}
+              target="_blank"
+            >
+              <img
+                src={randomImage.url}
+                alt={`Letter ${randomImage.letter}`}
+                className="h-full rounded-xl transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
+              />
+            </Link>
+          ))}
+        </div>
+
+        {/* Eingabe */}
+        <div className="flex w-full max-w-2xl flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-sm sm:flex-row sm:items-center">
+          <input
+            type="text"
+            value={name}
+            className="w-full min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm uppercase tracking-widest text-white placeholder:text-white/40 transition-colors hover:border-white/20 active:border-white/20 focus-visible:border-white/40 focus-visible:bg-white/10 focus-visible:outline-none"
+            onChange={(e) => setName(e.target.value.replace(/[^A-Za-z]/g, ""))}
+            onKeyDown={(e) => e.key === "Enter" && generateImages(name)}
+            maxLength={25}
+            autoFocus
           />
-          <div ref={ref} className="flex flex-wrap gap-4 justify-center">
-            {images.map((randomImage, idx) => (
-              <Link
-                className="h-80"
-                key={`${randomImage.letter}-${randomImage.locationCoordinates}-${idx}`}
-                href={`https://www.google.com/maps?q=${encodeURIComponent(randomImage.locationCoordinates)}`}
-                target="_blank"
-              >
-                <img
-                  src={randomImage.url}
-                  alt={`Letter ${randomImage.letter}`}
-                  className="h-full"
-                />
-              </Link>
-            ))}
-          </div>
-          <div className="flex text-white bg-black/50 p-8 gap-4 rounded-xl">
-            <input
-              type="text"
-              value={name}
-              className="border-2 p-4 rounded-xl"
-              onChange={(e) =>
-                setName(e.target.value.replace(/[^A-Za-z]/g, ""))
-              }
-              onKeyDown={(e) => e.key === "Enter" && generateImages(name)}
-              maxLength={25}
-              autoFocus
-            />
+          <div className="flex gap-4">
             <button
-              className="border-2 p-4 rounded-xl cursor-pointer"
+              className="flex-1 cursor-pointer rounded-full border border-white/10 bg-white/10 px-6 py-3 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:border-white/20 hover:bg-white/20 active:border-white/20 active:bg-white/20 sm:flex-none"
               onClick={() => generateImages(name)}
             >
               Enter
@@ -122,14 +124,14 @@ export default function LandSatNameGenerator() {
             {images.length > 0 && (
               <button
                 onClick={onDownloadClick}
-                className="border-2 p-4 rounded-xl cursor-pointer"
+                className="flex-1 cursor-pointer rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-medium uppercase tracking-widest text-white/70 transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white active:border-white/20 active:bg-white/10 active:text-white sm:flex-none"
               >
                 Download
               </button>
             )}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

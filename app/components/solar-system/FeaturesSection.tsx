@@ -13,65 +13,77 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
     <section>
       <div className="flex flex-col">
         {planet.distanceFromSun !== 0 && (
-          <div className="flex p-8 lg:flex-row flex-col justify-between gap-8 lg:gap-36 uppercase tracking-widest font-light w-full max-w-384 mx-auto">
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Lichtlaufzeit zur Sonne</p>
-              <p className="text-2xl lg:text-4xl">
-                ca.{" "}
-                {lightTravelTime < 60
-                  ? lightTravelTime.toLocaleString("de", {
-                      maximumFractionDigits: 0,
-                    }) + " Minuten"
-                  : (lightTravelTime / 60).toLocaleString("de", {
-                      maximumFractionDigits: 1,
-                    }) + " Stunden"}
-              </p>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Distanz zur Sonne</p>
-              <p className="text-2xl lg:text-4xl">
-                {planet.distanceFromSun / 1e6 < 1e3
-                  ? (planet.distanceFromSun / 1e6).toLocaleString("de", {
-                      maximumFractionDigits: 1,
-                    }) + " Millionen "
-                  : (planet.distanceFromSun / 1e9).toLocaleString("de", {
-                      maximumFractionDigits: 2,
-                    }) + " Milliarden "}
-                km
-              </p>
-            </div>
-            <div className="flex flex-col gap-4">
-              <p className="text-neutral-400">Jahreslänge</p>
-              <p className="text-2xl lg:text-4xl">
-                {planet.lengthOfYear < 365
-                  ? planet.lengthOfYear.toLocaleString("de", {
-                      maximumFractionDigits: 1,
-                    }) + " Erdtage"
-                  : (planet.lengthOfYear / 365).toLocaleString("de", {
-                      maximumFractionDigits: 1,
-                    }) + " Erdjahr(e)"}
-              </p>
+          <div className="mx-auto w-full max-w-7xl px-4 py-16">
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+              <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-6">
+                <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+                  Lichtlaufzeit zur Sonne
+                </p>
+                <p className="text-2xl font-light uppercase tracking-widest text-white">
+                  ca.{" "}
+                  {lightTravelTime < 60
+                    ? lightTravelTime.toLocaleString("de", {
+                        maximumFractionDigits: 0,
+                      }) + " Minuten"
+                    : (lightTravelTime / 60).toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Stunden"}
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+                  Distanz zur Sonne
+                </p>
+                <p className="text-2xl font-light uppercase tracking-widest text-white">
+                  {planet.distanceFromSun / 1e6 < 1e3
+                    ? (planet.distanceFromSun / 1e6).toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Millionen "
+                    : (planet.distanceFromSun / 1e9).toLocaleString("de", {
+                        maximumFractionDigits: 2,
+                      }) + " Milliarden "}
+                  km
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                <p className="text-xs font-medium uppercase tracking-widest text-white/50">
+                  Jahreslänge
+                </p>
+                <p className="text-2xl font-light uppercase tracking-widest text-white">
+                  {planet.lengthOfYear < 365
+                    ? planet.lengthOfYear.toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Erdtage"
+                    : (planet.lengthOfYear / 365).toLocaleString("de", {
+                        maximumFractionDigits: 1,
+                      }) + " Erdjahr(e)"}
+                </p>
+              </div>
             </div>
           </div>
         )}
 
-        <div className="flex flex-col lg:flex-row-reverse items-end gap-6 lg:gap-14 lg:p-40 p-8">
-          <p
-            className="text-9xl lg:text-[15rem] font-semibold bg-clip-text text-transparent bg-center"
-            style={{
-              backgroundImage: `url('${planet.section[1]}')`,
-            }}
-          >
-            02
-          </p>
-          <div className="flex flex-col items-end gap-8">
-            <span className="border border-white w-14 lg:w-28"></span>
-            <p className="text-3xl lg:text-7xl font-bold uppercase tracking-[0.3em]">
-              Merkmale
+        <div className="mx-auto flex w-full max-w-7xl px-4 py-24">
+          <div className="flex w-full flex-col gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-md md:p-10 lg:ml-auto lg:w-auto lg:flex-row-reverse lg:items-end lg:gap-14">
+            <p
+              className="bg-clip-text bg-center text-9xl font-semibold text-transparent drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] lg:text-[15rem]"
+              style={{
+                backgroundImage: `url('${planet.section[1]}')`,
+              }}
+            >
+              02
             </p>
-            <p className="w-xs text-neutral-300 tracking-wider text-right">
-              {planet.featureDescription}
-            </p>
+            <div className="flex flex-col gap-6 lg:items-end">
+              <span className="w-fit rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-widest text-white/60">
+                Kapitel 02
+              </span>
+              <h2 className="text-3xl font-semibold uppercase tracking-tight text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] md:text-5xl">
+                Merkmale
+              </h2>
+              <p className="w-full text-sm leading-relaxed text-white/70 md:text-base lg:max-w-xs lg:text-right">
+                {planet.featureDescription}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -81,21 +93,21 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
             backgroundImage: `url('${planet.section[1]}')`,
           }}
         >
-          <div className="flex lg:flex-col gap-14 p-8 lg:p-40 items-end">
-            <div className="flex flex-col items-center gap-8 bg-black/35 p-8 rounded-2xl">
-              <div className="flex flex-col gap-6 lg:w-xl">
-                <p className="text-xl lg:text-2xl font-bold uppercase">
+          <div className="mx-auto flex w-full max-w-7xl justify-end px-4 py-24">
+            <div className="flex w-full flex-col gap-10 rounded-2xl border border-white/10 bg-black/50 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-md md:p-10 lg:w-auto">
+              <div className="flex flex-col gap-4 lg:w-xl lg:max-w-full">
+                <h3 className="text-xl font-semibold uppercase tracking-widest text-white lg:text-2xl">
                   {planet.featureTitle}
-                </p>
-                <p className="text-neutral-300 tracking-wider">
+                </h3>
+                <p className="text-sm leading-relaxed text-white/70 md:text-base">
                   {planet.featureInfo}
                 </p>
               </div>
-              <div className="flex flex-col text-neutral-300 gap-10 lg:w-sm">
+              <div className="flex flex-col gap-3 lg:w-xl lg:max-w-full">
                 {planet.quickFacts.map((quickFact) => (
                   <div
                     key={`${quickFact.id}-${quickFact.text}`}
-                    className="flex gap-4 items-center"
+                    className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 text-white/80 transition-colors hover:border-white/20 hover:bg-white/10"
                   >
                     {quickFact.id === 1 && (
                       <ThermometerHotIcon size={32} className="shrink-0" />
@@ -106,7 +118,9 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                     {quickFact.id === 3 && (
                       <ClockIcon size={32} className="shrink-0" />
                     )}
-                    <p>{quickFact.text}</p>
+                    <p className="text-sm leading-relaxed md:text-base">
+                      {quickFact.text}
+                    </p>
                   </div>
                 ))}
               </div>

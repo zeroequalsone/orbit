@@ -6,10 +6,10 @@ import ToolHeader from "@/components/tools/ToolHeader";
 import Selection from "@/components/tools/distance-calculator/Selection";
 import MaximumDistance from "@/components/tools/distance-calculator/MaximumDistance";
 import MinimumDistance from "@/components/tools/distance-calculator/MinimumDistance";
+import DistanceCard from "@/components/tools/distance-calculator/DistanceCard";
+import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";
 
 export default function DistanceCalculator() {
-  const SPEED_OF_LIGHT_IN_KM_S = 300_000;
-
   const [distanceFrom, setDistanceFrom] = useState(0);
   const [distanceTo, setDistanceTo] = useState(3);
 
@@ -18,6 +18,11 @@ export default function DistanceCalculator() {
 
   if (!planetFrom || !planetTo)
     throw new Error("Fehler beim Auswählen eines Planeten.");
+
+  const minDistance = Math.abs(
+    planetFrom.distanceFromSun - planetTo.distanceFromSun,
+  );
+  const maxDistance = planetFrom.distanceFromSun + planetTo.distanceFromSun;
 
   return (
     <section className="max-w-7xl mx-auto px-4 pb-24 pt-40">
@@ -35,15 +40,25 @@ export default function DistanceCalculator() {
             distanceTo={distanceTo}
           />
           <div className="flex flex-col">
-            <MinimumDistance
+            {/* MIN */}
+            <DistanceCard
               from={planetFrom}
               to={planetTo}
-              speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
+              distanceLabel="Minimale Distanz"
+              lightTimeLabel="Minimale Lichtlaufzeit"
+              tooltip="Kürzester Abstand zwischen beiden Planeten (auf derselben
+                    Seite der Sonne)"
+              distanceKm={minDistance}
             />
-            <MaximumDistance
+            {/* MAX */}
+            <DistanceCard
               from={planetFrom}
               to={planetTo}
-              speedOfLight={SPEED_OF_LIGHT_IN_KM_S}
+              distanceLabel="Maximale Distanz"
+              lightTimeLabel="Maximale Lichtlaufzeit"
+              tooltip="Größter Abstand zwischen beiden Planeten (auf
+                    gegenüberliegenden Seiten der Sonne)"
+              distanceKm={maxDistance}
             />
           </div>
         </div>

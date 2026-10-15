@@ -27,6 +27,7 @@ export default function WeightCalculator() {
             earthWeight={earthWeight}
             onEarthWeightChange={setEarthWeight}
             onPlanetChange={setSelectedPlanetId}
+            selectedPlanetId={selectedPlanetId}
           />
           <WeightComparison
             selectedPlanet={selectedPlanet}

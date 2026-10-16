@@ -1,6 +1,6 @@
 import { Planet } from "@/data/planets";
 import FunFact from "./FunFact";
-import { EARTH_GRAVITY_M_S2 } from "@/lib/constants";
+import { calculateWeightOnPlanet } from "@/lib/planets";
 
 export default function WeightComparison({
   selectedPlanet,
@@ -9,7 +9,9 @@ export default function WeightComparison({
   selectedPlanet: Planet;
   earthWeight: number;
 }) {
-  const newWeight = (selectedPlanet.gForce / EARTH_GRAVITY_M_S2) * earthWeight;
+  const newWeight = Number(
+    calculateWeightOnPlanet(selectedPlanet, earthWeight),
+  );
 
   return (
     <div className="flex w-full flex-col items-center gap-6">

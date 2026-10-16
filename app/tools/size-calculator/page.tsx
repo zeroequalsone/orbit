@@ -21,7 +21,7 @@ export default function SizeCalculator() {
       <div className="flex flex-col items-center gap-16">
         <ToolHeader
           header="Größen-Rechner"
-          desc="Wie oft passen Planete ineinander?"
+          desc="Wie oft passen Planeten ineinander?"
         />
         <div className="flex flex-col items-center gap-10">
           <SizeComparison

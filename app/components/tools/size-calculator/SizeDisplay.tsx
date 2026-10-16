@@ -10,9 +10,9 @@ export default function SizeDisplay({
   planetFrom,
   planetTo,
 }: SizeDisplayProps) {
-  const isBiggest = planetFrom.diameter > planetTo.diameter;
-  const bigger = isBiggest ? planetFrom : planetTo;
-  const smaller = isBiggest ? planetTo : planetFrom;
+  const isFromBigger = planetFrom.diameter > planetTo.diameter;
+  const bigger = isFromBigger ? planetFrom : planetTo;
+  const smaller = isFromBigger ? planetTo : planetFrom;
   const fitsIntoPlanet = Math.pow(bigger.diameter / smaller.diameter, 3);
 
   return (

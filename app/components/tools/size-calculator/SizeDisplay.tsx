@@ -1,5 +1,6 @@
 import { Planet } from "@/data/planets";
 import PlanetPreview from "./PlanetPreview";
+import { getVolumeRatio } from "@/lib/planets";
 
 type SizeDisplayProps = {
   planetFrom: Planet;
@@ -13,7 +14,7 @@ export default function SizeDisplay({
   const isFromBigger = planetFrom.diameter > planetTo.diameter;
   const bigger = isFromBigger ? planetFrom : planetTo;
   const smaller = isFromBigger ? planetTo : planetFrom;
-  const fitsIntoPlanet = Math.pow(bigger.diameter / smaller.diameter, 3);
+  const fitsIntoPlanet = getVolumeRatio(bigger, smaller);
 
   return (
     <div className="flex w-full flex-col items-center gap-6">

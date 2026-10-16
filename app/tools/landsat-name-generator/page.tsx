@@ -2,10 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
-import { landsatLetters } from "@/data/landsatLetters";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ToolHeader from "@/components/tools/ToolHeader";
+import { getRandomLandsatImages } from "@/lib/landsat";
 
 type LandsatImageInfo = {
   letter: string;
@@ -14,46 +13,16 @@ type LandsatImageInfo = {
 };
 
 export default function LandSatNameGenerator() {
-  const router = useRouter();
-
   const ref = useRef<HTMLDivElement>(null);
 
   const [name, setName] = useState("");
+  const [generatedName, setGeneratedName] = useState("orbit");
   const [images, setImages] = useState<LandsatImageInfo[]>([]);
 
-  const generateImages = (name: string) => {
-    if (name.length <= 0) return;
-
-    const letters = [...name];
-
-    const imageInfos = letters
-      .map((letter) => {
-        const letterEntry = landsatLetters.find(
-          (entry) => entry.letter.toLowerCase() === letter.toLowerCase(),
-        );
-
-        if (
-          !letterEntry ||
-          !letterEntry.images ||
-          letterEntry.images.length === 0
-        )
-          return null;
-
-        const randomIndex = Math.floor(
-          Math.random() * letterEntry.images.length,
-        );
-
-        const randomImage = letterEntry.images[randomIndex];
-
-        return {
-          letter,
-          url: randomImage.url,
-          locationCoordinates: randomImage.locationCoordinates,
-        };
-      })
-      .filter((info): info is LandsatImageInfo => info !== null);
-
-    setImages(imageInfos);
+  const generateImages = (nameToGenerate: string) => {
+    if (nameToGenerate.length === 0) return;
+    setGeneratedName(nameToGenerate);
+    setImages(getRandomLandsatImages(nameToGenerate));
   };
 
   const onDownloadClick = useCallback(() => {
@@ -64,12 +33,12 @@ export default function LandSatNameGenerator() {
     toPng(ref.current, { cacheBust: true })
       .then((dataUrl) => {
         const link = document.createElement("a");
-        link.download = "orbit.png";
+        link.download = `${generatedName}-landsat.png`;
         link.href = dataUrl;
         link.click();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }, [ref]);
 
@@ -96,7 +65,7 @@ export default function LandSatNameGenerator() {
             >
               <img
                 src={randomImage.url}
-                alt={`Letter ${randomImage.letter}`}
+                alt={`Buchstabe ${randomImage.letter}`}
                 className="h-full rounded-xl transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
               />
             </Link>
@@ -107,12 +76,13 @@ export default function LandSatNameGenerator() {
         <div className="flex w-full max-w-2xl flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-sm sm:flex-row sm:items-center">
           <input
             type="text"
+            aria-label="Dein Name"
+            placeholder="Dein Name"
             value={name}
             className="w-full min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm uppercase tracking-widest text-white placeholder:text-white/40 transition-colors hover:border-white/20 active:border-white/20 focus-visible:border-white/40 focus-visible:bg-white/10 focus-visible:outline-none"
             onChange={(e) => setName(e.target.value.replace(/[^A-Za-z]/g, ""))}
             onKeyDown={(e) => e.key === "Enter" && generateImages(name)}
             maxLength={25}
-            autoFocus
           />
           <div className="flex gap-4">
             <button

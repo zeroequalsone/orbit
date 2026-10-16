@@ -8,6 +8,7 @@ import MaximumDistance from "@/components/tools/distance-calculator/MaximumDista
 import MinimumDistance from "@/components/tools/distance-calculator/MinimumDistance";
 import DistanceCard from "@/components/tools/distance-calculator/DistanceCard";
 import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";
+import { getMaxDistance, getMinDistance } from "@/lib/planets";
 
 export default function DistanceCalculator() {
   const [distanceFrom, setDistanceFrom] = useState(0);
@@ -19,10 +20,8 @@ export default function DistanceCalculator() {
   if (!planetFrom || !planetTo)
     throw new Error("Fehler beim Auswählen eines Planeten.");
 
-  const minDistance = Math.abs(
-    planetFrom.distanceFromSun - planetTo.distanceFromSun,
-  );
-  const maxDistance = planetFrom.distanceFromSun + planetTo.distanceFromSun;
+  const minDistance = getMinDistance(planetFrom, planetTo);
+  const maxDistance = getMaxDistance(planetFrom, planetTo);
 
   return (
     <section className="max-w-7xl mx-auto px-4 pb-24 pt-40">

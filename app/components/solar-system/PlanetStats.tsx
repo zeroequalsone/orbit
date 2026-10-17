@@ -1,6 +1,7 @@
 import { Planet } from "@/data/planets";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Tooltip } from "radix-ui";
+import InfoTooltip from "../InfoTooltip";
 
 export default function PlanetStats({ planet }: { planet: Planet }) {
   return (
@@ -29,22 +30,9 @@ export default function PlanetStats({ planet }: { planet: Planet }) {
       <div>
         <div className="flex gap-2">
           <p className="font-bold uppercase">Monde</p>
-          <Tooltip.Provider>
-            <Tooltip.Root delayDuration={0}>
-              <Tooltip.Trigger asChild>
-                <InfoIcon className="cursor-help" />
-              </Tooltip.Trigger>
-              <Tooltip.Portal>
-                <Tooltip.Content
-                  className="text-white text-sm bg-black/80 p-3 rounded-md max-w-64"
-                  sideOffset={5}
-                  side="right"
-                >
-                  Stand: {new Date().toLocaleDateString("de")}
-                </Tooltip.Content>
-              </Tooltip.Portal>
-            </Tooltip.Root>
-          </Tooltip.Provider>
+          <InfoTooltip
+            tooltip={`Stand: ${new Date().toLocaleDateString("de")}`}
+          />
         </div>
         <p className="text-2xl lg:text-4xl font-light">
           {planet.numberOfMoons}{" "}

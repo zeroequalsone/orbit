@@ -2,6 +2,7 @@ import { Planet } from "@/data/planets";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Tooltip } from "radix-ui";
 import InfoTooltip from "../ui/InfoTooltip";
+import { formatDayLength } from "@/lib/formatters";
 
 export default function PlanetStats({ planet }: { planet: Planet }) {
   return (
@@ -9,13 +10,7 @@ export default function PlanetStats({ planet }: { planet: Planet }) {
       <div>
         <p className="font-bold uppercase">Tagesdauer</p>
         <p className="text-2xl lg:text-4xl font-light">
-          {planet.lengthOfDay < 24
-            ? planet.lengthOfDay.toLocaleString("de", {
-                maximumFractionDigits: 1,
-              }) + " Stunden"
-            : (planet.lengthOfDay / 24).toLocaleString("de", {
-                maximumFractionDigits: 1,
-              }) + " Erdtage"}
+          {formatDayLength(planet.lengthOfDay)}
         </p>
       </div>
       <div>

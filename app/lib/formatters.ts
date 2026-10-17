@@ -25,3 +25,9 @@ export function formatYearLength(days: number) {
     ? `${days.toLocaleString("de", { maximumFractionDigits: 1 })} Erdtage`
     : `${(days / 365).toLocaleString("de", { maximumFractionDigits: 1 })} Erdjahr(e)`;
 }
+
+export function formatDayLength(hours: number) {
+  return hours < 24
+    ? `${hours.toLocaleString("de", { maximumFractionDigits: 1 })} Stunde(n)`
+    : `${(hours / 24).toLocaleString("de", { maximumFractionDigits: 1 })} Erdtag(e)`;
+}

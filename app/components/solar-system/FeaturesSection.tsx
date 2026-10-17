@@ -1,5 +1,9 @@
 import { Planet } from "@/data/planets";
-import { formatDistance, formatLightTime } from "@/lib/formatters";
+import {
+  formatDistance,
+  formatLightTime,
+  formatYearLength,
+} from "@/lib/formatters";
 import {
   ClockIcon,
   LightningIcon,
@@ -34,13 +38,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                   Jahreslänge
                 </p>
                 <p className="text-2xl font-light uppercase tracking-widest text-white">
-                  {planet.lengthOfYear < 365
-                    ? planet.lengthOfYear.toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Erdtage"
-                    : (planet.lengthOfYear / 365).toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Erdjahr(e)"}
+                  {formatYearLength(planet.lengthOfYear)}
                 </p>
               </div>
             </div>

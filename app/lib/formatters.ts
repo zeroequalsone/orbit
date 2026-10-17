@@ -19,3 +19,9 @@ export function formatLightTime(km: number) {
     ? `ca. ${format(minutes, 0)} Minuten`
     : `ca. ${format(minutes / 60, 1)} Stunden`;
 }
+
+export function formatYearLength(days: number) {
+  return days < 365
+    ? `${days.toLocaleString("de", { maximumFractionDigits: 1 })} Erdtage`
+    : `${(days / 365).toLocaleString("de", { maximumFractionDigits: 1 })} Erdjahr(e)`;
+}

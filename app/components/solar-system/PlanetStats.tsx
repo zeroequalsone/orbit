@@ -1,7 +1,7 @@
 import { Planet } from "@/data/planets";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Tooltip } from "radix-ui";
-import InfoTooltip from "../InfoTooltip";
+import InfoTooltip from "../ui/InfoTooltip";
 
 export default function PlanetStats({ planet }: { planet: Planet }) {
   return (

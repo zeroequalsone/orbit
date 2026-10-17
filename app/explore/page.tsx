@@ -1,6 +1,6 @@
 "use client";
 
-import InfoTooltip from "@/components/InfoTooltip";
+import InfoTooltip from "@/components/ui/InfoTooltip";
 import { exploreData } from "@/data/exploreData";
 import { InfoIcon } from "@phosphor-icons/react";
 import Link from "next/link";

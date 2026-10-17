@@ -1,7 +1,7 @@
 import { Tooltip } from "radix-ui";
 import { InfoIcon } from "@phosphor-icons/react";
 import ToolBackButton from "./ToolBackButton";
-import InfoTooltip from "../InfoTooltip";
+import InfoTooltip from "../ui/InfoTooltip";
 
 type ToolHeaderProps = {
   header: string;

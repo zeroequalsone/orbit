@@ -1,4 +1,4 @@
-import InfoTooltip from "@/components/InfoTooltip";
+import InfoTooltip from "@/components/ui/InfoTooltip";
 import PlanetIcon from "@/components/planets/PlanetIcon";
 import { Planet } from "@/data/planets";
 import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";

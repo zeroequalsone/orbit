@@ -23,13 +23,12 @@ export default function SizeDisplay({
         <PlanetPreview planet={planetTo} />
       </div>
       <p className="max-w-2xl text-center text-sm leading-relaxed text-white/70 md:text-base">
-        {smaller.name} passt in {bigger.name}{" "}
+        <span className="text-white">{smaller.name}</span> passt dem Volumen
+        nach{" "}
         <b className="text-white">
-          {fitsIntoPlanet.toLocaleString("de", {
-            maximumFractionDigits: 0,
-          })}
+          {fitsIntoPlanet.toLocaleString("de", { maximumFractionDigits: 0 })}
         </b>{" "}
-        mal rein.
+        mal in <span className="text-white">{bigger.name}</span>.
       </p>
     </div>
   );

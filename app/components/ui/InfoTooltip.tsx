@@ -6,7 +6,7 @@ export default function InfoTooltip({ tooltip }: { tooltip: string }) {
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={0}>
         <Tooltip.Trigger asChild>
-          <LuInfo className="shrink-0 cursor-help text-white/50 transition-colors hover:text-white active:text-white" />
+          <LuInfo size={16} className="shrink-0 cursor-help text-white/50 transition-colors hover:text-white active:text-white" />
         </Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Content

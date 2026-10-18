@@ -1,4 +1,3 @@
-import { planets } from "@/data/planets";
 import PlanetSelect from "../PlanetSelect";
 
 type SelectionProps = {

@@ -1,8 +1,7 @@
-import InfoTooltip from "@/components/InfoTooltip";
-import PlanetIcon from "@/components/planets/PlanetIcon";
+import InfoTooltip from "@/components/ui/InfoTooltip";
 import { Planet } from "@/data/planets";
-import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";
 import PlanetDistanceVisual from "./PlanetDistanceVisual";
+import { formatDistance, formatLightTime } from "@/lib/formatters";
 
 type DistanceCardProps = {
   from: Planet;
@@ -32,12 +31,7 @@ export default function DistanceCard({
             <InfoTooltip tooltip={tooltip} />
           </div>
           <p className="mt-1 text-base text-white">
-            {distanceKm / 1e6 < 1e3
-              ? (distanceKm / 1e6).toFixed(1).replaceAll(".", ",") +
-                " Millionen "
-              : (distanceKm / 1e9).toFixed(2).replaceAll(".", ",") +
-                " Milliarden "}
-            km
+            {formatDistance(distanceKm)}
           </p>
         </div>
         <div className="rounded-xl border border-white/10 bg-white/5 p-4">
@@ -45,14 +39,7 @@ export default function DistanceCard({
             {lightTimeLabel}
           </p>
           <p className="mt-1 text-base text-white">
-            ca.{" "}
-            {distanceKm / SPEED_OF_LIGHT_IN_KM_S / 60 < 60
-              ? (distanceKm / SPEED_OF_LIGHT_IN_KM_S / 60)
-                  .toFixed(0)
-                  .replaceAll(".", ",") + " Minuten"
-              : (distanceKm / SPEED_OF_LIGHT_IN_KM_S / 60 / 60)
-                  .toFixed(1)
-                  .replaceAll(".", ",") + " Stunden"}
+            {formatLightTime(distanceKm)}
           </p>
         </div>
       </div>

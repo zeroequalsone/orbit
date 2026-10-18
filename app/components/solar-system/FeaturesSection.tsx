@@ -1,14 +1,16 @@
 import { Planet } from "@/data/planets";
 import {
+  formatDistance,
+  formatLightTime,
+  formatYearLength,
+} from "@/lib/formatters";
+import {
   ClockIcon,
   LightningIcon,
   ThermometerHotIcon,
 } from "@phosphor-icons/react";
 
 export default function FeaturesSection({ planet }: { planet: Planet }) {
-  const SPEED_OF_LIGHT_IN_KM_S = 300_000;
-  const lightTravelTime = planet.distanceFromSun / SPEED_OF_LIGHT_IN_KM_S / 60;
-
   return (
     <section>
       <div className="flex flex-col">
@@ -20,14 +22,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                   Lichtlaufzeit zur Sonne
                 </p>
                 <p className="text-2xl font-light uppercase tracking-widest text-white">
-                  ca.{" "}
-                  {lightTravelTime < 60
-                    ? lightTravelTime.toLocaleString("de", {
-                        maximumFractionDigits: 0,
-                      }) + " Minuten"
-                    : (lightTravelTime / 60).toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Stunden"}
+                  {formatLightTime(planet.distanceFromSun)}
                 </p>
               </div>
               <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
@@ -35,14 +30,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                   Distanz zur Sonne
                 </p>
                 <p className="text-2xl font-light uppercase tracking-widest text-white">
-                  {planet.distanceFromSun / 1e6 < 1e3
-                    ? (planet.distanceFromSun / 1e6).toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Millionen "
-                    : (planet.distanceFromSun / 1e9).toLocaleString("de", {
-                        maximumFractionDigits: 2,
-                      }) + " Milliarden "}
-                  km
+                  {formatDistance(planet.distanceFromSun)}
                 </p>
               </div>
               <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
@@ -50,13 +38,7 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                   Jahreslänge
                 </p>
                 <p className="text-2xl font-light uppercase tracking-widest text-white">
-                  {planet.lengthOfYear < 365
-                    ? planet.lengthOfYear.toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Erdtage"
-                    : (planet.lengthOfYear / 365).toLocaleString("de", {
-                        maximumFractionDigits: 1,
-                      }) + " Erdjahr(e)"}
+                  {formatYearLength(planet.lengthOfYear)}
                 </p>
               </div>
             </div>

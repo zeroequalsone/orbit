@@ -1,9 +1,8 @@
 "use client";
 
+import InfoTooltip from "@/components/ui/InfoTooltip";
 import { exploreData } from "@/data/exploreData";
-import { InfoIcon } from "@phosphor-icons/react";
 import Link from "next/link";
-import { Tooltip } from "radix-ui";
 
 export default function Explore() {
   return (
@@ -46,30 +45,7 @@ export default function Explore() {
                 <h2 className="text-sm font-medium uppercase tracking-widest text-white/80 transition-colors group-hover:text-white">
                   {category.name}
                 </h2>
-                <Tooltip.Provider>
-                  <Tooltip.Root delayDuration={0}>
-                    <Tooltip.Trigger asChild>
-                      <button
-                        type="button"
-                        aria-label={`Info zu ${category.name}`}
-                        onClick={(e) => e.preventDefault()}
-                        className="shrink-0 cursor-help text-white/50 transition-colors hover:text-white"
-                      >
-                        <InfoIcon size={18} />
-                      </button>
-                    </Tooltip.Trigger>
-                    <Tooltip.Portal>
-                      <Tooltip.Content
-                        className="z-50 max-w-64 rounded-xl border border-white/10 bg-black/80 p-3 text-sm leading-relaxed text-white/80 backdrop-blur-md"
-                        sideOffset={5}
-                        side="top"
-                      >
-                        {category.tooltip}
-                        <Tooltip.Arrow className="fill-white/10" />
-                      </Tooltip.Content>
-                    </Tooltip.Portal>
-                  </Tooltip.Root>
-                </Tooltip.Provider>
+                <InfoTooltip tooltip={category.tooltip} />
               </div>
             </Link>
           ))}

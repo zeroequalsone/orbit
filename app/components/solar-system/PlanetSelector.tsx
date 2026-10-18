@@ -13,7 +13,7 @@ export default function PlanetSelector({
     <section className="flex flex-col items-center px-4 pb-24 pt-40">
       <div className="flex w-full max-w-7xl flex-col gap-6">
         <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_30px_rgba(255,255,255,0.05)] md:p-8 lg:flex-row lg:justify-between lg:gap-2">
-          {[...planets].map((planet) => {
+          {planets.map((planet) => {
             const size = getPlanetDisplaySize(planet);
             return (
               <div

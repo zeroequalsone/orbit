@@ -13,13 +13,14 @@ export default function PlanetSelector({
     <section className="flex flex-col items-center px-4 pb-24 pt-40">
       <div className="flex w-full max-w-7xl flex-col gap-6">
         <div className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_30px_rgba(255,255,255,0.05)] md:p-8 lg:flex-row lg:justify-between lg:gap-2">
-          {[...planets].map((planet) => {
+          {planets.map((planet) => {
             const size = getPlanetDisplaySize(planet);
+            const isSelected = planetId === planet.id;
             return (
               <div
                 key={planet.id}
                 className={`group flex cursor-pointer items-center justify-between rounded-xl border px-4 py-1 transition-all duration-300 lg:flex-col lg:px-3 lg:py-2 ${
-                  planetId === planet.id
+                  isSelected
                     ? "border-white/20 bg-white/10 text-white shadow-[0_0_20px_rgba(255,255,255,0.08)]"
                     : "border-transparent text-white/50 hover:border-white/10 hover:bg-white/5 hover:text-white/80"
                 }`}
@@ -33,7 +34,7 @@ export default function PlanetSelector({
                 </p>
                 <div
                   className={`hidden lg:flex rounded-full mb-8 mt-8 bg-center bg-no-repeat bg-size-[100%] transition-transform duration-300 group-hover:scale-105 ${
-                    planetId === planet.id
+                    isSelected
                       ? "drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                       : "opacity-70"
                   }`}
@@ -45,7 +46,7 @@ export default function PlanetSelector({
                 />
                 <div
                   className={`lg:hidden rounded-full mb-8 mt-8 bg-center bg-no-repeat bg-size-[100%] size-12 ${
-                    planetId === planet.id
+                    isSelected
                       ? "drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                       : "opacity-70"
                   }`}

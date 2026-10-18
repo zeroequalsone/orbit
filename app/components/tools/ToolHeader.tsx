@@ -1,5 +1,3 @@
-import { Tooltip } from "radix-ui";
-import { InfoIcon } from "@phosphor-icons/react";
 import ToolBackButton from "./ToolBackButton";
 import InfoTooltip from "../ui/InfoTooltip";
 

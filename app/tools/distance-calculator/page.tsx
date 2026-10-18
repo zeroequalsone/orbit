@@ -4,10 +4,7 @@ import { planets } from "@/data/planets";
 import { useState } from "react";
 import ToolHeader from "@/components/tools/ToolHeader";
 import Selection from "@/components/tools/distance-calculator/Selection";
-import MaximumDistance from "@/components/tools/distance-calculator/MaximumDistance";
-import MinimumDistance from "@/components/tools/distance-calculator/MinimumDistance";
 import DistanceCard from "@/components/tools/distance-calculator/DistanceCard";
-import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";
 import { getMaxDistance, getMinDistance } from "@/lib/planets";
 
 export default function DistanceCalculator() {

@@ -1,7 +1,5 @@
 import InfoTooltip from "@/components/ui/InfoTooltip";
-import PlanetIcon from "@/components/planets/PlanetIcon";
-import { Planet, planets } from "@/data/planets";
-import { SPEED_OF_LIGHT_IN_KM_S } from "@/lib/constants";
+import { Planet } from "@/data/planets";
 import PlanetDistanceVisual from "./PlanetDistanceVisual";
 import { formatDistance, formatLightTime } from "@/lib/formatters";
 

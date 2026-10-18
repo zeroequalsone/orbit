@@ -1,5 +1,3 @@
-import { planets } from "@/data/planets";
-import { IoChevronDown } from "react-icons/io5";
 import PlanetSelect from "../PlanetSelect";
 
 type SizeComparisonProps = {

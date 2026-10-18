@@ -2,9 +2,7 @@
 
 import InfoTooltip from "@/components/ui/InfoTooltip";
 import { exploreData } from "@/data/exploreData";
-import { InfoIcon } from "@phosphor-icons/react";
 import Link from "next/link";
-import { Tooltip } from "radix-ui";
 
 export default function Explore() {
   return (

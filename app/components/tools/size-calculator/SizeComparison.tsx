@@ -20,12 +20,14 @@ export default function SizeComparison({
         label="Vergleiche:"
         value={sizeFrom}
         onChange={setSizeFrom}
+        disabledId={sizeTo}
       />
       <PlanetSelect
         id="sizeTo"
         label="Mit:"
         value={sizeTo}
         onChange={setSizeTo}
+        disabledId={sizeFrom}
       />
     </div>
   );

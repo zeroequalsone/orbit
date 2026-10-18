@@ -4,11 +4,7 @@ import {
   formatLightTime,
   formatYearLength,
 } from "@/lib/formatters";
-import {
-  ClockIcon,
-  LightningIcon,
-  ThermometerHotIcon,
-} from "@phosphor-icons/react";
+import { PiClock, PiLightning, PiThermometerHot } from "react-icons/pi";
 
 export default function FeaturesSection({ planet }: { planet: Planet }) {
   return (
@@ -92,13 +88,13 @@ export default function FeaturesSection({ planet }: { planet: Planet }) {
                     className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 text-white/80 transition-colors hover:border-white/20 hover:bg-white/10"
                   >
                     {quickFact.id === 1 && (
-                      <ThermometerHotIcon size={32} className="shrink-0" />
+                      <PiThermometerHot size={32} className="shrink-0" />
                     )}
                     {quickFact.id === 2 && (
-                      <LightningIcon size={32} className="shrink-0" />
+                      <PiLightning size={32} className="shrink-0" />
                     )}
                     {quickFact.id === 3 && (
-                      <ClockIcon size={32} className="shrink-0" />
+                      <PiClock size={32} className="shrink-0" />
                     )}
                     <p className="text-sm leading-relaxed md:text-base">
                       {quickFact.text}

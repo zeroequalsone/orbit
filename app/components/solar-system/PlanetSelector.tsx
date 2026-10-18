@@ -1,13 +1,12 @@
 import { planets } from "@/data/planets";
 import { getPlanetDisplaySize } from "@/lib/planets";
-import { Dispatch } from "react";
 
 export default function PlanetSelector({
   planetId,
   setPlanetId,
 }: {
   planetId: number;
-  setPlanetId: Dispatch<number>;
+  setPlanetId: (id: number) => void;
 }) {
   return (
     <section className="flex flex-col items-center px-4 pb-24 pt-40">

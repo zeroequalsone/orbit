@@ -7,7 +7,7 @@ const format = (value: number, digits: number) =>
   });
 
 export function formatDistance(km: number) {
-  const million = km / 1e6;
+  const million = Math.round((km / 1e6) * 10) / 10;
   return million < 1_000
     ? `${format(million, 1)} Millionen km`
     : `${format(km / 1e9, 2)} Milliarden km`;

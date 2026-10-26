@@ -23,6 +23,10 @@ describe("formatDistance", () => {
   it("bleibt knapp unter der Grenze bei Millionen", () => {
     expect(formatDistance(999e6)).toBe("999,0 Millionen km");
   });
+
+  it("uses Milliarden when rounding would reach 1,000 Millionen", () => {
+    expect(formatDistance(999_999_999)).toBe("1,00 Milliarden km");
+  });
 });
 
 describe("formatLightTime", () => {

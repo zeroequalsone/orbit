@@ -41,7 +41,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Menu */}
-            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 lg:flex justify-center">
+            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex justify-center">
               {navLinks.map((link) => {
                 const active = isLinkActive(pathname, link.href);
 
@@ -69,7 +69,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Orbit auf GitHub ansehen"
-                className="hidden text-white/60 transition-colors hover:text-white lg:block"
+                className="hidden text-white/60 transition-colors hover:text-white md:block"
               >
                 <FaGithub size={20} />
               </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
                 aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
-                className="relative flex h-8 w-8 items-center justify-center text-white lg:hidden"
+                className="relative flex h-8 w-8 items-center justify-center text-white md:hidden"
               >
                 <HiOutlineMenuAlt4
                   size={26}

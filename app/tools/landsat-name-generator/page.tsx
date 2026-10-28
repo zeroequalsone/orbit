@@ -40,7 +40,7 @@ export default function LandSatNameGenerator() {
       .catch((err) => {
         console.error(err);
       });
-  }, [ref]);
+  }, [ref, generatedName]);
 
   useEffect(() => {
     generateImages("orbit");

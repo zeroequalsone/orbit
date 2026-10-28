@@ -43,6 +43,8 @@ export default function LandSatNameGenerator() {
   }, [ref, generatedName]);
 
   useEffect(() => {
+    // Zufällige Bilder nur im Browser erzeugen, sonst Hydration-Fehler
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     generateImages("orbit");
   }, []);
 

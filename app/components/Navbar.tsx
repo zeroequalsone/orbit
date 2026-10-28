@@ -33,7 +33,7 @@ export default function Navbar() {
                 className="group flex items-center gap-2 text-xl uppercase drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] w-fit"
               >
                 <span className="relative flex h-5 w-5 items-center justify-center">
-                  <span className="absolute h-5 w-5 rounded-full border border-white/40 transition-colors group-hover:border-white" />
+                  <span className="absolute h-5 w-5 rounded-full border border-white/40 transition-colors group-hover:border-white group-active:border-white" />
                   <span className="h-1.5 w-1.5 rounded-full bg-white" />
                 </span>
                 Orbit
@@ -41,7 +41,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Menu */}
-            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 lg:flex justify-center">
+            <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex justify-center">
               {navLinks.map((link) => {
                 const active = isLinkActive(pathname, link.href);
 
@@ -53,7 +53,7 @@ export default function Navbar() {
                     className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-widest transition-colors ${
                       active
                         ? "bg-white/10 text-white"
-                        : "text-white/70 hover:bg-white/10 hover:text-white"
+                        : "text-white/70 hover:bg-white/10 active:bg-white/10 hover:text-white active:text-white"
                     }`}
                   >
                     {link.name}
@@ -69,7 +69,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Orbit auf GitHub ansehen"
-                className="hidden text-white/60 transition-colors hover:text-white lg:block"
+                className="hidden text-white/60 transition-colors hover:text-white active:text-white md:block"
               >
                 <FaGithub size={20} />
               </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
                 aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
-                className="relative flex h-8 w-8 items-center justify-center text-white lg:hidden"
+                className="relative flex h-8 w-8 items-center justify-center text-white md:hidden"
               >
                 <HiOutlineMenuAlt4
                   size={26}
@@ -116,7 +116,7 @@ export default function Navbar() {
                       className={`w-full rounded-xl border px-6 py-2 text-center text-xs uppercase tracking-widest transition-colors ${
                         active
                           ? "border-white/20 bg-white/5 text-white"
-                          : "border-white/5 text-white/80 hover:border-white/20 hover:bg-white/5 hover:text-white"
+                          : "border-white/5 text-white/80 hover:border-white/20 hover:bg-white/5 hover:text-white active:border-white/20 active:bg-white/5 active:text-white"
                       }`}
                     >
                       {link.name}
@@ -128,7 +128,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="mt-2 flex items-center gap-2 text-sm uppercase tracking-widest text-white/60 transition-colors hover:text-white"
+                  className="mt-2 flex items-center gap-2 text-sm uppercase tracking-widest text-white/60 transition-colors hover:text-white active:text-white"
                 >
                   <FaGithub size={18} />
                   GitHub

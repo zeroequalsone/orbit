@@ -1,10 +1,11 @@
 import { SolarSystemObjects } from "@/data/solarSystemObjects";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function CategoryPage({
   params,
 }: {
-  params: { categorySlug: string };
+  params: Promise<{ categorySlug: string }>;
 }) {
   const { categorySlug } = await params;
 
@@ -16,9 +17,10 @@ export default async function CategoryPage({
     "asteroid-belts": "Asteroidengürtel",
   };
 
-  const objects = SolarSystemObjects.filter(
-    (obj) => obj.type === typeMap[categorySlug],
-  );
+  const type = typeMap[categorySlug];
+  if (!type) notFound();
+
+  const objects = SolarSystemObjects.filter((obj) => obj.type === type);
 
   return (
     <div className="flex flex-col w-full max-w-7xl mx-auto items-center px-4 pb-24 pt-40">
@@ -38,7 +40,7 @@ export default async function CategoryPage({
             Zurück zu Sonnensystem
           </Link>
           <h1 className="text-3xl font-semibold uppercase tracking-tight text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] md:text-5xl">
-            {typeMap[categorySlug]}
+            {type}
           </h1>
         </div>
 

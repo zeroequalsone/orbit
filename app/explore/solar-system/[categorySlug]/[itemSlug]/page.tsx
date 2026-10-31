@@ -1,16 +1,17 @@
 import { SolarSystemObjects } from "@/data/solarSystemObjects";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function ItemPage({
   params,
 }: {
-  params: { itemSlug: string };
+  params: Promise<{ itemSlug: string }>;
 }) {
   const { itemSlug } = await params;
 
   const objects = SolarSystemObjects.find((obj) => obj.slug === itemSlug);
 
-  if (!objects) return;
+  if (!objects) notFound();
 
   return (
     <div className="flex flex-col w-full max-w-7xl mx-auto items-center px-4 pb-24 pt-40">

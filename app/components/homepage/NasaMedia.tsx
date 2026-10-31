@@ -35,6 +35,7 @@ export default function NasaMedia({ data }: { data: NasaData }) {
   return (
     <iframe
       src={getYoutubeEmbedUrl(data.url)}
+      title={data.title}
       width={500}
       height={500}
       className="object-cover pointer-events-none select-none"

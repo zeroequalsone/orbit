@@ -64,6 +64,7 @@ export default function ExploreSolarSystem() {
                   <img
                     className="h-full w-full bg-black object-contain transition-transform duration-500 group-hover:scale-105"
                     src={`${displayImageUrl}`}
+                    alt={`${type}`}
                     loading="lazy"
                   />
                 </div>

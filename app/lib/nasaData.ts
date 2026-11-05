@@ -5,47 +5,28 @@ export type NasaData = {
   url: string;
 };
 
-export async function getNasaData(): Promise<NasaData> {
-  const res = await fetch("https://science.nasa.gov/wp-json/wp/v2/apod-basic", {
-    next: { revalidate: 3600 },
-  });
+const APOD_URL = "https://science.nasa.gov/wp-json/wp/v2/apod-basic";
 
-  // ERROR HANDLING
+export async function getNasaData(): Promise<NasaData> {
+  const res = await fetch(APOD_URL, { next: { revalidate: 3600 } });
+
   if (!res.ok) {
-    switch (res.status) {
-      case 400:
-        throw new Error(
-          "Ungültige Anfrage (400) - diese Koordinaten existieren (noch) nicht im Universum.",
-        );
-      case 401:
-        throw new Error(
-          "Zugriff verweigert (401) - ohne gültige Berechtigung kein Zugang zum Kontrollzentrum.",
-        );
-      case 403:
-        throw new Error(
-          "Keine Berechtigung (403) - diese Sternenregion ist für deine Mission nicht freigegeben.",
-        );
-      case 404:
-        throw new Error(
-          "Nicht gefunden (404) - dieses Himmelsobjekt konnte im kosmischen Netz nicht lokalisiert werden.",
-        );
-      case 500:
-        throw new Error(
-          "Bordcomputer-Fehler (500) - ein unerwarteter Störimpuls hat das System beeinträchtigt.",
-        );
-      default:
-        throw new Error(
-          "Unbekannter Fehler - das Signal wurde von einem schwarzen Loch verschluckt.",
-        );
-    }
+    throw new Error(
+      `Das Bild des Tages konnte nicht geladen werden (Status ${res.status}).`,
+    );
   }
 
   const data = await res.json();
+  const apod = data?.[0];
+
+  if (!apod) {
+    throw new Error("NASA hat kein Bild des Tages geliefert.");
+  }
 
   return {
-    title: data[0].title,
-    explanation: data[0].explanation,
-    media_type: data[0].media_type,
-    url: data[0].hdurl,
+    title: apod.title,
+    explanation: apod.explanation,
+    media_type: apod.media_type,
+    url: apod.hdurl,
   };
 }

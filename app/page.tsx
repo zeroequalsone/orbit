@@ -33,6 +33,7 @@ export default async function Home() {
             <span className="text-xs font-medium uppercase tracking-widest text-white/50">
               Beschreibung
             </span>
+            {/* NASA liefert die Beschreibung als HTML (Links), Quelle ist vertrauenswürdig */}
             <div
               className="text-sm leading-relaxed text-white/70 [&_a]:text-white [&_a]:underline [&_a:hover]:text-white/80 md:text-base"
               dangerouslySetInnerHTML={{ __html: data.explanation }}

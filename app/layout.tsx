@@ -57,7 +57,7 @@ export default function RootLayout({
         className={`antialiased ${montserratFont.className} bg-black text-white`}
       >
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

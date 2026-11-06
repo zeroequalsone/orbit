@@ -16,22 +16,25 @@ export default function PlanetSelector({
             const size = getPlanetDisplaySize(planet);
             const isSelected = planetId === planet.id;
             return (
-              <div
+              <button
+                type="button"
                 key={planet.id}
-                className={`group flex cursor-pointer items-center justify-between rounded-xl border px-4 py-1 transition-all duration-300 lg:flex-col lg:px-3 lg:py-2 ${
+                aria-pressed={isSelected}
+                onClick={() => setPlanetId(planet.id)}
+                className={`group flex cursor-pointer items-center justify-between rounded-xl border px-4 py-1 text-left transition-all duration-300 lg:flex-col lg:px-3 lg:py-2 ${
                   isSelected
                     ? "border-white/20 bg-white/10 text-white shadow-[0_0_20px_rgba(255,255,255,0.08)]"
                     : "border-transparent text-white/50 hover:border-white/10 hover:bg-white/5 hover:text-white/80"
                 }`}
-                onClick={() => setPlanetId(planet.id)}
               >
-                <p className="flex-1 text-xs font-medium uppercase tracking-widest">
+                <span className="flex-1 text-xs font-medium uppercase tracking-widest">
                   {planet.astronomicalUnit.toLocaleString("de", {
                     maximumFractionDigits: 2,
                   })}{" "}
                   AE
-                </p>
-                <div
+                </span>
+                <span
+                  aria-hidden
                   className={`hidden lg:flex rounded-full mb-8 mt-8 bg-center bg-no-repeat bg-size-[100%] transition-transform duration-300 group-hover:scale-105 ${
                     isSelected
                       ? "drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
@@ -43,7 +46,8 @@ export default function PlanetSelector({
                     backgroundImage: `url('${planet.iconUrl}')`,
                   }}
                 />
-                <div
+                <span
+                  aria-hidden
                   className={`lg:hidden rounded-full mb-8 mt-8 bg-center bg-no-repeat bg-size-[100%] size-12 ${
                     isSelected
                       ? "drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
@@ -53,17 +57,17 @@ export default function PlanetSelector({
                     backgroundImage: `url('${planet.iconUrl}')`,
                   }}
                 />
-                <div className="flex flex-1 items-end justify-end">
-                  <div className="flex w-fit flex-col items-center gap-1">
-                    <p className="text-sm font-medium uppercase tracking-widest">
+                <span className="flex flex-1 items-end justify-end">
+                  <span className="flex w-fit flex-col items-center gap-1">
+                    <span className="text-sm font-medium uppercase tracking-widest">
                       {planet.name}
-                    </p>
-                    <p className="text-xs tracking-widest text-white/50">
+                    </span>
+                    <span className="text-xs tracking-widest text-white/50">
                       {planet.numberOfMoons} Monde
-                    </p>
-                  </div>
-                </div>
-              </div>
+                    </span>
+                  </span>
+                </span>
+              </button>
             );
           })}
         </div>

@@ -38,7 +38,7 @@
   - **Größen-Rechner**: Volumenvergleich nach dem Prinzip "Wie oft passt X in Y?".
   - **Landsat Name Generator**: Buchstaben-Collage aus Landsat-Bildern, Export als PNG im Browser.
 - **NASA APOD**: Die Startseite zeigt das Astronomy Picture of the Day. Die Daten werden serverseitig geladen und stündlich neu validiert.
-- **Qualitätssicherung**: Unit-Tests mit Vitest für die Berechnungslogik (Formatter, Planeten-Berechnungen, Landsat-Auswahl, Sternbild-Geometrie) und eine CI mit GitHub Actions (Lint, Tests, Build bei jedem Pull Request).
+- **Qualitätssicherung**: Unit-Tests mit Vitest für die Berechnungslogik (Formatter, Planeten-Berechnungen, Landsat-Auswahl, Sternbild-Geometrie) und eine CI mit GitHub Actions (Lint, Tests, Build bei jedem Pull Request). Lighthouse (Mobile, Nov. 2026): Performance 98, Accessibility 100, Best Practices 100, SEO 100.
 
 ## Projektstruktur
 
